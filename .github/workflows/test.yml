@@ -1,0 +1,23 @@
+name: Build and Test
+on:
+  push:
+    branches:
+      - develop # Your default release branch
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      # Required for a specific dotnet version that doesn't come with ubuntu-latest / windows-latest
+      # Visit bit.ly/2synnZl to see the list of SDKs that are pre-installed with ubuntu-latest / windows-latest
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v1
+        with: 
+          dotnet-version: 5.0.100
+
+      # Build
+      - run: dotnet build --configuration Debug
+      # Test
+      - run: dotnet test Akka.Hive.Test/Akka.Hive.Test.csproj
