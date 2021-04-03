@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Package</id>
+    <version>0.1.0</version>
+    <authors>Martin Krockert</authors>
+    <owners>Martin Krockert</owners>
+    <License>https://github.com/Krockema/Akka.Hive/blob/master/LICENSE</License>
+    <projectUrl>https://github.com/Krockema/Akka.Hive</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This is an extension of the Akka actor framework that allows switching the environment between simulation with virtual time, simulation with real time or integration of real endpoints.</description>
+    <releaseNotes>Initial Package</releaseNotes>
+    <copyright>Copyright 2021</copyright>
+    <tags>Akka.Net, DES, Simulation, IoT, </tags>
+    <dependencies>
+      <dependency id="Akka" version="1.4.18" />
+      <dependency id="Akka.Logger.NLog" version="1.4.10" />
+    </dependencies>
+  </metadata>
+</package>
