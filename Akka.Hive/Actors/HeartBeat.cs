@@ -6,15 +6,22 @@ using Akka.Hive.Definitions;
 namespace Akka.Hive.Actors
 {
     /// <summary>
-    /// A Time Monitor that regulates the Simulation Speed.
+    /// Actor that regulates the Simulation Speed.
     /// </summary>
     public class HeartBeat :  ReceiveActor
     {
         private TimeSpan _timeToAdvance;
+        /// <summary>
+        /// Creation method for HeartBeat Actor
+        /// </summary>
+        /// <param name="timeToAdvance">minimum time that is spend for each global tick</param>
+        /// <returns></returns>
         public static Props Props(TimeSpan timeToAdvance)
         {
-            return Akka.Actor.Props.Create(() => new HeartBeat(timeToAdvance));
+            return Actor.Props.Create(() => new HeartBeat(timeToAdvance));
         }
+
+
         public HeartBeat(TimeSpan timeToAdvance)
         {
             #region init

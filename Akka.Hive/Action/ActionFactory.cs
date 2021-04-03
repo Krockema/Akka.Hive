@@ -6,11 +6,16 @@ namespace Akka.Hive.Action
 {
     public class ActionFactory
     {
+        /// <summary>
+        /// References the current target type
+        /// Default => Simulation
+        /// Custom => Holon
+        /// </summary>
         public Actions ActorActions { get; }
         private Func<HiveActor, IHiveAction> ActionCreator { get; }
 
         /// <summary>
-        /// Creates Default ActorAction Factory with simulation Environment
+        /// Creates default actor ActionFactory with simulation environment
         /// </summary>
         public ActionFactory()
         {
@@ -19,8 +24,9 @@ namespace Akka.Hive.Action
         }
 
         /// <summary>
-        /// Creates Customized ActorAction Factory that targets Holon (IActorAction).
+        /// Creates customized actor ActionFactory that targets an IHiveAction implementation.
         /// </summary>
+        /// <param name="actorCreator">Custom actor creation function</param>
         public ActionFactory(Func<HiveActor, IHiveAction> actorCreator)
         {
             ActorActions = Actions.Holon;
