@@ -2,9 +2,12 @@
 
 namespace Akka.Hive.Definitions
 {
+    /// <summary>
+    /// Time wrapper that cuts milliseconds on creation, to enable async time comparison.
+    /// This ensures a true even if the time is some milliseconds of, due to the async actor calls.
+    /// </summary>
     public class Time
     {
-        
         public Time(DateTime dt)
         {
             Value = new DateTime(dt.Year, dt.Month, dt.Day, dt.Hour, dt.Minute, dt.Second, 0, dt.Kind);

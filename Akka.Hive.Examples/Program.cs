@@ -28,7 +28,7 @@ namespace Akka.Hive.Examples
         private static void RunACore()
         {
             // LogConfiguration.LogTo(TargetTypes.File, TargetNames.LOG_AGENTS, LogLevel.Info, LogLevel.Warn);
-            LogConfiguration.LogTo(TargetTypes.Console, TargetNames.LOG_AGENTS, LogLevel.Info, LogLevel.Warn);
+            LogConfiguration.LogTo(TargetTypes.Console, TargetNames.LOG_ACTORS, LogLevel.Info, LogLevel.Warn);
             LogConfiguration.LogTo(TargetTypes.Console, TargetNames.LOG_AKKA, LogLevel.Warn);
             // LogConfiguration.LogTo(TargetTypes.File, TargetNames.LOG_AKKA, LogLevel.Trace);
             //InternalLogger.LogToConsole = true;
@@ -94,17 +94,16 @@ namespace Akka.Hive.Examples
             });
             
             return HiveConfig.CreateHolonConfig(debugAkka: false
-                , debugEngine: true
+                , debugHive: true
                 , interruptInterval: TimeSpan.FromSeconds(10)
                 , startTime: time
-                , actorActionFactory: ActionFactory
-                , timeToAdvance: TimeSpan.FromSeconds(0));
+                , actorActionFactory: ActionFactory);
         }
 
         private static HiveConfig CreateSimulationApproach(Time time)
         {
             return HiveConfig.CreateSimulationConfig(debugAkka: false
-                , debugEngine: true
+                , debugHive: true
                 , interruptInterval: TimeSpan.FromMinutes(10)
                 , startTime: time
                 , timeToAdvance: TimeSpan.FromSeconds(0));

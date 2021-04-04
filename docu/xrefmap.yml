@@ -349,11 +349,11 @@ references:
   commentId: T:Akka.Hive.Actors.HiveActor
   fullName: Akka.Hive.Actors.HiveActor
   nameWithType: HiveActor
-- uid: Akka.Hive.Actors.HiveActor.#ctor(IActorRef,Akka.Hive.Definitions.Time,Akka.Hive.Definitions.HiveConfig)
+- uid: Akka.Hive.Actors.HiveActor.#ctor(Akka.Actor.IActorRef,Akka.Hive.Definitions.Time,Akka.Hive.Definitions.HiveConfig)
   name: HiveActor(IActorRef, Time, HiveConfig)
-  href: api/Akka.Hive.Actors.HiveActor.html#Akka_Hive_Actors_HiveActor__ctor_IActorRef_Akka_Hive_Definitions_Time_Akka_Hive_Definitions_HiveConfig_
-  commentId: M:Akka.Hive.Actors.HiveActor.#ctor(IActorRef,Akka.Hive.Definitions.Time,Akka.Hive.Definitions.HiveConfig)
-  fullName: Akka.Hive.Actors.HiveActor.HiveActor(IActorRef, Akka.Hive.Definitions.Time, Akka.Hive.Definitions.HiveConfig)
+  href: api/Akka.Hive.Actors.HiveActor.html#Akka_Hive_Actors_HiveActor__ctor_Akka_Actor_IActorRef_Akka_Hive_Definitions_Time_Akka_Hive_Definitions_HiveConfig_
+  commentId: M:Akka.Hive.Actors.HiveActor.#ctor(Akka.Actor.IActorRef,Akka.Hive.Definitions.Time,Akka.Hive.Definitions.HiveConfig)
+  fullName: Akka.Hive.Actors.HiveActor.HiveActor(Akka.Actor.IActorRef, Akka.Hive.Definitions.Time, Akka.Hive.Definitions.HiveConfig)
   nameWithType: HiveActor.HiveActor(IActorRef, Time, HiveConfig)
 - uid: Akka.Hive.Actors.HiveActor.#ctor*
   name: HiveActor
@@ -903,12 +903,12 @@ references:
   isSpec: "True"
   fullName: Akka.Hive.Definitions.HiveConfig.ActorActionFactory
   nameWithType: HiveConfig.ActorActionFactory
-- uid: Akka.Hive.Definitions.HiveConfig.CreateHolonConfig(System.Boolean,System.Boolean,System.TimeSpan,System.TimeSpan,Akka.Hive.Definitions.Time,Akka.Hive.Action.ActionFactory)
-  name: CreateHolonConfig(Boolean, Boolean, TimeSpan, TimeSpan, Time, ActionFactory)
-  href: api/Akka.Hive.Definitions.HiveConfig.html#Akka_Hive_Definitions_HiveConfig_CreateHolonConfig_System_Boolean_System_Boolean_System_TimeSpan_System_TimeSpan_Akka_Hive_Definitions_Time_Akka_Hive_Action_ActionFactory_
-  commentId: M:Akka.Hive.Definitions.HiveConfig.CreateHolonConfig(System.Boolean,System.Boolean,System.TimeSpan,System.TimeSpan,Akka.Hive.Definitions.Time,Akka.Hive.Action.ActionFactory)
-  fullName: Akka.Hive.Definitions.HiveConfig.CreateHolonConfig(System.Boolean, System.Boolean, System.TimeSpan, System.TimeSpan, Akka.Hive.Definitions.Time, Akka.Hive.Action.ActionFactory)
-  nameWithType: HiveConfig.CreateHolonConfig(Boolean, Boolean, TimeSpan, TimeSpan, Time, ActionFactory)
+- uid: Akka.Hive.Definitions.HiveConfig.CreateHolonConfig(System.Boolean,System.Boolean,System.TimeSpan,Akka.Hive.Definitions.Time,Akka.Hive.Action.ActionFactory)
+  name: CreateHolonConfig(Boolean, Boolean, TimeSpan, Time, ActionFactory)
+  href: api/Akka.Hive.Definitions.HiveConfig.html#Akka_Hive_Definitions_HiveConfig_CreateHolonConfig_System_Boolean_System_Boolean_System_TimeSpan_Akka_Hive_Definitions_Time_Akka_Hive_Action_ActionFactory_
+  commentId: M:Akka.Hive.Definitions.HiveConfig.CreateHolonConfig(System.Boolean,System.Boolean,System.TimeSpan,Akka.Hive.Definitions.Time,Akka.Hive.Action.ActionFactory)
+  fullName: Akka.Hive.Definitions.HiveConfig.CreateHolonConfig(System.Boolean, System.Boolean, System.TimeSpan, Akka.Hive.Definitions.Time, Akka.Hive.Action.ActionFactory)
+  nameWithType: HiveConfig.CreateHolonConfig(Boolean, Boolean, TimeSpan, Time, ActionFactory)
 - uid: Akka.Hive.Definitions.HiveConfig.CreateHolonConfig*
   name: CreateHolonConfig
   href: api/Akka.Hive.Definitions.HiveConfig.html#Akka_Hive_Definitions_HiveConfig_CreateHolonConfig_
@@ -1007,366 +1007,6 @@ references:
   isSpec: "True"
   fullName: Akka.Hive.Definitions.HiveConfig.TimeToAdvance
   nameWithType: HiveConfig.TimeToAdvance
-- uid: Akka.Hive.Definitions.Instructions
-  name: Akka.Hive.Definitions.Instructions
-  href: api/Akka.Hive.Definitions.Instructions.html
-  commentId: N:Akka.Hive.Definitions.Instructions
-  fullName: Akka.Hive.Definitions.Instructions
-  nameWithType: Akka.Hive.Definitions.Instructions
-- uid: Akka.Hive.Definitions.Instructions.FeatureStore
-  name: FeatureStore
-  href: api/Akka.Hive.Definitions.Instructions.FeatureStore.html
-  commentId: T:Akka.Hive.Definitions.Instructions.FeatureStore
-  fullName: Akka.Hive.Definitions.Instructions.FeatureStore
-  nameWithType: FeatureStore
-- uid: Akka.Hive.Definitions.Instructions.FeatureStore.Add(System.DateTime,Akka.Hive.Definitions.Instructions.ICurrentInstructions)
-  name: Add(DateTime, ICurrentInstructions)
-  href: api/Akka.Hive.Definitions.Instructions.FeatureStore.html#Akka_Hive_Definitions_Instructions_FeatureStore_Add_System_DateTime_Akka_Hive_Definitions_Instructions_ICurrentInstructions_
-  commentId: M:Akka.Hive.Definitions.Instructions.FeatureStore.Add(System.DateTime,Akka.Hive.Definitions.Instructions.ICurrentInstructions)
-  fullName: Akka.Hive.Definitions.Instructions.FeatureStore.Add(System.DateTime, Akka.Hive.Definitions.Instructions.ICurrentInstructions)
-  nameWithType: FeatureStore.Add(DateTime, ICurrentInstructions)
-- uid: Akka.Hive.Definitions.Instructions.FeatureStore.Add*
-  name: Add
-  href: api/Akka.Hive.Definitions.Instructions.FeatureStore.html#Akka_Hive_Definitions_Instructions_FeatureStore_Add_
-  commentId: Overload:Akka.Hive.Definitions.Instructions.FeatureStore.Add
-  isSpec: "True"
-  fullName: Akka.Hive.Definitions.Instructions.FeatureStore.Add
-  nameWithType: FeatureStore.Add
-- uid: Akka.Hive.Definitions.Instructions.FeatureStore.Count
-  name: Count()
-  href: api/Akka.Hive.Definitions.Instructions.FeatureStore.html#Akka_Hive_Definitions_Instructions_FeatureStore_Count
-  commentId: M:Akka.Hive.Definitions.Instructions.FeatureStore.Count
-  fullName: Akka.Hive.Definitions.Instructions.FeatureStore.Count()
-  nameWithType: FeatureStore.Count()
-- uid: Akka.Hive.Definitions.Instructions.FeatureStore.Count*
-  name: Count
-  href: api/Akka.Hive.Definitions.Instructions.FeatureStore.html#Akka_Hive_Definitions_Instructions_FeatureStore_Count_
-  commentId: Overload:Akka.Hive.Definitions.Instructions.FeatureStore.Count
-  isSpec: "True"
-  fullName: Akka.Hive.Definitions.Instructions.FeatureStore.Count
-  nameWithType: FeatureStore.Count
-- uid: Akka.Hive.Definitions.Instructions.FeatureStore.Next
-  name: Next()
-  href: api/Akka.Hive.Definitions.Instructions.FeatureStore.html#Akka_Hive_Definitions_Instructions_FeatureStore_Next
-  commentId: M:Akka.Hive.Definitions.Instructions.FeatureStore.Next
-  fullName: Akka.Hive.Definitions.Instructions.FeatureStore.Next()
-  nameWithType: FeatureStore.Next()
-- uid: Akka.Hive.Definitions.Instructions.FeatureStore.Next*
-  name: Next
-  href: api/Akka.Hive.Definitions.Instructions.FeatureStore.html#Akka_Hive_Definitions_Instructions_FeatureStore_Next_
-  commentId: Overload:Akka.Hive.Definitions.Instructions.FeatureStore.Next
-  isSpec: "True"
-  fullName: Akka.Hive.Definitions.Instructions.FeatureStore.Next
-  nameWithType: FeatureStore.Next
-- uid: Akka.Hive.Definitions.Instructions.FeatureStore.Remove(System.DateTime)
-  name: Remove(DateTime)
-  href: api/Akka.Hive.Definitions.Instructions.FeatureStore.html#Akka_Hive_Definitions_Instructions_FeatureStore_Remove_System_DateTime_
-  commentId: M:Akka.Hive.Definitions.Instructions.FeatureStore.Remove(System.DateTime)
-  fullName: Akka.Hive.Definitions.Instructions.FeatureStore.Remove(System.DateTime)
-  nameWithType: FeatureStore.Remove(DateTime)
-- uid: Akka.Hive.Definitions.Instructions.FeatureStore.Remove*
-  name: Remove
-  href: api/Akka.Hive.Definitions.Instructions.FeatureStore.html#Akka_Hive_Definitions_Instructions_FeatureStore_Remove_
-  commentId: Overload:Akka.Hive.Definitions.Instructions.FeatureStore.Remove
-  isSpec: "True"
-  fullName: Akka.Hive.Definitions.Instructions.FeatureStore.Remove
-  nameWithType: FeatureStore.Remove
-- uid: Akka.Hive.Definitions.Instructions.FeatureStore.TryGetValue(System.DateTime,Akka.Hive.Definitions.Instructions.ICurrentInstructions@)
-  name: TryGetValue(DateTime, out ICurrentInstructions)
-  href: api/Akka.Hive.Definitions.Instructions.FeatureStore.html#Akka_Hive_Definitions_Instructions_FeatureStore_TryGetValue_System_DateTime_Akka_Hive_Definitions_Instructions_ICurrentInstructions__
-  commentId: M:Akka.Hive.Definitions.Instructions.FeatureStore.TryGetValue(System.DateTime,Akka.Hive.Definitions.Instructions.ICurrentInstructions@)
-  name.vb: TryGetValue(DateTime, ByRef ICurrentInstructions)
-  fullName: Akka.Hive.Definitions.Instructions.FeatureStore.TryGetValue(System.DateTime, out Akka.Hive.Definitions.Instructions.ICurrentInstructions)
-  fullName.vb: Akka.Hive.Definitions.Instructions.FeatureStore.TryGetValue(System.DateTime, ByRef Akka.Hive.Definitions.Instructions.ICurrentInstructions)
-  nameWithType: FeatureStore.TryGetValue(DateTime, out ICurrentInstructions)
-  nameWithType.vb: FeatureStore.TryGetValue(DateTime, ByRef ICurrentInstructions)
-- uid: Akka.Hive.Definitions.Instructions.FeatureStore.TryGetValue*
-  name: TryGetValue
-  href: api/Akka.Hive.Definitions.Instructions.FeatureStore.html#Akka_Hive_Definitions_Instructions_FeatureStore_TryGetValue_
-  commentId: Overload:Akka.Hive.Definitions.Instructions.FeatureStore.TryGetValue
-  isSpec: "True"
-  fullName: Akka.Hive.Definitions.Instructions.FeatureStore.TryGetValue
-  nameWithType: FeatureStore.TryGetValue
-- uid: Akka.Hive.Definitions.Instructions.ICurrentInstructions
-  name: ICurrentInstructions
-  href: api/Akka.Hive.Definitions.Instructions.ICurrentInstructions.html
-  commentId: T:Akka.Hive.Definitions.Instructions.ICurrentInstructions
-  fullName: Akka.Hive.Definitions.Instructions.ICurrentInstructions
-  nameWithType: ICurrentInstructions
-- uid: Akka.Hive.Definitions.Instructions.ICurrentInstructions.Add(System.Guid,Akka.Hive.Interfaces.IHiveMessage)
-  name: Add(Guid, IHiveMessage)
-  href: api/Akka.Hive.Definitions.Instructions.ICurrentInstructions.html#Akka_Hive_Definitions_Instructions_ICurrentInstructions_Add_System_Guid_Akka_Hive_Interfaces_IHiveMessage_
-  commentId: M:Akka.Hive.Definitions.Instructions.ICurrentInstructions.Add(System.Guid,Akka.Hive.Interfaces.IHiveMessage)
-  fullName: Akka.Hive.Definitions.Instructions.ICurrentInstructions.Add(System.Guid, Akka.Hive.Interfaces.IHiveMessage)
-  nameWithType: ICurrentInstructions.Add(Guid, IHiveMessage)
-- uid: Akka.Hive.Definitions.Instructions.ICurrentInstructions.Add*
-  name: Add
-  href: api/Akka.Hive.Definitions.Instructions.ICurrentInstructions.html#Akka_Hive_Definitions_Instructions_ICurrentInstructions_Add_
-  commentId: Overload:Akka.Hive.Definitions.Instructions.ICurrentInstructions.Add
-  isSpec: "True"
-  fullName: Akka.Hive.Definitions.Instructions.ICurrentInstructions.Add
-  nameWithType: ICurrentInstructions.Add
-- uid: Akka.Hive.Definitions.Instructions.ICurrentInstructions.Count
-  name: Count()
-  href: api/Akka.Hive.Definitions.Instructions.ICurrentInstructions.html#Akka_Hive_Definitions_Instructions_ICurrentInstructions_Count
-  commentId: M:Akka.Hive.Definitions.Instructions.ICurrentInstructions.Count
-  fullName: Akka.Hive.Definitions.Instructions.ICurrentInstructions.Count()
-  nameWithType: ICurrentInstructions.Count()
-- uid: Akka.Hive.Definitions.Instructions.ICurrentInstructions.Count*
-  name: Count
-  href: api/Akka.Hive.Definitions.Instructions.ICurrentInstructions.html#Akka_Hive_Definitions_Instructions_ICurrentInstructions_Count_
-  commentId: Overload:Akka.Hive.Definitions.Instructions.ICurrentInstructions.Count
-  isSpec: "True"
-  fullName: Akka.Hive.Definitions.Instructions.ICurrentInstructions.Count
-  nameWithType: ICurrentInstructions.Count
-- uid: Akka.Hive.Definitions.Instructions.ICurrentInstructions.Remove(System.Guid)
-  name: Remove(Guid)
-  href: api/Akka.Hive.Definitions.Instructions.ICurrentInstructions.html#Akka_Hive_Definitions_Instructions_ICurrentInstructions_Remove_System_Guid_
-  commentId: M:Akka.Hive.Definitions.Instructions.ICurrentInstructions.Remove(System.Guid)
-  fullName: Akka.Hive.Definitions.Instructions.ICurrentInstructions.Remove(System.Guid)
-  nameWithType: ICurrentInstructions.Remove(Guid)
-- uid: Akka.Hive.Definitions.Instructions.ICurrentInstructions.Remove*
-  name: Remove
-  href: api/Akka.Hive.Definitions.Instructions.ICurrentInstructions.html#Akka_Hive_Definitions_Instructions_ICurrentInstructions_Remove_
-  commentId: Overload:Akka.Hive.Definitions.Instructions.ICurrentInstructions.Remove
-  isSpec: "True"
-  fullName: Akka.Hive.Definitions.Instructions.ICurrentInstructions.Remove
-  nameWithType: ICurrentInstructions.Remove
-- uid: Akka.Hive.Definitions.Instructions.ICurrentInstructions.WaitForDiastole(System.Boolean)
-  name: WaitForDiastole(Boolean)
-  href: api/Akka.Hive.Definitions.Instructions.ICurrentInstructions.html#Akka_Hive_Definitions_Instructions_ICurrentInstructions_WaitForDiastole_System_Boolean_
-  commentId: M:Akka.Hive.Definitions.Instructions.ICurrentInstructions.WaitForDiastole(System.Boolean)
-  fullName: Akka.Hive.Definitions.Instructions.ICurrentInstructions.WaitForDiastole(System.Boolean)
-  nameWithType: ICurrentInstructions.WaitForDiastole(Boolean)
-- uid: Akka.Hive.Definitions.Instructions.ICurrentInstructions.WaitForDiastole*
-  name: WaitForDiastole
-  href: api/Akka.Hive.Definitions.Instructions.ICurrentInstructions.html#Akka_Hive_Definitions_Instructions_ICurrentInstructions_WaitForDiastole_
-  commentId: Overload:Akka.Hive.Definitions.Instructions.ICurrentInstructions.WaitForDiastole
-  isSpec: "True"
-  fullName: Akka.Hive.Definitions.Instructions.ICurrentInstructions.WaitForDiastole
-  nameWithType: ICurrentInstructions.WaitForDiastole
-- uid: Akka.Hive.Definitions.Instructions.IFeatureInstructions
-  name: IFeatureInstructions
-  href: api/Akka.Hive.Definitions.Instructions.IFeatureInstructions.html
-  commentId: T:Akka.Hive.Definitions.Instructions.IFeatureInstructions
-  fullName: Akka.Hive.Definitions.Instructions.IFeatureInstructions
-  nameWithType: IFeatureInstructions
-- uid: Akka.Hive.Definitions.Instructions.IFeatureInstructions.Add(System.DateTime,Akka.Hive.Definitions.Instructions.ICurrentInstructions)
-  name: Add(DateTime, ICurrentInstructions)
-  href: api/Akka.Hive.Definitions.Instructions.IFeatureInstructions.html#Akka_Hive_Definitions_Instructions_IFeatureInstructions_Add_System_DateTime_Akka_Hive_Definitions_Instructions_ICurrentInstructions_
-  commentId: M:Akka.Hive.Definitions.Instructions.IFeatureInstructions.Add(System.DateTime,Akka.Hive.Definitions.Instructions.ICurrentInstructions)
-  fullName: Akka.Hive.Definitions.Instructions.IFeatureInstructions.Add(System.DateTime, Akka.Hive.Definitions.Instructions.ICurrentInstructions)
-  nameWithType: IFeatureInstructions.Add(DateTime, ICurrentInstructions)
-- uid: Akka.Hive.Definitions.Instructions.IFeatureInstructions.Add*
-  name: Add
-  href: api/Akka.Hive.Definitions.Instructions.IFeatureInstructions.html#Akka_Hive_Definitions_Instructions_IFeatureInstructions_Add_
-  commentId: Overload:Akka.Hive.Definitions.Instructions.IFeatureInstructions.Add
-  isSpec: "True"
-  fullName: Akka.Hive.Definitions.Instructions.IFeatureInstructions.Add
-  nameWithType: IFeatureInstructions.Add
-- uid: Akka.Hive.Definitions.Instructions.IFeatureInstructions.Count
-  name: Count()
-  href: api/Akka.Hive.Definitions.Instructions.IFeatureInstructions.html#Akka_Hive_Definitions_Instructions_IFeatureInstructions_Count
-  commentId: M:Akka.Hive.Definitions.Instructions.IFeatureInstructions.Count
-  fullName: Akka.Hive.Definitions.Instructions.IFeatureInstructions.Count()
-  nameWithType: IFeatureInstructions.Count()
-- uid: Akka.Hive.Definitions.Instructions.IFeatureInstructions.Count*
-  name: Count
-  href: api/Akka.Hive.Definitions.Instructions.IFeatureInstructions.html#Akka_Hive_Definitions_Instructions_IFeatureInstructions_Count_
-  commentId: Overload:Akka.Hive.Definitions.Instructions.IFeatureInstructions.Count
-  isSpec: "True"
-  fullName: Akka.Hive.Definitions.Instructions.IFeatureInstructions.Count
-  nameWithType: IFeatureInstructions.Count
-- uid: Akka.Hive.Definitions.Instructions.IFeatureInstructions.Next
-  name: Next()
-  href: api/Akka.Hive.Definitions.Instructions.IFeatureInstructions.html#Akka_Hive_Definitions_Instructions_IFeatureInstructions_Next
-  commentId: M:Akka.Hive.Definitions.Instructions.IFeatureInstructions.Next
-  fullName: Akka.Hive.Definitions.Instructions.IFeatureInstructions.Next()
-  nameWithType: IFeatureInstructions.Next()
-- uid: Akka.Hive.Definitions.Instructions.IFeatureInstructions.Next*
-  name: Next
-  href: api/Akka.Hive.Definitions.Instructions.IFeatureInstructions.html#Akka_Hive_Definitions_Instructions_IFeatureInstructions_Next_
-  commentId: Overload:Akka.Hive.Definitions.Instructions.IFeatureInstructions.Next
-  isSpec: "True"
-  fullName: Akka.Hive.Definitions.Instructions.IFeatureInstructions.Next
-  nameWithType: IFeatureInstructions.Next
-- uid: Akka.Hive.Definitions.Instructions.IFeatureInstructions.Remove(System.DateTime)
-  name: Remove(DateTime)
-  href: api/Akka.Hive.Definitions.Instructions.IFeatureInstructions.html#Akka_Hive_Definitions_Instructions_IFeatureInstructions_Remove_System_DateTime_
-  commentId: M:Akka.Hive.Definitions.Instructions.IFeatureInstructions.Remove(System.DateTime)
-  fullName: Akka.Hive.Definitions.Instructions.IFeatureInstructions.Remove(System.DateTime)
-  nameWithType: IFeatureInstructions.Remove(DateTime)
-- uid: Akka.Hive.Definitions.Instructions.IFeatureInstructions.Remove*
-  name: Remove
-  href: api/Akka.Hive.Definitions.Instructions.IFeatureInstructions.html#Akka_Hive_Definitions_Instructions_IFeatureInstructions_Remove_
-  commentId: Overload:Akka.Hive.Definitions.Instructions.IFeatureInstructions.Remove
-  isSpec: "True"
-  fullName: Akka.Hive.Definitions.Instructions.IFeatureInstructions.Remove
-  nameWithType: IFeatureInstructions.Remove
-- uid: Akka.Hive.Definitions.Instructions.IFeatureInstructions.TryGetValue(System.DateTime,Akka.Hive.Definitions.Instructions.ICurrentInstructions@)
-  name: TryGetValue(DateTime, out ICurrentInstructions)
-  href: api/Akka.Hive.Definitions.Instructions.IFeatureInstructions.html#Akka_Hive_Definitions_Instructions_IFeatureInstructions_TryGetValue_System_DateTime_Akka_Hive_Definitions_Instructions_ICurrentInstructions__
-  commentId: M:Akka.Hive.Definitions.Instructions.IFeatureInstructions.TryGetValue(System.DateTime,Akka.Hive.Definitions.Instructions.ICurrentInstructions@)
-  name.vb: TryGetValue(DateTime, ByRef ICurrentInstructions)
-  fullName: Akka.Hive.Definitions.Instructions.IFeatureInstructions.TryGetValue(System.DateTime, out Akka.Hive.Definitions.Instructions.ICurrentInstructions)
-  fullName.vb: Akka.Hive.Definitions.Instructions.IFeatureInstructions.TryGetValue(System.DateTime, ByRef Akka.Hive.Definitions.Instructions.ICurrentInstructions)
-  nameWithType: IFeatureInstructions.TryGetValue(DateTime, out ICurrentInstructions)
-  nameWithType.vb: IFeatureInstructions.TryGetValue(DateTime, ByRef ICurrentInstructions)
-- uid: Akka.Hive.Definitions.Instructions.IFeatureInstructions.TryGetValue*
-  name: TryGetValue
-  href: api/Akka.Hive.Definitions.Instructions.IFeatureInstructions.html#Akka_Hive_Definitions_Instructions_IFeatureInstructions_TryGetValue_
-  commentId: Overload:Akka.Hive.Definitions.Instructions.IFeatureInstructions.TryGetValue
-  isSpec: "True"
-  fullName: Akka.Hive.Definitions.Instructions.IFeatureInstructions.TryGetValue
-  nameWithType: IFeatureInstructions.TryGetValue
-- uid: Akka.Hive.Definitions.Instructions.InstructionStoreFactory
-  name: InstructionStoreFactory
-  href: api/Akka.Hive.Definitions.Instructions.InstructionStoreFactory.html
-  commentId: T:Akka.Hive.Definitions.Instructions.InstructionStoreFactory
-  fullName: Akka.Hive.Definitions.Instructions.InstructionStoreFactory
-  nameWithType: InstructionStoreFactory
-- uid: Akka.Hive.Definitions.Instructions.InstructionStoreFactory.CreateCurrent(System.Boolean)
-  name: CreateCurrent(Boolean)
-  href: api/Akka.Hive.Definitions.Instructions.InstructionStoreFactory.html#Akka_Hive_Definitions_Instructions_InstructionStoreFactory_CreateCurrent_System_Boolean_
-  commentId: M:Akka.Hive.Definitions.Instructions.InstructionStoreFactory.CreateCurrent(System.Boolean)
-  fullName: Akka.Hive.Definitions.Instructions.InstructionStoreFactory.CreateCurrent(System.Boolean)
-  nameWithType: InstructionStoreFactory.CreateCurrent(Boolean)
-- uid: Akka.Hive.Definitions.Instructions.InstructionStoreFactory.CreateCurrent*
-  name: CreateCurrent
-  href: api/Akka.Hive.Definitions.Instructions.InstructionStoreFactory.html#Akka_Hive_Definitions_Instructions_InstructionStoreFactory_CreateCurrent_
-  commentId: Overload:Akka.Hive.Definitions.Instructions.InstructionStoreFactory.CreateCurrent
-  isSpec: "True"
-  fullName: Akka.Hive.Definitions.Instructions.InstructionStoreFactory.CreateCurrent
-  nameWithType: InstructionStoreFactory.CreateCurrent
-- uid: Akka.Hive.Definitions.Instructions.InstructionStoreFactory.CreateFeatureStore(System.Boolean)
-  name: CreateFeatureStore(Boolean)
-  href: api/Akka.Hive.Definitions.Instructions.InstructionStoreFactory.html#Akka_Hive_Definitions_Instructions_InstructionStoreFactory_CreateFeatureStore_System_Boolean_
-  commentId: M:Akka.Hive.Definitions.Instructions.InstructionStoreFactory.CreateFeatureStore(System.Boolean)
-  fullName: Akka.Hive.Definitions.Instructions.InstructionStoreFactory.CreateFeatureStore(System.Boolean)
-  nameWithType: InstructionStoreFactory.CreateFeatureStore(Boolean)
-- uid: Akka.Hive.Definitions.Instructions.InstructionStoreFactory.CreateFeatureStore*
-  name: CreateFeatureStore
-  href: api/Akka.Hive.Definitions.Instructions.InstructionStoreFactory.html#Akka_Hive_Definitions_Instructions_InstructionStoreFactory_CreateFeatureStore_
-  commentId: Overload:Akka.Hive.Definitions.Instructions.InstructionStoreFactory.CreateFeatureStore
-  isSpec: "True"
-  fullName: Akka.Hive.Definitions.Instructions.InstructionStoreFactory.CreateFeatureStore
-  nameWithType: InstructionStoreFactory.CreateFeatureStore
-- uid: Akka.Hive.Definitions.Instructions.IntegerStore
-  name: IntegerStore
-  href: api/Akka.Hive.Definitions.Instructions.IntegerStore.html
-  commentId: T:Akka.Hive.Definitions.Instructions.IntegerStore
-  fullName: Akka.Hive.Definitions.Instructions.IntegerStore
-  nameWithType: IntegerStore
-- uid: Akka.Hive.Definitions.Instructions.IntegerStore.Add(System.Guid,Akka.Hive.Interfaces.IHiveMessage)
-  name: Add(Guid, IHiveMessage)
-  href: api/Akka.Hive.Definitions.Instructions.IntegerStore.html#Akka_Hive_Definitions_Instructions_IntegerStore_Add_System_Guid_Akka_Hive_Interfaces_IHiveMessage_
-  commentId: M:Akka.Hive.Definitions.Instructions.IntegerStore.Add(System.Guid,Akka.Hive.Interfaces.IHiveMessage)
-  fullName: Akka.Hive.Definitions.Instructions.IntegerStore.Add(System.Guid, Akka.Hive.Interfaces.IHiveMessage)
-  nameWithType: IntegerStore.Add(Guid, IHiveMessage)
-- uid: Akka.Hive.Definitions.Instructions.IntegerStore.Add*
-  name: Add
-  href: api/Akka.Hive.Definitions.Instructions.IntegerStore.html#Akka_Hive_Definitions_Instructions_IntegerStore_Add_
-  commentId: Overload:Akka.Hive.Definitions.Instructions.IntegerStore.Add
-  isSpec: "True"
-  fullName: Akka.Hive.Definitions.Instructions.IntegerStore.Add
-  nameWithType: IntegerStore.Add
-- uid: Akka.Hive.Definitions.Instructions.IntegerStore.Count
-  name: Count()
-  href: api/Akka.Hive.Definitions.Instructions.IntegerStore.html#Akka_Hive_Definitions_Instructions_IntegerStore_Count
-  commentId: M:Akka.Hive.Definitions.Instructions.IntegerStore.Count
-  fullName: Akka.Hive.Definitions.Instructions.IntegerStore.Count()
-  nameWithType: IntegerStore.Count()
-- uid: Akka.Hive.Definitions.Instructions.IntegerStore.Count*
-  name: Count
-  href: api/Akka.Hive.Definitions.Instructions.IntegerStore.html#Akka_Hive_Definitions_Instructions_IntegerStore_Count_
-  commentId: Overload:Akka.Hive.Definitions.Instructions.IntegerStore.Count
-  isSpec: "True"
-  fullName: Akka.Hive.Definitions.Instructions.IntegerStore.Count
-  nameWithType: IntegerStore.Count
-- uid: Akka.Hive.Definitions.Instructions.IntegerStore.Remove(System.Guid)
-  name: Remove(Guid)
-  href: api/Akka.Hive.Definitions.Instructions.IntegerStore.html#Akka_Hive_Definitions_Instructions_IntegerStore_Remove_System_Guid_
-  commentId: M:Akka.Hive.Definitions.Instructions.IntegerStore.Remove(System.Guid)
-  fullName: Akka.Hive.Definitions.Instructions.IntegerStore.Remove(System.Guid)
-  nameWithType: IntegerStore.Remove(Guid)
-- uid: Akka.Hive.Definitions.Instructions.IntegerStore.Remove*
-  name: Remove
-  href: api/Akka.Hive.Definitions.Instructions.IntegerStore.html#Akka_Hive_Definitions_Instructions_IntegerStore_Remove_
-  commentId: Overload:Akka.Hive.Definitions.Instructions.IntegerStore.Remove
-  isSpec: "True"
-  fullName: Akka.Hive.Definitions.Instructions.IntegerStore.Remove
-  nameWithType: IntegerStore.Remove
-- uid: Akka.Hive.Definitions.Instructions.IntegerStore.WaitForDiastole(System.Boolean)
-  name: WaitForDiastole(Boolean)
-  href: api/Akka.Hive.Definitions.Instructions.IntegerStore.html#Akka_Hive_Definitions_Instructions_IntegerStore_WaitForDiastole_System_Boolean_
-  commentId: M:Akka.Hive.Definitions.Instructions.IntegerStore.WaitForDiastole(System.Boolean)
-  fullName: Akka.Hive.Definitions.Instructions.IntegerStore.WaitForDiastole(System.Boolean)
-  nameWithType: IntegerStore.WaitForDiastole(Boolean)
-- uid: Akka.Hive.Definitions.Instructions.IntegerStore.WaitForDiastole*
-  name: WaitForDiastole
-  href: api/Akka.Hive.Definitions.Instructions.IntegerStore.html#Akka_Hive_Definitions_Instructions_IntegerStore_WaitForDiastole_
-  commentId: Overload:Akka.Hive.Definitions.Instructions.IntegerStore.WaitForDiastole
-  isSpec: "True"
-  fullName: Akka.Hive.Definitions.Instructions.IntegerStore.WaitForDiastole
-  nameWithType: IntegerStore.WaitForDiastole
-- uid: Akka.Hive.Definitions.Instructions.MessageStore
-  name: MessageStore
-  href: api/Akka.Hive.Definitions.Instructions.MessageStore.html
-  commentId: T:Akka.Hive.Definitions.Instructions.MessageStore
-  fullName: Akka.Hive.Definitions.Instructions.MessageStore
-  nameWithType: MessageStore
-- uid: Akka.Hive.Definitions.Instructions.MessageStore.Add(System.Guid,Akka.Hive.Interfaces.IHiveMessage)
-  name: Add(Guid, IHiveMessage)
-  href: api/Akka.Hive.Definitions.Instructions.MessageStore.html#Akka_Hive_Definitions_Instructions_MessageStore_Add_System_Guid_Akka_Hive_Interfaces_IHiveMessage_
-  commentId: M:Akka.Hive.Definitions.Instructions.MessageStore.Add(System.Guid,Akka.Hive.Interfaces.IHiveMessage)
-  fullName: Akka.Hive.Definitions.Instructions.MessageStore.Add(System.Guid, Akka.Hive.Interfaces.IHiveMessage)
-  nameWithType: MessageStore.Add(Guid, IHiveMessage)
-- uid: Akka.Hive.Definitions.Instructions.MessageStore.Add*
-  name: Add
-  href: api/Akka.Hive.Definitions.Instructions.MessageStore.html#Akka_Hive_Definitions_Instructions_MessageStore_Add_
-  commentId: Overload:Akka.Hive.Definitions.Instructions.MessageStore.Add
-  isSpec: "True"
-  fullName: Akka.Hive.Definitions.Instructions.MessageStore.Add
-  nameWithType: MessageStore.Add
-- uid: Akka.Hive.Definitions.Instructions.MessageStore.Count
-  name: Count()
-  href: api/Akka.Hive.Definitions.Instructions.MessageStore.html#Akka_Hive_Definitions_Instructions_MessageStore_Count
-  commentId: M:Akka.Hive.Definitions.Instructions.MessageStore.Count
-  fullName: Akka.Hive.Definitions.Instructions.MessageStore.Count()
-  nameWithType: MessageStore.Count()
-- uid: Akka.Hive.Definitions.Instructions.MessageStore.Count*
-  name: Count
-  href: api/Akka.Hive.Definitions.Instructions.MessageStore.html#Akka_Hive_Definitions_Instructions_MessageStore_Count_
-  commentId: Overload:Akka.Hive.Definitions.Instructions.MessageStore.Count
-  isSpec: "True"
-  fullName: Akka.Hive.Definitions.Instructions.MessageStore.Count
-  nameWithType: MessageStore.Count
-- uid: Akka.Hive.Definitions.Instructions.MessageStore.Remove(System.Guid)
-  name: Remove(Guid)
-  href: api/Akka.Hive.Definitions.Instructions.MessageStore.html#Akka_Hive_Definitions_Instructions_MessageStore_Remove_System_Guid_
-  commentId: M:Akka.Hive.Definitions.Instructions.MessageStore.Remove(System.Guid)
-  fullName: Akka.Hive.Definitions.Instructions.MessageStore.Remove(System.Guid)
-  nameWithType: MessageStore.Remove(Guid)
-- uid: Akka.Hive.Definitions.Instructions.MessageStore.Remove*
-  name: Remove
-  href: api/Akka.Hive.Definitions.Instructions.MessageStore.html#Akka_Hive_Definitions_Instructions_MessageStore_Remove_
-  commentId: Overload:Akka.Hive.Definitions.Instructions.MessageStore.Remove
-  isSpec: "True"
-  fullName: Akka.Hive.Definitions.Instructions.MessageStore.Remove
-  nameWithType: MessageStore.Remove
-- uid: Akka.Hive.Definitions.Instructions.MessageStore.WaitForDiastole(System.Boolean)
-  name: WaitForDiastole(Boolean)
-  href: api/Akka.Hive.Definitions.Instructions.MessageStore.html#Akka_Hive_Definitions_Instructions_MessageStore_WaitForDiastole_System_Boolean_
-  commentId: M:Akka.Hive.Definitions.Instructions.MessageStore.WaitForDiastole(System.Boolean)
-  fullName: Akka.Hive.Definitions.Instructions.MessageStore.WaitForDiastole(System.Boolean)
-  nameWithType: MessageStore.WaitForDiastole(Boolean)
-- uid: Akka.Hive.Definitions.Instructions.MessageStore.WaitForDiastole*
-  name: WaitForDiastole
-  href: api/Akka.Hive.Definitions.Instructions.MessageStore.html#Akka_Hive_Definitions_Instructions_MessageStore_WaitForDiastole_
-  commentId: Overload:Akka.Hive.Definitions.Instructions.MessageStore.WaitForDiastole
-  isSpec: "True"
-  fullName: Akka.Hive.Definitions.Instructions.MessageStore.WaitForDiastole
-  nameWithType: MessageStore.WaitForDiastole
 - uid: Akka.Hive.Definitions.Priority
   name: Priority
   href: api/Akka.Hive.Definitions.Priority.html
@@ -1741,6 +1381,19 @@ references:
   isSpec: "True"
   fullName: Akka.Hive.Hive.Continue
   nameWithType: Hive.Continue
+- uid: Akka.Hive.Hive.Inbox
+  name: Inbox
+  href: api/Akka.Hive.Hive.html#Akka_Hive_Hive_Inbox
+  commentId: P:Akka.Hive.Hive.Inbox
+  fullName: Akka.Hive.Hive.Inbox
+  nameWithType: Hive.Inbox
+- uid: Akka.Hive.Hive.Inbox*
+  name: Inbox
+  href: api/Akka.Hive.Hive.html#Akka_Hive_Hive_Inbox_
+  commentId: Overload:Akka.Hive.Hive.Inbox
+  isSpec: "True"
+  fullName: Akka.Hive.Hive.Inbox
+  nameWithType: Hive.Inbox
 - uid: Akka.Hive.Hive.IsReady
   name: IsReady()
   href: api/Akka.Hive.Hive.html#Akka_Hive_Hive_IsReady
@@ -1767,6 +1420,366 @@ references:
   isSpec: "True"
   fullName: Akka.Hive.Hive.RunAsync
   nameWithType: Hive.RunAsync
+- uid: Akka.Hive.Instructions
+  name: Akka.Hive.Instructions
+  href: api/Akka.Hive.Instructions.html
+  commentId: N:Akka.Hive.Instructions
+  fullName: Akka.Hive.Instructions
+  nameWithType: Akka.Hive.Instructions
+- uid: Akka.Hive.Instructions.FeatureStore
+  name: FeatureStore
+  href: api/Akka.Hive.Instructions.FeatureStore.html
+  commentId: T:Akka.Hive.Instructions.FeatureStore
+  fullName: Akka.Hive.Instructions.FeatureStore
+  nameWithType: FeatureStore
+- uid: Akka.Hive.Instructions.FeatureStore.Add(System.DateTime,Akka.Hive.Instructions.ICurrentInstructions)
+  name: Add(DateTime, ICurrentInstructions)
+  href: api/Akka.Hive.Instructions.FeatureStore.html#Akka_Hive_Instructions_FeatureStore_Add_System_DateTime_Akka_Hive_Instructions_ICurrentInstructions_
+  commentId: M:Akka.Hive.Instructions.FeatureStore.Add(System.DateTime,Akka.Hive.Instructions.ICurrentInstructions)
+  fullName: Akka.Hive.Instructions.FeatureStore.Add(System.DateTime, Akka.Hive.Instructions.ICurrentInstructions)
+  nameWithType: FeatureStore.Add(DateTime, ICurrentInstructions)
+- uid: Akka.Hive.Instructions.FeatureStore.Add*
+  name: Add
+  href: api/Akka.Hive.Instructions.FeatureStore.html#Akka_Hive_Instructions_FeatureStore_Add_
+  commentId: Overload:Akka.Hive.Instructions.FeatureStore.Add
+  isSpec: "True"
+  fullName: Akka.Hive.Instructions.FeatureStore.Add
+  nameWithType: FeatureStore.Add
+- uid: Akka.Hive.Instructions.FeatureStore.Count
+  name: Count()
+  href: api/Akka.Hive.Instructions.FeatureStore.html#Akka_Hive_Instructions_FeatureStore_Count
+  commentId: M:Akka.Hive.Instructions.FeatureStore.Count
+  fullName: Akka.Hive.Instructions.FeatureStore.Count()
+  nameWithType: FeatureStore.Count()
+- uid: Akka.Hive.Instructions.FeatureStore.Count*
+  name: Count
+  href: api/Akka.Hive.Instructions.FeatureStore.html#Akka_Hive_Instructions_FeatureStore_Count_
+  commentId: Overload:Akka.Hive.Instructions.FeatureStore.Count
+  isSpec: "True"
+  fullName: Akka.Hive.Instructions.FeatureStore.Count
+  nameWithType: FeatureStore.Count
+- uid: Akka.Hive.Instructions.FeatureStore.Next
+  name: Next()
+  href: api/Akka.Hive.Instructions.FeatureStore.html#Akka_Hive_Instructions_FeatureStore_Next
+  commentId: M:Akka.Hive.Instructions.FeatureStore.Next
+  fullName: Akka.Hive.Instructions.FeatureStore.Next()
+  nameWithType: FeatureStore.Next()
+- uid: Akka.Hive.Instructions.FeatureStore.Next*
+  name: Next
+  href: api/Akka.Hive.Instructions.FeatureStore.html#Akka_Hive_Instructions_FeatureStore_Next_
+  commentId: Overload:Akka.Hive.Instructions.FeatureStore.Next
+  isSpec: "True"
+  fullName: Akka.Hive.Instructions.FeatureStore.Next
+  nameWithType: FeatureStore.Next
+- uid: Akka.Hive.Instructions.FeatureStore.Remove(System.DateTime)
+  name: Remove(DateTime)
+  href: api/Akka.Hive.Instructions.FeatureStore.html#Akka_Hive_Instructions_FeatureStore_Remove_System_DateTime_
+  commentId: M:Akka.Hive.Instructions.FeatureStore.Remove(System.DateTime)
+  fullName: Akka.Hive.Instructions.FeatureStore.Remove(System.DateTime)
+  nameWithType: FeatureStore.Remove(DateTime)
+- uid: Akka.Hive.Instructions.FeatureStore.Remove*
+  name: Remove
+  href: api/Akka.Hive.Instructions.FeatureStore.html#Akka_Hive_Instructions_FeatureStore_Remove_
+  commentId: Overload:Akka.Hive.Instructions.FeatureStore.Remove
+  isSpec: "True"
+  fullName: Akka.Hive.Instructions.FeatureStore.Remove
+  nameWithType: FeatureStore.Remove
+- uid: Akka.Hive.Instructions.FeatureStore.TryGetValue(System.DateTime,Akka.Hive.Instructions.ICurrentInstructions@)
+  name: TryGetValue(DateTime, out ICurrentInstructions)
+  href: api/Akka.Hive.Instructions.FeatureStore.html#Akka_Hive_Instructions_FeatureStore_TryGetValue_System_DateTime_Akka_Hive_Instructions_ICurrentInstructions__
+  commentId: M:Akka.Hive.Instructions.FeatureStore.TryGetValue(System.DateTime,Akka.Hive.Instructions.ICurrentInstructions@)
+  name.vb: TryGetValue(DateTime, ByRef ICurrentInstructions)
+  fullName: Akka.Hive.Instructions.FeatureStore.TryGetValue(System.DateTime, out Akka.Hive.Instructions.ICurrentInstructions)
+  fullName.vb: Akka.Hive.Instructions.FeatureStore.TryGetValue(System.DateTime, ByRef Akka.Hive.Instructions.ICurrentInstructions)
+  nameWithType: FeatureStore.TryGetValue(DateTime, out ICurrentInstructions)
+  nameWithType.vb: FeatureStore.TryGetValue(DateTime, ByRef ICurrentInstructions)
+- uid: Akka.Hive.Instructions.FeatureStore.TryGetValue*
+  name: TryGetValue
+  href: api/Akka.Hive.Instructions.FeatureStore.html#Akka_Hive_Instructions_FeatureStore_TryGetValue_
+  commentId: Overload:Akka.Hive.Instructions.FeatureStore.TryGetValue
+  isSpec: "True"
+  fullName: Akka.Hive.Instructions.FeatureStore.TryGetValue
+  nameWithType: FeatureStore.TryGetValue
+- uid: Akka.Hive.Instructions.ICurrentInstructions
+  name: ICurrentInstructions
+  href: api/Akka.Hive.Instructions.ICurrentInstructions.html
+  commentId: T:Akka.Hive.Instructions.ICurrentInstructions
+  fullName: Akka.Hive.Instructions.ICurrentInstructions
+  nameWithType: ICurrentInstructions
+- uid: Akka.Hive.Instructions.ICurrentInstructions.Add(System.Guid,Akka.Hive.Interfaces.IHiveMessage)
+  name: Add(Guid, IHiveMessage)
+  href: api/Akka.Hive.Instructions.ICurrentInstructions.html#Akka_Hive_Instructions_ICurrentInstructions_Add_System_Guid_Akka_Hive_Interfaces_IHiveMessage_
+  commentId: M:Akka.Hive.Instructions.ICurrentInstructions.Add(System.Guid,Akka.Hive.Interfaces.IHiveMessage)
+  fullName: Akka.Hive.Instructions.ICurrentInstructions.Add(System.Guid, Akka.Hive.Interfaces.IHiveMessage)
+  nameWithType: ICurrentInstructions.Add(Guid, IHiveMessage)
+- uid: Akka.Hive.Instructions.ICurrentInstructions.Add*
+  name: Add
+  href: api/Akka.Hive.Instructions.ICurrentInstructions.html#Akka_Hive_Instructions_ICurrentInstructions_Add_
+  commentId: Overload:Akka.Hive.Instructions.ICurrentInstructions.Add
+  isSpec: "True"
+  fullName: Akka.Hive.Instructions.ICurrentInstructions.Add
+  nameWithType: ICurrentInstructions.Add
+- uid: Akka.Hive.Instructions.ICurrentInstructions.Count
+  name: Count()
+  href: api/Akka.Hive.Instructions.ICurrentInstructions.html#Akka_Hive_Instructions_ICurrentInstructions_Count
+  commentId: M:Akka.Hive.Instructions.ICurrentInstructions.Count
+  fullName: Akka.Hive.Instructions.ICurrentInstructions.Count()
+  nameWithType: ICurrentInstructions.Count()
+- uid: Akka.Hive.Instructions.ICurrentInstructions.Count*
+  name: Count
+  href: api/Akka.Hive.Instructions.ICurrentInstructions.html#Akka_Hive_Instructions_ICurrentInstructions_Count_
+  commentId: Overload:Akka.Hive.Instructions.ICurrentInstructions.Count
+  isSpec: "True"
+  fullName: Akka.Hive.Instructions.ICurrentInstructions.Count
+  nameWithType: ICurrentInstructions.Count
+- uid: Akka.Hive.Instructions.ICurrentInstructions.Remove(System.Guid)
+  name: Remove(Guid)
+  href: api/Akka.Hive.Instructions.ICurrentInstructions.html#Akka_Hive_Instructions_ICurrentInstructions_Remove_System_Guid_
+  commentId: M:Akka.Hive.Instructions.ICurrentInstructions.Remove(System.Guid)
+  fullName: Akka.Hive.Instructions.ICurrentInstructions.Remove(System.Guid)
+  nameWithType: ICurrentInstructions.Remove(Guid)
+- uid: Akka.Hive.Instructions.ICurrentInstructions.Remove*
+  name: Remove
+  href: api/Akka.Hive.Instructions.ICurrentInstructions.html#Akka_Hive_Instructions_ICurrentInstructions_Remove_
+  commentId: Overload:Akka.Hive.Instructions.ICurrentInstructions.Remove
+  isSpec: "True"
+  fullName: Akka.Hive.Instructions.ICurrentInstructions.Remove
+  nameWithType: ICurrentInstructions.Remove
+- uid: Akka.Hive.Instructions.ICurrentInstructions.WaitForDiastole(System.Boolean)
+  name: WaitForDiastole(Boolean)
+  href: api/Akka.Hive.Instructions.ICurrentInstructions.html#Akka_Hive_Instructions_ICurrentInstructions_WaitForDiastole_System_Boolean_
+  commentId: M:Akka.Hive.Instructions.ICurrentInstructions.WaitForDiastole(System.Boolean)
+  fullName: Akka.Hive.Instructions.ICurrentInstructions.WaitForDiastole(System.Boolean)
+  nameWithType: ICurrentInstructions.WaitForDiastole(Boolean)
+- uid: Akka.Hive.Instructions.ICurrentInstructions.WaitForDiastole*
+  name: WaitForDiastole
+  href: api/Akka.Hive.Instructions.ICurrentInstructions.html#Akka_Hive_Instructions_ICurrentInstructions_WaitForDiastole_
+  commentId: Overload:Akka.Hive.Instructions.ICurrentInstructions.WaitForDiastole
+  isSpec: "True"
+  fullName: Akka.Hive.Instructions.ICurrentInstructions.WaitForDiastole
+  nameWithType: ICurrentInstructions.WaitForDiastole
+- uid: Akka.Hive.Instructions.IFeatureInstructions
+  name: IFeatureInstructions
+  href: api/Akka.Hive.Instructions.IFeatureInstructions.html
+  commentId: T:Akka.Hive.Instructions.IFeatureInstructions
+  fullName: Akka.Hive.Instructions.IFeatureInstructions
+  nameWithType: IFeatureInstructions
+- uid: Akka.Hive.Instructions.IFeatureInstructions.Add(System.DateTime,Akka.Hive.Instructions.ICurrentInstructions)
+  name: Add(DateTime, ICurrentInstructions)
+  href: api/Akka.Hive.Instructions.IFeatureInstructions.html#Akka_Hive_Instructions_IFeatureInstructions_Add_System_DateTime_Akka_Hive_Instructions_ICurrentInstructions_
+  commentId: M:Akka.Hive.Instructions.IFeatureInstructions.Add(System.DateTime,Akka.Hive.Instructions.ICurrentInstructions)
+  fullName: Akka.Hive.Instructions.IFeatureInstructions.Add(System.DateTime, Akka.Hive.Instructions.ICurrentInstructions)
+  nameWithType: IFeatureInstructions.Add(DateTime, ICurrentInstructions)
+- uid: Akka.Hive.Instructions.IFeatureInstructions.Add*
+  name: Add
+  href: api/Akka.Hive.Instructions.IFeatureInstructions.html#Akka_Hive_Instructions_IFeatureInstructions_Add_
+  commentId: Overload:Akka.Hive.Instructions.IFeatureInstructions.Add
+  isSpec: "True"
+  fullName: Akka.Hive.Instructions.IFeatureInstructions.Add
+  nameWithType: IFeatureInstructions.Add
+- uid: Akka.Hive.Instructions.IFeatureInstructions.Count
+  name: Count()
+  href: api/Akka.Hive.Instructions.IFeatureInstructions.html#Akka_Hive_Instructions_IFeatureInstructions_Count
+  commentId: M:Akka.Hive.Instructions.IFeatureInstructions.Count
+  fullName: Akka.Hive.Instructions.IFeatureInstructions.Count()
+  nameWithType: IFeatureInstructions.Count()
+- uid: Akka.Hive.Instructions.IFeatureInstructions.Count*
+  name: Count
+  href: api/Akka.Hive.Instructions.IFeatureInstructions.html#Akka_Hive_Instructions_IFeatureInstructions_Count_
+  commentId: Overload:Akka.Hive.Instructions.IFeatureInstructions.Count
+  isSpec: "True"
+  fullName: Akka.Hive.Instructions.IFeatureInstructions.Count
+  nameWithType: IFeatureInstructions.Count
+- uid: Akka.Hive.Instructions.IFeatureInstructions.Next
+  name: Next()
+  href: api/Akka.Hive.Instructions.IFeatureInstructions.html#Akka_Hive_Instructions_IFeatureInstructions_Next
+  commentId: M:Akka.Hive.Instructions.IFeatureInstructions.Next
+  fullName: Akka.Hive.Instructions.IFeatureInstructions.Next()
+  nameWithType: IFeatureInstructions.Next()
+- uid: Akka.Hive.Instructions.IFeatureInstructions.Next*
+  name: Next
+  href: api/Akka.Hive.Instructions.IFeatureInstructions.html#Akka_Hive_Instructions_IFeatureInstructions_Next_
+  commentId: Overload:Akka.Hive.Instructions.IFeatureInstructions.Next
+  isSpec: "True"
+  fullName: Akka.Hive.Instructions.IFeatureInstructions.Next
+  nameWithType: IFeatureInstructions.Next
+- uid: Akka.Hive.Instructions.IFeatureInstructions.Remove(System.DateTime)
+  name: Remove(DateTime)
+  href: api/Akka.Hive.Instructions.IFeatureInstructions.html#Akka_Hive_Instructions_IFeatureInstructions_Remove_System_DateTime_
+  commentId: M:Akka.Hive.Instructions.IFeatureInstructions.Remove(System.DateTime)
+  fullName: Akka.Hive.Instructions.IFeatureInstructions.Remove(System.DateTime)
+  nameWithType: IFeatureInstructions.Remove(DateTime)
+- uid: Akka.Hive.Instructions.IFeatureInstructions.Remove*
+  name: Remove
+  href: api/Akka.Hive.Instructions.IFeatureInstructions.html#Akka_Hive_Instructions_IFeatureInstructions_Remove_
+  commentId: Overload:Akka.Hive.Instructions.IFeatureInstructions.Remove
+  isSpec: "True"
+  fullName: Akka.Hive.Instructions.IFeatureInstructions.Remove
+  nameWithType: IFeatureInstructions.Remove
+- uid: Akka.Hive.Instructions.IFeatureInstructions.TryGetValue(System.DateTime,Akka.Hive.Instructions.ICurrentInstructions@)
+  name: TryGetValue(DateTime, out ICurrentInstructions)
+  href: api/Akka.Hive.Instructions.IFeatureInstructions.html#Akka_Hive_Instructions_IFeatureInstructions_TryGetValue_System_DateTime_Akka_Hive_Instructions_ICurrentInstructions__
+  commentId: M:Akka.Hive.Instructions.IFeatureInstructions.TryGetValue(System.DateTime,Akka.Hive.Instructions.ICurrentInstructions@)
+  name.vb: TryGetValue(DateTime, ByRef ICurrentInstructions)
+  fullName: Akka.Hive.Instructions.IFeatureInstructions.TryGetValue(System.DateTime, out Akka.Hive.Instructions.ICurrentInstructions)
+  fullName.vb: Akka.Hive.Instructions.IFeatureInstructions.TryGetValue(System.DateTime, ByRef Akka.Hive.Instructions.ICurrentInstructions)
+  nameWithType: IFeatureInstructions.TryGetValue(DateTime, out ICurrentInstructions)
+  nameWithType.vb: IFeatureInstructions.TryGetValue(DateTime, ByRef ICurrentInstructions)
+- uid: Akka.Hive.Instructions.IFeatureInstructions.TryGetValue*
+  name: TryGetValue
+  href: api/Akka.Hive.Instructions.IFeatureInstructions.html#Akka_Hive_Instructions_IFeatureInstructions_TryGetValue_
+  commentId: Overload:Akka.Hive.Instructions.IFeatureInstructions.TryGetValue
+  isSpec: "True"
+  fullName: Akka.Hive.Instructions.IFeatureInstructions.TryGetValue
+  nameWithType: IFeatureInstructions.TryGetValue
+- uid: Akka.Hive.Instructions.InstructionStoreFactory
+  name: InstructionStoreFactory
+  href: api/Akka.Hive.Instructions.InstructionStoreFactory.html
+  commentId: T:Akka.Hive.Instructions.InstructionStoreFactory
+  fullName: Akka.Hive.Instructions.InstructionStoreFactory
+  nameWithType: InstructionStoreFactory
+- uid: Akka.Hive.Instructions.InstructionStoreFactory.CreateCurrent(System.Boolean)
+  name: CreateCurrent(Boolean)
+  href: api/Akka.Hive.Instructions.InstructionStoreFactory.html#Akka_Hive_Instructions_InstructionStoreFactory_CreateCurrent_System_Boolean_
+  commentId: M:Akka.Hive.Instructions.InstructionStoreFactory.CreateCurrent(System.Boolean)
+  fullName: Akka.Hive.Instructions.InstructionStoreFactory.CreateCurrent(System.Boolean)
+  nameWithType: InstructionStoreFactory.CreateCurrent(Boolean)
+- uid: Akka.Hive.Instructions.InstructionStoreFactory.CreateCurrent*
+  name: CreateCurrent
+  href: api/Akka.Hive.Instructions.InstructionStoreFactory.html#Akka_Hive_Instructions_InstructionStoreFactory_CreateCurrent_
+  commentId: Overload:Akka.Hive.Instructions.InstructionStoreFactory.CreateCurrent
+  isSpec: "True"
+  fullName: Akka.Hive.Instructions.InstructionStoreFactory.CreateCurrent
+  nameWithType: InstructionStoreFactory.CreateCurrent
+- uid: Akka.Hive.Instructions.InstructionStoreFactory.CreateFeatureStore(System.Boolean)
+  name: CreateFeatureStore(Boolean)
+  href: api/Akka.Hive.Instructions.InstructionStoreFactory.html#Akka_Hive_Instructions_InstructionStoreFactory_CreateFeatureStore_System_Boolean_
+  commentId: M:Akka.Hive.Instructions.InstructionStoreFactory.CreateFeatureStore(System.Boolean)
+  fullName: Akka.Hive.Instructions.InstructionStoreFactory.CreateFeatureStore(System.Boolean)
+  nameWithType: InstructionStoreFactory.CreateFeatureStore(Boolean)
+- uid: Akka.Hive.Instructions.InstructionStoreFactory.CreateFeatureStore*
+  name: CreateFeatureStore
+  href: api/Akka.Hive.Instructions.InstructionStoreFactory.html#Akka_Hive_Instructions_InstructionStoreFactory_CreateFeatureStore_
+  commentId: Overload:Akka.Hive.Instructions.InstructionStoreFactory.CreateFeatureStore
+  isSpec: "True"
+  fullName: Akka.Hive.Instructions.InstructionStoreFactory.CreateFeatureStore
+  nameWithType: InstructionStoreFactory.CreateFeatureStore
+- uid: Akka.Hive.Instructions.IntegerStore
+  name: IntegerStore
+  href: api/Akka.Hive.Instructions.IntegerStore.html
+  commentId: T:Akka.Hive.Instructions.IntegerStore
+  fullName: Akka.Hive.Instructions.IntegerStore
+  nameWithType: IntegerStore
+- uid: Akka.Hive.Instructions.IntegerStore.Add(System.Guid,Akka.Hive.Interfaces.IHiveMessage)
+  name: Add(Guid, IHiveMessage)
+  href: api/Akka.Hive.Instructions.IntegerStore.html#Akka_Hive_Instructions_IntegerStore_Add_System_Guid_Akka_Hive_Interfaces_IHiveMessage_
+  commentId: M:Akka.Hive.Instructions.IntegerStore.Add(System.Guid,Akka.Hive.Interfaces.IHiveMessage)
+  fullName: Akka.Hive.Instructions.IntegerStore.Add(System.Guid, Akka.Hive.Interfaces.IHiveMessage)
+  nameWithType: IntegerStore.Add(Guid, IHiveMessage)
+- uid: Akka.Hive.Instructions.IntegerStore.Add*
+  name: Add
+  href: api/Akka.Hive.Instructions.IntegerStore.html#Akka_Hive_Instructions_IntegerStore_Add_
+  commentId: Overload:Akka.Hive.Instructions.IntegerStore.Add
+  isSpec: "True"
+  fullName: Akka.Hive.Instructions.IntegerStore.Add
+  nameWithType: IntegerStore.Add
+- uid: Akka.Hive.Instructions.IntegerStore.Count
+  name: Count()
+  href: api/Akka.Hive.Instructions.IntegerStore.html#Akka_Hive_Instructions_IntegerStore_Count
+  commentId: M:Akka.Hive.Instructions.IntegerStore.Count
+  fullName: Akka.Hive.Instructions.IntegerStore.Count()
+  nameWithType: IntegerStore.Count()
+- uid: Akka.Hive.Instructions.IntegerStore.Count*
+  name: Count
+  href: api/Akka.Hive.Instructions.IntegerStore.html#Akka_Hive_Instructions_IntegerStore_Count_
+  commentId: Overload:Akka.Hive.Instructions.IntegerStore.Count
+  isSpec: "True"
+  fullName: Akka.Hive.Instructions.IntegerStore.Count
+  nameWithType: IntegerStore.Count
+- uid: Akka.Hive.Instructions.IntegerStore.Remove(System.Guid)
+  name: Remove(Guid)
+  href: api/Akka.Hive.Instructions.IntegerStore.html#Akka_Hive_Instructions_IntegerStore_Remove_System_Guid_
+  commentId: M:Akka.Hive.Instructions.IntegerStore.Remove(System.Guid)
+  fullName: Akka.Hive.Instructions.IntegerStore.Remove(System.Guid)
+  nameWithType: IntegerStore.Remove(Guid)
+- uid: Akka.Hive.Instructions.IntegerStore.Remove*
+  name: Remove
+  href: api/Akka.Hive.Instructions.IntegerStore.html#Akka_Hive_Instructions_IntegerStore_Remove_
+  commentId: Overload:Akka.Hive.Instructions.IntegerStore.Remove
+  isSpec: "True"
+  fullName: Akka.Hive.Instructions.IntegerStore.Remove
+  nameWithType: IntegerStore.Remove
+- uid: Akka.Hive.Instructions.IntegerStore.WaitForDiastole(System.Boolean)
+  name: WaitForDiastole(Boolean)
+  href: api/Akka.Hive.Instructions.IntegerStore.html#Akka_Hive_Instructions_IntegerStore_WaitForDiastole_System_Boolean_
+  commentId: M:Akka.Hive.Instructions.IntegerStore.WaitForDiastole(System.Boolean)
+  fullName: Akka.Hive.Instructions.IntegerStore.WaitForDiastole(System.Boolean)
+  nameWithType: IntegerStore.WaitForDiastole(Boolean)
+- uid: Akka.Hive.Instructions.IntegerStore.WaitForDiastole*
+  name: WaitForDiastole
+  href: api/Akka.Hive.Instructions.IntegerStore.html#Akka_Hive_Instructions_IntegerStore_WaitForDiastole_
+  commentId: Overload:Akka.Hive.Instructions.IntegerStore.WaitForDiastole
+  isSpec: "True"
+  fullName: Akka.Hive.Instructions.IntegerStore.WaitForDiastole
+  nameWithType: IntegerStore.WaitForDiastole
+- uid: Akka.Hive.Instructions.MessageStore
+  name: MessageStore
+  href: api/Akka.Hive.Instructions.MessageStore.html
+  commentId: T:Akka.Hive.Instructions.MessageStore
+  fullName: Akka.Hive.Instructions.MessageStore
+  nameWithType: MessageStore
+- uid: Akka.Hive.Instructions.MessageStore.Add(System.Guid,Akka.Hive.Interfaces.IHiveMessage)
+  name: Add(Guid, IHiveMessage)
+  href: api/Akka.Hive.Instructions.MessageStore.html#Akka_Hive_Instructions_MessageStore_Add_System_Guid_Akka_Hive_Interfaces_IHiveMessage_
+  commentId: M:Akka.Hive.Instructions.MessageStore.Add(System.Guid,Akka.Hive.Interfaces.IHiveMessage)
+  fullName: Akka.Hive.Instructions.MessageStore.Add(System.Guid, Akka.Hive.Interfaces.IHiveMessage)
+  nameWithType: MessageStore.Add(Guid, IHiveMessage)
+- uid: Akka.Hive.Instructions.MessageStore.Add*
+  name: Add
+  href: api/Akka.Hive.Instructions.MessageStore.html#Akka_Hive_Instructions_MessageStore_Add_
+  commentId: Overload:Akka.Hive.Instructions.MessageStore.Add
+  isSpec: "True"
+  fullName: Akka.Hive.Instructions.MessageStore.Add
+  nameWithType: MessageStore.Add
+- uid: Akka.Hive.Instructions.MessageStore.Count
+  name: Count()
+  href: api/Akka.Hive.Instructions.MessageStore.html#Akka_Hive_Instructions_MessageStore_Count
+  commentId: M:Akka.Hive.Instructions.MessageStore.Count
+  fullName: Akka.Hive.Instructions.MessageStore.Count()
+  nameWithType: MessageStore.Count()
+- uid: Akka.Hive.Instructions.MessageStore.Count*
+  name: Count
+  href: api/Akka.Hive.Instructions.MessageStore.html#Akka_Hive_Instructions_MessageStore_Count_
+  commentId: Overload:Akka.Hive.Instructions.MessageStore.Count
+  isSpec: "True"
+  fullName: Akka.Hive.Instructions.MessageStore.Count
+  nameWithType: MessageStore.Count
+- uid: Akka.Hive.Instructions.MessageStore.Remove(System.Guid)
+  name: Remove(Guid)
+  href: api/Akka.Hive.Instructions.MessageStore.html#Akka_Hive_Instructions_MessageStore_Remove_System_Guid_
+  commentId: M:Akka.Hive.Instructions.MessageStore.Remove(System.Guid)
+  fullName: Akka.Hive.Instructions.MessageStore.Remove(System.Guid)
+  nameWithType: MessageStore.Remove(Guid)
+- uid: Akka.Hive.Instructions.MessageStore.Remove*
+  name: Remove
+  href: api/Akka.Hive.Instructions.MessageStore.html#Akka_Hive_Instructions_MessageStore_Remove_
+  commentId: Overload:Akka.Hive.Instructions.MessageStore.Remove
+  isSpec: "True"
+  fullName: Akka.Hive.Instructions.MessageStore.Remove
+  nameWithType: MessageStore.Remove
+- uid: Akka.Hive.Instructions.MessageStore.WaitForDiastole(System.Boolean)
+  name: WaitForDiastole(Boolean)
+  href: api/Akka.Hive.Instructions.MessageStore.html#Akka_Hive_Instructions_MessageStore_WaitForDiastole_System_Boolean_
+  commentId: M:Akka.Hive.Instructions.MessageStore.WaitForDiastole(System.Boolean)
+  fullName: Akka.Hive.Instructions.MessageStore.WaitForDiastole(System.Boolean)
+  nameWithType: MessageStore.WaitForDiastole(Boolean)
+- uid: Akka.Hive.Instructions.MessageStore.WaitForDiastole*
+  name: WaitForDiastole
+  href: api/Akka.Hive.Instructions.MessageStore.html#Akka_Hive_Instructions_MessageStore_WaitForDiastole_
+  commentId: Overload:Akka.Hive.Instructions.MessageStore.WaitForDiastole
+  isSpec: "True"
+  fullName: Akka.Hive.Instructions.MessageStore.WaitForDiastole
+  nameWithType: MessageStore.WaitForDiastole
 - uid: Akka.Hive.Interfaces
   name: Akka.Hive.Interfaces
   href: api/Akka.Hive.Interfaces.html
@@ -1786,13 +1799,13 @@ references:
   isSpec: "True"
   fullName: Akka.Hive.Interfaces.ActorRefFactoryExtensions.CreateActor
   nameWithType: ActorRefFactoryExtensions.CreateActor
-- uid: Akka.Hive.Interfaces.ActorRefFactoryExtensions.CreateActor``1(IActorRefFactory,System.Linq.Expressions.Expression{System.Func{``0}})
+- uid: Akka.Hive.Interfaces.ActorRefFactoryExtensions.CreateActor``1(Akka.Actor.IActorRefFactory,System.Linq.Expressions.Expression{System.Func{``0}})
   name: CreateActor<T>(IActorRefFactory, Expression<Func<T>>)
-  href: api/Akka.Hive.Interfaces.ActorRefFactoryExtensions.html#Akka_Hive_Interfaces_ActorRefFactoryExtensions_CreateActor__1_IActorRefFactory_System_Linq_Expressions_Expression_System_Func___0___
-  commentId: M:Akka.Hive.Interfaces.ActorRefFactoryExtensions.CreateActor``1(IActorRefFactory,System.Linq.Expressions.Expression{System.Func{``0}})
+  href: api/Akka.Hive.Interfaces.ActorRefFactoryExtensions.html#Akka_Hive_Interfaces_ActorRefFactoryExtensions_CreateActor__1_Akka_Actor_IActorRefFactory_System_Linq_Expressions_Expression_System_Func___0___
+  commentId: M:Akka.Hive.Interfaces.ActorRefFactoryExtensions.CreateActor``1(Akka.Actor.IActorRefFactory,System.Linq.Expressions.Expression{System.Func{``0}})
   name.vb: CreateActor(Of T)(IActorRefFactory, Expression(Of Func(Of T)))
-  fullName: Akka.Hive.Interfaces.ActorRefFactoryExtensions.CreateActor<T>(IActorRefFactory, System.Linq.Expressions.Expression<System.Func<T>>)
-  fullName.vb: Akka.Hive.Interfaces.ActorRefFactoryExtensions.CreateActor(Of T)(IActorRefFactory, System.Linq.Expressions.Expression(Of System.Func(Of T)))
+  fullName: Akka.Hive.Interfaces.ActorRefFactoryExtensions.CreateActor<T>(Akka.Actor.IActorRefFactory, System.Linq.Expressions.Expression<System.Func<T>>)
+  fullName.vb: Akka.Hive.Interfaces.ActorRefFactoryExtensions.CreateActor(Of T)(Akka.Actor.IActorRefFactory, System.Linq.Expressions.Expression(Of System.Func(Of T)))
   nameWithType: ActorRefFactoryExtensions.CreateActor<T>(IActorRefFactory, Expression<Func<T>>)
   nameWithType.vb: ActorRefFactoryExtensions.CreateActor(Of T)(IActorRefFactory, Expression(Of Func(Of T)))
 - uid: Akka.Hive.Interfaces.IHiveAction
@@ -2046,17 +2059,17 @@ references:
   commentId: T:Akka.Hive.Logging.LogConfiguration
   fullName: Akka.Hive.Logging.LogConfiguration
   nameWithType: LogConfiguration
-- uid: Akka.Hive.Logging.LogConfiguration.LogTo(Akka.Hive.Logging.TargetTypes,System.String,LogLevel,LogLevel,System.Boolean,System.String)
+- uid: Akka.Hive.Logging.LogConfiguration.LogTo(Akka.Hive.Logging.TargetTypes,System.String,NLog.LogLevel,NLog.LogLevel,System.Boolean,System.String)
   name: LogTo(TargetTypes, String, LogLevel, LogLevel, Boolean, String)
-  href: api/Akka.Hive.Logging.LogConfiguration.html#Akka_Hive_Logging_LogConfiguration_LogTo_Akka_Hive_Logging_TargetTypes_System_String_LogLevel_LogLevel_System_Boolean_System_String_
-  commentId: M:Akka.Hive.Logging.LogConfiguration.LogTo(Akka.Hive.Logging.TargetTypes,System.String,LogLevel,LogLevel,System.Boolean,System.String)
-  fullName: Akka.Hive.Logging.LogConfiguration.LogTo(Akka.Hive.Logging.TargetTypes, System.String, LogLevel, LogLevel, System.Boolean, System.String)
+  href: api/Akka.Hive.Logging.LogConfiguration.html#Akka_Hive_Logging_LogConfiguration_LogTo_Akka_Hive_Logging_TargetTypes_System_String_NLog_LogLevel_NLog_LogLevel_System_Boolean_System_String_
+  commentId: M:Akka.Hive.Logging.LogConfiguration.LogTo(Akka.Hive.Logging.TargetTypes,System.String,NLog.LogLevel,NLog.LogLevel,System.Boolean,System.String)
+  fullName: Akka.Hive.Logging.LogConfiguration.LogTo(Akka.Hive.Logging.TargetTypes, System.String, NLog.LogLevel, NLog.LogLevel, System.Boolean, System.String)
   nameWithType: LogConfiguration.LogTo(TargetTypes, String, LogLevel, LogLevel, Boolean, String)
-- uid: Akka.Hive.Logging.LogConfiguration.LogTo(Akka.Hive.Logging.TargetTypes,System.String,LogLevel,System.Boolean,System.String)
+- uid: Akka.Hive.Logging.LogConfiguration.LogTo(Akka.Hive.Logging.TargetTypes,System.String,NLog.LogLevel,System.Boolean,System.String)
   name: LogTo(TargetTypes, String, LogLevel, Boolean, String)
-  href: api/Akka.Hive.Logging.LogConfiguration.html#Akka_Hive_Logging_LogConfiguration_LogTo_Akka_Hive_Logging_TargetTypes_System_String_LogLevel_System_Boolean_System_String_
-  commentId: M:Akka.Hive.Logging.LogConfiguration.LogTo(Akka.Hive.Logging.TargetTypes,System.String,LogLevel,System.Boolean,System.String)
-  fullName: Akka.Hive.Logging.LogConfiguration.LogTo(Akka.Hive.Logging.TargetTypes, System.String, LogLevel, System.Boolean, System.String)
+  href: api/Akka.Hive.Logging.LogConfiguration.html#Akka_Hive_Logging_LogConfiguration_LogTo_Akka_Hive_Logging_TargetTypes_System_String_NLog_LogLevel_System_Boolean_System_String_
+  commentId: M:Akka.Hive.Logging.LogConfiguration.LogTo(Akka.Hive.Logging.TargetTypes,System.String,NLog.LogLevel,System.Boolean,System.String)
+  fullName: Akka.Hive.Logging.LogConfiguration.LogTo(Akka.Hive.Logging.TargetTypes, System.String, NLog.LogLevel, System.Boolean, System.String)
   nameWithType: LogConfiguration.LogTo(TargetTypes, String, LogLevel, Boolean, String)
 - uid: Akka.Hive.Logging.LogConfiguration.LogTo*
   name: LogTo
@@ -2065,76 +2078,18 @@ references:
   isSpec: "True"
   fullName: Akka.Hive.Logging.LogConfiguration.LogTo
   nameWithType: LogConfiguration.LogTo
-- uid: Akka.Hive.Logging.LogDetail
-  name: LogDetail
-  href: api/Akka.Hive.Logging.LogDetail.html
-  commentId: T:Akka.Hive.Logging.LogDetail
-  fullName: Akka.Hive.Logging.LogDetail
-  nameWithType: LogDetail
-- uid: Akka.Hive.Logging.LogDetail.FilterPattern
-  name: FilterPattern
-  href: api/Akka.Hive.Logging.LogDetail.html#Akka_Hive_Logging_LogDetail_FilterPattern
-  commentId: P:Akka.Hive.Logging.LogDetail.FilterPattern
-  fullName: Akka.Hive.Logging.LogDetail.FilterPattern
-  nameWithType: LogDetail.FilterPattern
-- uid: Akka.Hive.Logging.LogDetail.FilterPattern*
-  name: FilterPattern
-  href: api/Akka.Hive.Logging.LogDetail.html#Akka_Hive_Logging_LogDetail_FilterPattern_
-  commentId: Overload:Akka.Hive.Logging.LogDetail.FilterPattern
-  isSpec: "True"
-  fullName: Akka.Hive.Logging.LogDetail.FilterPattern
-  nameWithType: LogDetail.FilterPattern
-- uid: Akka.Hive.Logging.LogDetail.LogLevel
-  name: LogLevel
-  href: api/Akka.Hive.Logging.LogDetail.html#Akka_Hive_Logging_LogDetail_LogLevel
-  commentId: P:Akka.Hive.Logging.LogDetail.LogLevel
-  fullName: Akka.Hive.Logging.LogDetail.LogLevel
-  nameWithType: LogDetail.LogLevel
-- uid: Akka.Hive.Logging.LogDetail.LogLevel*
-  name: LogLevel
-  href: api/Akka.Hive.Logging.LogDetail.html#Akka_Hive_Logging_LogDetail_LogLevel_
-  commentId: Overload:Akka.Hive.Logging.LogDetail.LogLevel
-  isSpec: "True"
-  fullName: Akka.Hive.Logging.LogDetail.LogLevel
-  nameWithType: LogDetail.LogLevel
-- uid: Akka.Hive.Logging.LogDetail.TargetName
-  name: TargetName
-  href: api/Akka.Hive.Logging.LogDetail.html#Akka_Hive_Logging_LogDetail_TargetName
-  commentId: P:Akka.Hive.Logging.LogDetail.TargetName
-  fullName: Akka.Hive.Logging.LogDetail.TargetName
-  nameWithType: LogDetail.TargetName
-- uid: Akka.Hive.Logging.LogDetail.TargetName*
-  name: TargetName
-  href: api/Akka.Hive.Logging.LogDetail.html#Akka_Hive_Logging_LogDetail_TargetName_
-  commentId: Overload:Akka.Hive.Logging.LogDetail.TargetName
-  isSpec: "True"
-  fullName: Akka.Hive.Logging.LogDetail.TargetName
-  nameWithType: LogDetail.TargetName
-- uid: Akka.Hive.Logging.LogDetail.TargetTypes
-  name: TargetTypes
-  href: api/Akka.Hive.Logging.LogDetail.html#Akka_Hive_Logging_LogDetail_TargetTypes
-  commentId: P:Akka.Hive.Logging.LogDetail.TargetTypes
-  fullName: Akka.Hive.Logging.LogDetail.TargetTypes
-  nameWithType: LogDetail.TargetTypes
-- uid: Akka.Hive.Logging.LogDetail.TargetTypes*
-  name: TargetTypes
-  href: api/Akka.Hive.Logging.LogDetail.html#Akka_Hive_Logging_LogDetail_TargetTypes_
-  commentId: Overload:Akka.Hive.Logging.LogDetail.TargetTypes
-  isSpec: "True"
-  fullName: Akka.Hive.Logging.LogDetail.TargetTypes
-  nameWithType: LogDetail.TargetTypes
 - uid: Akka.Hive.Logging.TargetNames
   name: TargetNames
   href: api/Akka.Hive.Logging.TargetNames.html
   commentId: T:Akka.Hive.Logging.TargetNames
   fullName: Akka.Hive.Logging.TargetNames
   nameWithType: TargetNames
-- uid: Akka.Hive.Logging.TargetNames.LOG_AGENTS
-  name: LOG_AGENTS
-  href: api/Akka.Hive.Logging.TargetNames.html#Akka_Hive_Logging_TargetNames_LOG_AGENTS
-  commentId: F:Akka.Hive.Logging.TargetNames.LOG_AGENTS
-  fullName: Akka.Hive.Logging.TargetNames.LOG_AGENTS
-  nameWithType: TargetNames.LOG_AGENTS
+- uid: Akka.Hive.Logging.TargetNames.LOG_ACTORS
+  name: LOG_ACTORS
+  href: api/Akka.Hive.Logging.TargetNames.html#Akka_Hive_Logging_TargetNames_LOG_ACTORS
+  commentId: F:Akka.Hive.Logging.TargetNames.LOG_ACTORS
+  fullName: Akka.Hive.Logging.TargetNames.LOG_ACTORS
+  nameWithType: TargetNames.LOG_ACTORS
 - uid: Akka.Hive.Logging.TargetNames.LOG_AKKA
   name: LOG_AKKA
   href: api/Akka.Hive.Logging.TargetNames.html#Akka_Hive_Logging_TargetNames_LOG_AKKA
@@ -2216,11 +2171,11 @@ references:
   isSpec: "True"
   fullName: Akka.Hive.StateManager.Bounce
   nameWithType: StateManager.Bounce
-- uid: Akka.Hive.StateManager.Continuation(Inbox,Akka.Hive.Hive)
+- uid: Akka.Hive.StateManager.Continuation(Akka.Actor.Inbox,Akka.Hive.Hive)
   name: Continuation(Inbox, Hive)
-  href: api/Akka.Hive.StateManager.html#Akka_Hive_StateManager_Continuation_Inbox_Akka_Hive_Hive_
-  commentId: M:Akka.Hive.StateManager.Continuation(Inbox,Akka.Hive.Hive)
-  fullName: Akka.Hive.StateManager.Continuation(Inbox, Akka.Hive.Hive)
+  href: api/Akka.Hive.StateManager.html#Akka_Hive_StateManager_Continuation_Akka_Actor_Inbox_Akka_Hive_Hive_
+  commentId: M:Akka.Hive.StateManager.Continuation(Akka.Actor.Inbox,Akka.Hive.Hive)
+  fullName: Akka.Hive.StateManager.Continuation(Akka.Actor.Inbox, Akka.Hive.Hive)
   nameWithType: StateManager.Continuation(Inbox, Hive)
 - uid: Akka.Hive.StateManager.Continuation*
   name: Continuation

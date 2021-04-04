@@ -1,8 +1,11 @@
 ﻿using System;
 using Akka.Hive.Interfaces;
 
-namespace Akka.Hive.Definitions.Instructions
+namespace Akka.Hive.Instructions
 {
+    /// <summary>
+    /// Basic message store that only saves the amount of messages to process for the current virtual time
+    /// </summary>
     public class IntegerStore : ICurrentInstructions
     {
         private int _store;

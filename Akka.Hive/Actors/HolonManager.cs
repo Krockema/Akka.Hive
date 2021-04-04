@@ -7,6 +7,9 @@ using static Akka.Hive.Definitions.HiveMessage;
 
 namespace Akka.Hive.Actors
 {
+    /// <summary>
+    /// ... is the basic implementation of the supervising actor.
+    /// </summary>
     public class HolonManager : ReceiveActor, IWithTimers
     {
       

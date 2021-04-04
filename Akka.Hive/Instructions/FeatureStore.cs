@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Akka.Hive.Definitions.Instructions
+namespace Akka.Hive.Instructions
 {
+    /// <summary>
+    /// Implementation of the IFeatureInstructions (message store for promised messages)
+    /// </summary>
     public class FeatureStore : IFeatureInstructions
     {
 

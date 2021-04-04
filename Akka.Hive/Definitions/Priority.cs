@@ -1,5 +1,8 @@
 ﻿namespace Akka.Hive.Definitions
 {
+    /// <summary>
+    /// Possible message priorities, Medium is default.
+    /// </summary>
    public enum Priority
    {
        VeryHigh = 100,

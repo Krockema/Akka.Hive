@@ -5,6 +5,9 @@ using NLog.Targets;
 
 namespace Akka.Hive.Logging
 {
+    /// <summary>
+    /// Creates Logging configuration based on the LogDetails.
+    /// </summary>
     public class LogConfiguration
     {
         // ${date:format=HH\:mm\:ss}|

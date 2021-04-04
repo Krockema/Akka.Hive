@@ -7,6 +7,9 @@ using Akka.Hive.Interfaces;
 
 namespace Akka.Hive.Action
 {
+    /// <summary>
+    /// ... is a class that provides simulation functionality to the HiveActor.
+    /// </summary>
     public class Simulation : IHiveAction
     {
         /// <summary>

@@ -5,7 +5,7 @@ using Akka.Hive.Definitions;
 namespace Akka.Hive.Actors
 {
     /// <summary>
-    /// A Time Monitor that does perform an injected Action on TimeAdvance event.
+    /// A Time Monitor that does perform an injected action on TimeAdvance event.
     /// </summary>
     public class TimeMonitor :  ReceiveActor
     {

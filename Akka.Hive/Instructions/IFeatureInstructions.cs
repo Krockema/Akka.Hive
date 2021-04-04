@@ -1,7 +1,10 @@
 ﻿using System;
 
-namespace Akka.Hive.Definitions.Instructions
+namespace Akka.Hive.Instructions
 {
+    /// <summary>
+    /// Interface for the messages that are promised to be processed in the future.
+    /// </summary>
     public interface IFeatureInstructions
     {
         int Count();

@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using Akka.Hive.Interfaces;
 
-namespace Akka.Hive.Definitions.Instructions
+namespace Akka.Hive.Instructions
 {
+    /// <summary>
+    /// ... that saves the message that shall be process within the current virtual time
+    /// </summary>
     public class MessageStore : ICurrentInstructions
     {
         private readonly Dictionary<Guid, IHiveMessage> _store = new();

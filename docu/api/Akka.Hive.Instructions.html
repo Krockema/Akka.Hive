@@ -5,9 +5,11 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Documentation of Akka.Hive </title>
+    <title>Namespace Akka.Hive.Instructions
+   </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Documentation of Akka.Hive ">
+    <meta name="title" content="Namespace Akka.Hive.Instructions
+   ">
     <meta name="generator" content="docfx 2.56.7.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -66,10 +68,35 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="">
-<h1 id="documentation-of-akkahive">Documentation of Akka.Hive</h1>
-
-<p>The following pages provide a basic API overview. Happy to see improvments if you have any ;).</p>
+            <article class="content wrap" id="_content" data-uid="Akka.Hive.Instructions">
+  
+  <h1 id="Akka_Hive_Instructions" data-uid="Akka.Hive.Instructions" class="text-break">Namespace Akka.Hive.Instructions
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">Classes
+  </h3>
+      <h4><a class="xref" href="Akka.Hive.Instructions.FeatureStore.html">FeatureStore</a></h4>
+      <section><p>Implementation of the IFeatureInstructions (message store for promised messages)</p>
+</section>
+      <h4><a class="xref" href="Akka.Hive.Instructions.InstructionStoreFactory.html">InstructionStoreFactory</a></h4>
+      <section><p>Creates the required message store based on debugging requirements</p>
+</section>
+      <h4><a class="xref" href="Akka.Hive.Instructions.IntegerStore.html">IntegerStore</a></h4>
+      <section><p>Basic message store that only saves the amount of messages to process for the current virtual time</p>
+</section>
+      <h4><a class="xref" href="Akka.Hive.Instructions.MessageStore.html">MessageStore</a></h4>
+      <section><p>... that saves the message that shall be process within the current virtual time</p>
+</section>
+    <h3 id="interfaces">Interfaces
+  </h3>
+      <h4><a class="xref" href="Akka.Hive.Instructions.ICurrentInstructions.html">ICurrentInstructions</a></h4>
+      <section><p>Interface for the remaining messages to be processed in the current virtual time.</p>
+</section>
+      <h4><a class="xref" href="Akka.Hive.Instructions.IFeatureInstructions.html">IFeatureInstructions</a></h4>
+      <section><p>Interface for the messages that are promised to be processed in the future.</p>
+</section>
 </article>
           </div>
           
@@ -77,9 +104,6 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
-                  <li>
-                    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive.Docu/api/index.md/#L1" class="contribution-link">Improve this Doc</a>
-                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

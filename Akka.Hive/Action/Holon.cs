@@ -5,6 +5,9 @@ using Akka.Hive.Interfaces;
 
 namespace Akka.Hive.Action
 {
+    /// <summary>
+    /// ... is a class that provides normal time functionality to the HiveActor.
+    /// </summary>
     public abstract class Holon : IHiveAction
     {
         /// <summary>

@@ -9,6 +9,9 @@ using static Akka.Hive.Definitions.HiveMessage;
 
 namespace Akka.Hive.Actors
 {
+    /// <summary>
+    /// Abstract implementation of the Hive resident, that is to be implemented for the needs.
+    /// </summary>
     public abstract class HiveActor : ReceiveActor, IHiveActor, ILogReceive, IWithTimers
     {
         /// <summary>
@@ -61,7 +64,7 @@ namespace Akka.Hive.Actors
 
             ActorActions = engineConfig.ActorActionFactory.Create(this);
             Key = Guid.NewGuid();
-            Logger = LogManager.GetLogger(TargetNames.LOG_AGENTS);
+            Logger = LogManager.GetLogger(TargetNames.LOG_ACTORS);
             EngineConfig = engineConfig;
             Time = time;
             ContextManager = simulationContext;

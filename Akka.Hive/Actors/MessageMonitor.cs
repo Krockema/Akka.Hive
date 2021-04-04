@@ -8,6 +8,9 @@ using static Akka.Hive.Definitions.HiveMessage;
 
 namespace Akka.Hive.Actors
 {
+    /// <summary>
+    /// ... is a  Message interceptor that is listening to the void for a given set of object types
+    /// </summary>
     public class MessageMonitor : UntypedActor, ILogReceive
     {
         protected Time Time;

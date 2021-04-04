@@ -1,2 +1,2 @@
-# PLACEHOLDER
-TODO: Add .NET projects to the *src* folder and run `docfx` to generate **REAL** *API Documentation*!
+# Documentation of Akka.Hive
+The following pages provide a basic API overview. Happy to see improvments if you have any ;).

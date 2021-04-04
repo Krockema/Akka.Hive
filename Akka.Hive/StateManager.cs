@@ -6,6 +6,9 @@ using NLog;
 
 namespace Akka.Hive
 {
+    /// <summary>
+    /// ... is listening to the Hive.Inbox and reacts on simulation start, stop, shutdown and heart beat bounce.
+    /// </summary>
     public class StateManager
     {
         private readonly NLog.Logger _logger = LogManager.GetLogger(TargetNames.LOG_AKKA);
@@ -14,8 +17,8 @@ namespace Akka.Hive
         /// Method do handle simulation State
         /// </summary>
         /// <param name="inbox"></param>
-        /// <param name="engine"></param>
-        public void Continuation(Inbox inbox, Hive engine)
+        /// <param name="hive"></param>
+        public void Continuation(Inbox inbox, Hive hive)
         {
             while (_isRunning)
             {
@@ -24,24 +27,24 @@ namespace Akka.Hive
                 {
                     case HiveMessage.SimulationState.Started:
                         _logger.Log(LogLevel.Warn, "Sim Started !");
-                        this.AfterSimulationStarted(engine);
-                        Continuation(inbox: inbox, engine: engine);
+                        this.AfterSimulationStarted(hive);
+                        Continuation(inbox: inbox, hive: hive);
                         break;
                     case HiveMessage.SimulationState.Stopped:
                         _logger.Log(LogLevel.Warn, "Sim Stopped !");
-                        this.AfterSimulationStopped(engine);
-                        engine.Continue();
-                        Continuation(inbox, engine);
+                        this.AfterSimulationStopped(hive);
+                        hive.Continue();
+                        Continuation(inbox, hive);
                         break;
                     case HiveMessage.SimulationState.Finished:
                         _logger.Log(LogLevel.Warn, "Sim Finished !");
-                        this.SimulationIsTerminating(engine);
-                        engine.ActorSystem.Terminate().Wait();
+                        this.SimulationIsTerminating(hive);
+                        hive.ActorSystem.Terminate().Wait();
                         _isRunning = false;
                         break;
                     case HiveMessage.SimulationState.Bounced:
                         _logger.Log(LogLevel.Warn, "Heart Bounced !");
-                        this.Bounce(engine);
+                        this.Bounce(hive);
                         break;
                     default:
                         _logger.Log(LogLevel.Warn, "StateManager: Unhandled message -> " + message.GetType() + "recived!");

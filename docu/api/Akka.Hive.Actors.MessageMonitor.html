@@ -73,22 +73,119 @@
   
   <h1 id="Akka_Hive_Actors_MessageMonitor" data-uid="Akka.Hive.Actors.MessageMonitor" class="text-break">Class MessageMonitor
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>... is a  Message interceptor that is listening to the void for a given set of object types</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">MessageMonitor</span></div>
+    <div class="level1"><span class="xref">Akka.Actor.ActorBase</span></div>
+    <div class="level2"><span class="xref">Akka.Actor.UntypedActor</span></div>
+    <div class="level3"><span class="xref">MessageMonitor</span></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
-    <div><span class="xref">ILogReceive</span></div>
+    <div><span class="xref">Akka.Actor.IInternalActor</span></div>
+    <div><span class="xref">Akka.Actor.ILogReceive</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">Akka.Actor.UntypedActor.Receive(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.UntypedActor.RunTask(System.Action)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.UntypedActor.RunTask(System.Func&lt;System.Threading.Tasks.Task&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.UntypedActor.Become(Akka.Actor.UntypedReceive)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.UntypedActor.BecomeStacked(Akka.Actor.UntypedReceive)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.UntypedActor.Context</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.AroundReceive(Akka.Actor.Receive, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.Unhandled(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.Become(Akka.Actor.Receive)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.BecomeStacked(Akka.Actor.Receive)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.UnbecomeStacked()</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.SetReceiveTimeout(System.Nullable&lt;System.TimeSpan&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.AroundPreRestart(System.Exception, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.AroundPreStart()</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.AroundPostRestart(System.Exception, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.PreRestart(System.Exception, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.PostRestart(System.Exception)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.AroundPostStop()</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.SupervisorStrategy()</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.Sender</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.Self</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.Akka.Actor.IInternalActor.ActorContext</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.EmptyReceive</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Akka.Hive.Actors.html">Akka.Hive.Actors</a></h6>
   <h6><strong>Assembly</strong>: Akka.Hive.dll</h6>
   <h5 id="Akka_Hive_Actors_MessageMonitor_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class MessageMonitor : UntypedActor, ILogReceive</code></pre>
+    <pre><code class="lang-csharp hljs">public class MessageMonitor : UntypedActor, IInternalActor, ILogReceive</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -97,7 +194,7 @@
     <a href="https://github.com/Krockema/Akka.Hive/new/develop/apiSpec/new?filename=Akka_Hive_Actors_MessageMonitor__ctor_Akka_Hive_Definitions_Time_System_Collections_Generic_List_System_Type__.md&amp;value=---%0Auid%3A%20Akka.Hive.Actors.MessageMonitor.%23ctor(Akka.Hive.Definitions.Time%2CSystem.Collections.Generic.List%7BSystem.Type%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Actors/MessageMonitor.cs/#L18">View Source</a>
+    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Actors/MessageMonitor.cs/#L21">View Source</a>
   </span>
   <a id="Akka_Hive_Actors_MessageMonitor__ctor_" data-uid="Akka.Hive.Actors.MessageMonitor.#ctor*"></a>
   <h4 id="Akka_Hive_Actors_MessageMonitor__ctor_Akka_Hive_Definitions_Time_System_Collections_Generic_List_System_Type__" data-uid="Akka.Hive.Actors.MessageMonitor.#ctor(Akka.Hive.Definitions.Time,System.Collections.Generic.List{System.Type})">MessageMonitor(Time, List&lt;Type&gt;)</h4>
@@ -136,7 +233,7 @@
     <a href="https://github.com/Krockema/Akka.Hive/new/develop/apiSpec/new?filename=Akka_Hive_Actors_MessageMonitor_Time.md&amp;value=---%0Auid%3A%20Akka.Hive.Actors.MessageMonitor.Time%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Actors/MessageMonitor.cs/#L13">View Source</a>
+    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Actors/MessageMonitor.cs/#L16">View Source</a>
   </span>
   <h4 id="Akka_Hive_Actors_MessageMonitor_Time" data-uid="Akka.Hive.Actors.MessageMonitor.Time">Time</h4>
   <div class="markdown level1 summary"></div>
@@ -167,7 +264,7 @@
     <a href="https://github.com/Krockema/Akka.Hive/new/develop/apiSpec/new?filename=Akka_Hive_Actors_MessageMonitor_EventHandle_System_Object_.md&amp;value=---%0Auid%3A%20Akka.Hive.Actors.MessageMonitor.EventHandle(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Actors/MessageMonitor.cs/#L59">View Source</a>
+    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Actors/MessageMonitor.cs/#L62">View Source</a>
   </span>
   <a id="Akka_Hive_Actors_MessageMonitor_EventHandle_" data-uid="Akka.Hive.Actors.MessageMonitor.EventHandle*"></a>
   <h4 id="Akka_Hive_Actors_MessageMonitor_EventHandle_System_Object_" data-uid="Akka.Hive.Actors.MessageMonitor.EventHandle(System.Object)">EventHandle(Object)</h4>
@@ -199,7 +296,7 @@
     <a href="https://github.com/Krockema/Akka.Hive/new/develop/apiSpec/new?filename=Akka_Hive_Actors_MessageMonitor_OnReceive_System_Object_.md&amp;value=---%0Auid%3A%20Akka.Hive.Actors.MessageMonitor.OnReceive(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Actors/MessageMonitor.cs/#L45">View Source</a>
+    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Actors/MessageMonitor.cs/#L48">View Source</a>
   </span>
   <a id="Akka_Hive_Actors_MessageMonitor_OnReceive_" data-uid="Akka.Hive.Actors.MessageMonitor.OnReceive*"></a>
   <h4 id="Akka_Hive_Actors_MessageMonitor_OnReceive_System_Object_" data-uid="Akka.Hive.Actors.MessageMonitor.OnReceive(System.Object)">OnReceive(Object)</h4>
@@ -226,12 +323,14 @@
       </tr>
     </tbody>
   </table>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Akka.Actor.UntypedActor.OnReceive(System.Object)</span></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/Krockema/Akka.Hive/new/develop/apiSpec/new?filename=Akka_Hive_Actors_MessageMonitor_PostStop.md&amp;value=---%0Auid%3A%20Akka.Hive.Actors.MessageMonitor.PostStop%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Actors/MessageMonitor.cs/#L38">View Source</a>
+    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Actors/MessageMonitor.cs/#L41">View Source</a>
   </span>
   <a id="Akka_Hive_Actors_MessageMonitor_PostStop_" data-uid="Akka.Hive.Actors.MessageMonitor.PostStop*"></a>
   <h4 id="Akka_Hive_Actors_MessageMonitor_PostStop" data-uid="Akka.Hive.Actors.MessageMonitor.PostStop">PostStop()</h4>
@@ -241,12 +340,14 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override void PostStop()</code></pre>
   </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Akka.Actor.ActorBase.PostStop()</span></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/Krockema/Akka.Hive/new/develop/apiSpec/new?filename=Akka_Hive_Actors_MessageMonitor_PreStart.md&amp;value=---%0Auid%3A%20Akka.Hive.Actors.MessageMonitor.PreStart%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Actors/MessageMonitor.cs/#L25">View Source</a>
+    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Actors/MessageMonitor.cs/#L28">View Source</a>
   </span>
   <a id="Akka_Hive_Actors_MessageMonitor_PreStart_" data-uid="Akka.Hive.Actors.MessageMonitor.PreStart*"></a>
   <h4 id="Akka_Hive_Actors_MessageMonitor_PreStart" data-uid="Akka.Hive.Actors.MessageMonitor.PreStart">PreStart()</h4>
@@ -256,12 +357,14 @@
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected override void PreStart()</code></pre>
   </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">Akka.Actor.ActorBase.PreStart()</span></div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/Krockema/Akka.Hive/new/develop/apiSpec/new?filename=Akka_Hive_Actors_MessageMonitor_Props_Akka_Hive_Definitions_Time_System_Collections_Generic_List_System_Type__.md&amp;value=---%0Auid%3A%20Akka.Hive.Actors.MessageMonitor.Props(Akka.Hive.Definitions.Time%2CSystem.Collections.Generic.List%7BSystem.Type%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Actors/MessageMonitor.cs/#L33">View Source</a>
+    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Actors/MessageMonitor.cs/#L36">View Source</a>
   </span>
   <a id="Akka_Hive_Actors_MessageMonitor_Props_" data-uid="Akka.Hive.Actors.MessageMonitor.Props*"></a>
   <h4 id="Akka_Hive_Actors_MessageMonitor_Props_Akka_Hive_Definitions_Time_System_Collections_Generic_List_System_Type__" data-uid="Akka.Hive.Actors.MessageMonitor.Props(Akka.Hive.Definitions.Time,System.Collections.Generic.List{System.Type})">Props(Time, List&lt;Type&gt;)</h4>
@@ -303,7 +406,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Props</span></td>
+        <td><span class="xref">Akka.Actor.Props</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -313,7 +416,7 @@
     <a href="https://github.com/Krockema/Akka.Hive/new/develop/apiSpec/new?filename=Akka_Hive_Actors_MessageMonitor_Shutdown.md&amp;value=---%0Auid%3A%20Akka.Hive.Actors.MessageMonitor.Shutdown%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Actors/MessageMonitor.cs/#L65">View Source</a>
+    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Actors/MessageMonitor.cs/#L68">View Source</a>
   </span>
   <a id="Akka_Hive_Actors_MessageMonitor_Shutdown_" data-uid="Akka.Hive.Actors.MessageMonitor.Shutdown*"></a>
   <h4 id="Akka_Hive_Actors_MessageMonitor_Shutdown" data-uid="Akka.Hive.Actors.MessageMonitor.Shutdown">Shutdown()</h4>
@@ -325,7 +428,10 @@
   </div>
   <h3 id="implements">Implements</h3>
   <div>
-      <span class="xref">ILogReceive</span>
+      <span class="xref">Akka.Actor.IInternalActor</span>
+  </div>
+  <div>
+      <span class="xref">Akka.Actor.ILogReceive</span>
   </div>
 </article>
           </div>
@@ -338,7 +444,7 @@
                     <a href="https://github.com/Krockema/Akka.Hive/new/develop/apiSpec/new?filename=Akka_Hive_Actors_MessageMonitor.md&amp;value=---%0Auid%3A%20Akka.Hive.Actors.MessageMonitor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Actors/MessageMonitor.cs/#L11" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Actors/MessageMonitor.cs/#L14" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

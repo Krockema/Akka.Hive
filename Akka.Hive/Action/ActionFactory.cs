@@ -4,6 +4,9 @@ using Akka.Hive.Interfaces;
 
 namespace Akka.Hive.Action
 {
+    /// <summary>
+    /// provides Actor functionality based on the given implementation. Can be overwritten to create new functions. I.e. MQTT connections.
+    /// </summary>
     public class ActionFactory
     {
         /// <summary>

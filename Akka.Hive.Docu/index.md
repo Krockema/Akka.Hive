@@ -27,7 +27,7 @@
         Each hive resident has its own mailbox and is able to receive messages, according to the rules of Akka. For nomal Execution the...
             <ol>
                 <li>... context manager send regulary bounce for periodic task execution</li>
-                <li>... Holons themself can comunicate directly without any changes, by using "Send(..)" method.</li>
+                <li>... Holons themself can comunicate directly without any changes, by using "Send(..)" method. In addition the holon sets the local time before a message is processed to keep the time static through the complete processing time.</li>
             </ol>
         </td>
         <td width="350" >

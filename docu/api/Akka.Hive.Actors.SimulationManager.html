@@ -73,18 +73,174 @@
   
   <h1 id="Akka_Hive_Actors_SimulationManager" data-uid="Akka.Hive.Actors.SimulationManager" class="text-break">Class SimulationManager
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Global Simulation Manager that manages the time, message processing, and heartbeat of the system.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">SimulationManager</span></div>
+    <div class="level1"><span class="xref">Akka.Actor.ActorBase</span></div>
+    <div class="level2"><span class="xref">Akka.Actor.UntypedActor</span></div>
+    <div class="level3"><span class="xref">Akka.Actor.ReceiveActor</span></div>
+    <div class="level4"><span class="xref">SimulationManager</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">Akka.Actor.IInternalActor</span></div>
+    <div><span class="xref">Akka.Actor.Internal.IInitializableActor</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">Akka.Actor.ReceiveActor.Akka.Actor.Internal.IInitializableActor.Init()</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ReceiveActor.OnReceive(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ReceiveActor.Become(System.Action)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ReceiveActor.BecomeStacked(System.Action)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ReceiveActor.ReceiveAsync&lt;T&gt;(System.Func&lt;T, System.Threading.Tasks.Task&gt;, System.Predicate&lt;T&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ReceiveActor.ReceiveAsync&lt;T&gt;(System.Predicate&lt;T&gt;, System.Func&lt;T, System.Threading.Tasks.Task&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ReceiveActor.ReceiveAsync(System.Type, System.Func&lt;System.Object, System.Threading.Tasks.Task&gt;, System.Predicate&lt;System.Object&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ReceiveActor.ReceiveAsync(System.Type, System.Predicate&lt;System.Object&gt;, System.Func&lt;System.Object, System.Threading.Tasks.Task&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ReceiveActor.ReceiveAnyAsync(System.Func&lt;System.Object, System.Threading.Tasks.Task&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ReceiveActor.Receive&lt;T&gt;(System.Action&lt;T&gt;, System.Predicate&lt;T&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ReceiveActor.Receive&lt;T&gt;(System.Predicate&lt;T&gt;, System.Action&lt;T&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ReceiveActor.Receive(System.Type, System.Action&lt;System.Object&gt;, System.Predicate&lt;System.Object&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ReceiveActor.Receive(System.Type, System.Predicate&lt;System.Object&gt;, System.Action&lt;System.Object&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ReceiveActor.Receive&lt;T&gt;(System.Func&lt;T, System.Boolean&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ReceiveActor.Receive(System.Type, System.Func&lt;System.Object, System.Boolean&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ReceiveActor.ReceiveAny(System.Action&lt;System.Object&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.UntypedActor.Receive(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.UntypedActor.RunTask(System.Action)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.UntypedActor.RunTask(System.Func&lt;System.Threading.Tasks.Task&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.UntypedActor.Become(Akka.Actor.UntypedReceive)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.UntypedActor.BecomeStacked(Akka.Actor.UntypedReceive)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.UntypedActor.Context</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.AroundReceive(Akka.Actor.Receive, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.Unhandled(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.Become(Akka.Actor.Receive)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.BecomeStacked(Akka.Actor.Receive)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.UnbecomeStacked()</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.SetReceiveTimeout(System.Nullable&lt;System.TimeSpan&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.AroundPreRestart(System.Exception, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.AroundPreStart()</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.PreStart()</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.AroundPostRestart(System.Exception, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.PreRestart(System.Exception, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.PostRestart(System.Exception)</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.AroundPostStop()</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.PostStop()</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.SupervisorStrategy()</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.Sender</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.Self</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.Akka.Actor.IInternalActor.ActorContext</span>
+    </div>
+    <div>
+      <span class="xref">Akka.Actor.ActorBase.EmptyReceive</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Akka.Hive.Actors.html">Akka.Hive.Actors</a></h6>
   <h6><strong>Assembly</strong>: Akka.Hive.dll</h6>
   <h5 id="Akka_Hive_Actors_SimulationManager_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class SimulationManager : ReceiveActor</code></pre>
+    <pre><code class="lang-csharp hljs">public class SimulationManager : ReceiveActor, IInternalActor, IInitializableActor</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -93,7 +249,7 @@
     <a href="https://github.com/Krockema/Akka.Hive/new/develop/apiSpec/new?filename=Akka_Hive_Actors_SimulationManager__ctor_Akka_Hive_Definitions_HiveConfig_.md&amp;value=---%0Auid%3A%20Akka.Hive.Actors.SimulationManager.%23ctor(Akka.Hive.Definitions.HiveConfig)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Actors/SimulationManager.cs/#L56">View Source</a>
+    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Actors/SimulationManager.cs/#L59">View Source</a>
   </span>
   <a id="Akka_Hive_Actors_SimulationManager__ctor_" data-uid="Akka.Hive.Actors.SimulationManager.#ctor*"></a>
   <h4 id="Akka_Hive_Actors_SimulationManager__ctor_Akka_Hive_Definitions_HiveConfig_" data-uid="Akka.Hive.Actors.SimulationManager.#ctor(Akka.Hive.Definitions.HiveConfig)">SimulationManager(HiveConfig)</h4>
@@ -127,7 +283,7 @@
     <a href="https://github.com/Krockema/Akka.Hive/new/develop/apiSpec/new?filename=Akka_Hive_Actors_SimulationManager_Props_Akka_Hive_Definitions_HiveConfig_.md&amp;value=---%0Auid%3A%20Akka.Hive.Actors.SimulationManager.Props(Akka.Hive.Definitions.HiveConfig)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Actors/SimulationManager.cs/#L51">View Source</a>
+    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Actors/SimulationManager.cs/#L54">View Source</a>
   </span>
   <a id="Akka_Hive_Actors_SimulationManager_Props_" data-uid="Akka.Hive.Actors.SimulationManager.Props*"></a>
   <h4 id="Akka_Hive_Actors_SimulationManager_Props_Akka_Hive_Definitions_HiveConfig_" data-uid="Akka.Hive.Actors.SimulationManager.Props(Akka.Hive.Definitions.HiveConfig)">Props(HiveConfig)</h4>
@@ -165,12 +321,19 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Props</span></td>
+        <td><span class="xref">Akka.Actor.Props</span></td>
         <td><p>IActorRef of the SimulationContext</p>
 </td>
       </tr>
     </tbody>
   </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">Akka.Actor.IInternalActor</span>
+  </div>
+  <div>
+      <span class="xref">Akka.Actor.Internal.IInitializableActor</span>
+  </div>
 </article>
           </div>
           
@@ -182,7 +345,7 @@
                     <a href="https://github.com/Krockema/Akka.Hive/new/develop/apiSpec/new?filename=Akka_Hive_Actors_SimulationManager.md&amp;value=---%0Auid%3A%20Akka.Hive.Actors.SimulationManager%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Actors/SimulationManager.cs/#L12" class="contribution-link">View Source</a>
+                    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Actors/SimulationManager.cs/#L15" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

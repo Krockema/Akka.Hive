@@ -1,5 +1,8 @@
-﻿namespace Akka.Hive.Definitions.Instructions
+﻿namespace Akka.Hive.Instructions
 {
+    /// <summary>
+    /// Creates the required message store based on debugging requirements
+    /// </summary>
     public static class InstructionStoreFactory
     {
 
