@@ -1,6 +1,7 @@
  {
   "metadata": [
     {
+      "_appLogoPath" : "images/logo.png",
       "src": [{
         "files": ["**/*.csproj"],
         "exclude": [
@@ -40,7 +41,8 @@
     "resource": [
       {
         "files": [
-          "images/**"
+          "images/**",
+          "images/logo.svg"
         ]
       }
     ],
