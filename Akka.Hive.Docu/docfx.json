@@ -53,11 +53,11 @@
         ],
         "exclude": [
           "obj/**",
-          "../docu/**"
+          "../docs/**"
         ]
       }
     ],
-    "dest": "../docu",
+    "dest": "../docs",
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
     "template": [
