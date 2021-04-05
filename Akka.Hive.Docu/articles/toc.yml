@@ -1,2 +1,10 @@
 - name: Introduction
   href: intro.md
+- name: Akka.Hive
+  href: Akka.Hive.md
+- name: Hive.Actors.md
+  href: Hive.Actors.md
+- name: Hive.Actions.md
+  href: Hive.Actions.md
+- name: Hive.StateManager.md
+  href: Hive.StateManager.md
