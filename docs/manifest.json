@@ -613,10 +613,43 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "images/NormalTime.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/NormalTime.svg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "images/VirtualTime.png",
       "output": {
         "resource": {
           "relative_path": "images/VirtualTime.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/VirtualTime.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/VirtualTime.svg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/init.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/init.svg"
         }
       },
       "is_incremental": false,
@@ -639,10 +672,10 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "evZM5E6GF+ifJe9nRkUFFg=="
+          "hash": "oZ/KRNCU81iA+7iVm6cnPw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -671,7 +704,7 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 7,
-          "skipped_file_count": 7
+          "skipped_file_count": 6
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,

@@ -14,7 +14,7 @@
         </ol>
     </div>
     <div style="width=350px; height: fit-content; background-color: #f9f9f9; float: right; padding: 5px">
-       <img src="./images/Init.png"  width="340" style="float: right"/>
+       <img src="./images/init.svg"  width="340" style="float: right"/>
     </div>
 </div>
 
@@ -28,7 +28,7 @@
         </ol>
     </div>
     <div style="width=350px; height: fit-content; background-color: #f9f9f9; float: right; padding: 5px">
-       <img src="./images/NormalTime.png" width="340" style="float: right"/>
+       <img src="./images/NormalTime.svg" width="340" style="float: right"/>
     </div>
 </div>
 
@@ -44,5 +44,5 @@
             <li>If all messages for the current time are processed the context manager Broadcasts a "AdvanceTo" to the next point in time where messages can be processed. All holons release the messages for the new time and proceed processing.</li>
         </ol> 
     </div>
-    <div style="width=350px; height: fit-content; background-color: #f9f9f9; float: right; padding: 5px"><img src="./images/VirtualTime.png" width="340" style="float: right"/></div>
+    <div style="width=350px; height: fit-content; background-color: #f9f9f9; float: right; padding: 5px"><img src="./images/VirtualTime.svg" width="340" style="float: right"/></div>
 </div>
