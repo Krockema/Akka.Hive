@@ -1,22 +1,22 @@
 ﻿using Akka.Hive.Action;
 using Akka.Hive.Actors;
 
-namespace Akka.Hive.Examples.Domain
+namespace Akka.Hive.Examples.Resources
 {
-    public class JobDistributorHolon : Holon
+    public class HolonActions : Holon
     {
-        public JobDistributorHolon(HiveActor actor) : base(actor)
+        public HolonActions(HiveActor actor) : base(actor)
         {
         }
 
         public override void PreStart()
         {
-            // not required
+            // not Required yet
         }
 
         public override void PostStop()
         {
-            // not required
+            // not Required yet
         }
     }
 }

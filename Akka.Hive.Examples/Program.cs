@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using Akka.Hive.Action;
 using Akka.Hive.Definitions;
 using Akka.Hive.Examples.Domain;
+using Akka.Hive.Examples.Resources;
 using Akka.Hive.Examples.Resources.Distributor;
+using Akka.Hive.Examples.Resources.Machine;
 using Akka.Hive.Logging;
 using LogLevel = NLog.LogLevel;
 using MachineAgent = Akka.Hive.Examples.Resources.Machine.MachineAgent;
@@ -18,14 +20,33 @@ namespace Akka.Hive.Examples
         }
         private static void Run()
         {
-            Console.WriteLine("Simulation world of Akka!");
-           
-            RunACore();
+            Console.WriteLine("Welcome to the World of Akka.Hive!");
+            Console.WriteLine("----------------------------------");
+            Console.WriteLine("What mode do you want to start?");
+            Console.WriteLine(" ");
+            Console.WriteLine(" (1) Simulation with virtual clock");
+            Console.WriteLine(" (2) Simulation real time clock");
+            Console.WriteLine(" (3) Real time clock with Mqtt Endpoint ");
 
-            Console.ReadLine();
+            var inputValid = false;
+            while (!inputValid)
+            {
+                var input = Console.ReadLine();
+                var inputParsed = int.Parse(input);
+
+                inputValid = (1 <= inputParsed && inputParsed <= 3);
+                switch (inputParsed)
+                {
+                    case 1: RunHive(CreateSimulationApproach(new Time(new DateTime(2000,01,01)))); break;
+                    case 2: RunHive(CreateHolonicApproach(Time.Now)); break;
+                    case 3: RunHive(CreateHolonicApproach(Time.Now), true); break;
+                    default: Console.WriteLine("Could not parse input. Try again."); break;
+                }
+                
+            }
         }
 
-        private static void RunACore()
+        private static void RunHive(HiveConfig hiveConfig, bool withMqtt = false)
         {
             // LogConfiguration.LogTo(TargetTypes.File, TargetNames.LOG_AGENTS, LogLevel.Info, LogLevel.Warn);
             LogConfiguration.LogTo(TargetTypes.Console, TargetNames.LOG_ACTORS, LogLevel.Info, LogLevel.Warn);
@@ -33,52 +54,53 @@ namespace Akka.Hive.Examples
             // LogConfiguration.LogTo(TargetTypes.File, TargetNames.LOG_AKKA, LogLevel.Trace);
             //InternalLogger.LogToConsole = true;
             //InternalLogger.LogLevel = LogLevel.Trace;
-            var time = new Time(new DateTime(2000,01,01));
-            HiveConfig engineConfig =  CreateSimulationApproach(time); 
-                                       //CreateHolonicApproach(time);
-            // to Swap to Simulation use  CreateSimulationApproach(time);
+            var time = hiveConfig.StartTime;
 
-            Hive engine = new Hive(engineConfig);
+
+            Hive hive = new Hive(hiveConfig);
             var r = new Random();
 
             var jobDistributor =
-                engine.ActorSystem.ActorOf(JobDistributor.Props(engine.ActorSystem.EventStream
-                                                                    , engine.ContextManager
+                hive.ActorSystem.ActorOf(props: JobDistributor.Props(hive.ActorSystem.EventStream
+                                                                    , hive.ContextManager
                                                                     , time
-                                                                    , engineConfig),
-                    "JobDistributor");
+                                                                    , hiveConfig),
+                                         name: "JobDistributor");
 
             // Tell all Machines
             for (int i = 0; i < 3; i++)
             {
-                // Create a message
-                var createMachines = new JobDistributor.AddMachine(null, jobDistributor);
-                engine.ContextManager.Tell(createMachines, null);
+                // Create Machine Actors
+                var reg = (withMqtt) ? MachineRegistration.CreateMqtt(hive.ContextManager, time, hiveConfig, jobDistributor):
+                          /* else */   MachineRegistration.CreateDefault(hive.ContextManager, time, hiveConfig);
+                
+                var createMachines = new JobDistributor.AddMachine(reg, jobDistributor);
+                hive.ContextManager.Tell(createMachines, null);
             }
 
             // example to monitor for FinishWork Messages.
-            var monitor = engine.ActorSystem.ActorOf(props: Monitoring.WorkTimeMonitor.Props(time: time),
+            var monitor = hive.ActorSystem.ActorOf(props: Monitoring.WorkTimeMonitor.Props(time: time),
                 name: "Monitor");
 
             Console.ReadKey();
-            Console.WriteLine("Systen is running!");
+            Console.WriteLine("System is running!");
 
-            for (int i = 0; i < 300; i++)
+            for (int i = 0; i < 5; i++)
             {
-                var materialRequest = new MaterialRequest(CreateBOM(), new Dictionary<int, bool>(), 0, r.Next(50, 500), true);
+                var materialRequest = new MaterialRequest(MaterialFactory.CreateTable(), new Dictionary<int, bool>(), 0, r.Next(50, 500), true);
                 var request = new JobDistributor.ProductionOrder(materialRequest, jobDistributor);
-                engine.ContextManager.Tell(request, null);
+                hive.ContextManager.Tell(request, null);
             }
 
-            if (engine.IsReady())
+            if (hive.IsReady())
             {
-                var terminated = engine.RunAsync();
-                new StateManager().Continuation(engineConfig.Inbox, engine);
+                var terminated = hive.RunAsync();
+                new StateManager().Continuation(hiveConfig.Inbox, hive);
                 terminated.Wait();
             }
 
             Console.WriteLine("Systen is shutdown!");
-            Console.WriteLine("System Runtime " + engine.ActorSystem.Uptime);
+            Console.WriteLine("System Runtime " + hive.ActorSystem.Uptime);
         }
 
         private static HiveConfig CreateHolonicApproach(Time time)
@@ -87,45 +109,27 @@ namespace Akka.Hive.Examples
             {
                 return agent switch
                 {
-                    MachineAgent => new MachineHolon(agent),
-                    JobDistributor => new JobDistributorHolon(agent),
+                    MachineMqttAgent => new MachineMqttActions(agent),
+                    MachineAgent => new HolonActions(agent),
+                    JobDistributor => new HolonActions(agent),
                     _ => throw new Exception($"Could not match agent type! Type was { agent.GetType().Name }")
                 };
             });
             
             return HiveConfig.CreateHolonConfig(debugAkka: false
-                , debugHive: true
-                , interruptInterval: TimeSpan.FromSeconds(10)
-                , startTime: time
-                , actorActionFactory: ActionFactory);
+                                              , debugHive: true
+                                              , interruptInterval: TimeSpan.FromSeconds(10)
+                                              , startTime: time
+                                              , actorActionFactory: ActionFactory);
         }
 
         private static HiveConfig CreateSimulationApproach(Time time)
         {
             return HiveConfig.CreateSimulationConfig(debugAkka: false
-                , debugHive: true
-                , interruptInterval: TimeSpan.FromMinutes(10)
-                , startTime: time
-                , timeToAdvance: TimeSpan.FromSeconds(0));
-        }
-        
-
-
-        public static Material CreateBOM()
-        {
-            return new Material
-            {
-                Id = 1
-                , Name = "Table"
-                , AssemblyDuration = 5
-                , Quantity = 1
-                , Materials = new List<Material> { new Material { Id = 2
-                                                                , Name = "Leg"
-                                                                , AssemblyDuration = 3
-                                                                , ParrentMaterialID = 1
-                                                                , Quantity = 4
-                                                                , IsReady = true } }
-            };
+                                                    , debugHive: true
+                                                    , interruptInterval: TimeSpan.FromMinutes(10)
+                                                    , startTime: time
+                                                    , timeToAdvance: TimeSpan.FromSeconds(0));
         }
     }
 }

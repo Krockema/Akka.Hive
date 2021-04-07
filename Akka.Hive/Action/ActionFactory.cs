@@ -14,7 +14,7 @@ namespace Akka.Hive.Action
         /// Default => Simulation
         /// Custom => Holon
         /// </summary>
-        public Actions ActorActions { get; }
+        public ActionsType ActorActions { get; }
         private Func<HiveActor, IHiveAction> ActionCreator { get; }
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace Akka.Hive.Action
         /// </summary>
         public ActionFactory()
         {
-            ActorActions = Actions.Simulation;
+            ActorActions = ActionsType.Simulation;
             ActionCreator = (actor) => new Simulation(actor);
         }
 
@@ -32,7 +32,7 @@ namespace Akka.Hive.Action
         /// <param name="actorCreator">Custom actor creation function</param>
         public ActionFactory(Func<HiveActor, IHiveAction> actorCreator)
         {
-            ActorActions = Actions.Holon;
+            ActorActions = ActionsType.Holon;
             ActionCreator = actorCreator;
         }
 

@@ -14,11 +14,11 @@ namespace Akka.Hive.Examples.Resources.Distributor
     partial class JobDistributor : HiveActor
     {
         private int MaterialCounter = 0;
-        public Dictionary<IActorRef, bool> Machines { get; set; } = new Dictionary<IActorRef, bool>();
+        public HashSet<MachineRegistration> Machines { get; set; } = new ();
 
-        public PriorityQueue<MaterialRequest> ReadyItems { get; set; } = new PriorityQueue<MaterialRequest>();
+        public PriorityQueue<MaterialRequest> ReadyItems { get; set; } = new ();
 
-        public HashSet<MaterialRequest> WaitingItems { get; set; } = new HashSet<MaterialRequest>();
+        public HashSet<MaterialRequest> WaitingItems { get; set; } = new ();
 
         public static Props Props(EventStream eventStream, IActorRef simulationContext, Time time, HiveConfig engineConfig)
         {
@@ -36,9 +36,10 @@ namespace Akka.Hive.Examples.Resources.Distributor
             {
                 case ProductionOrder m  : MaterialRequest(m); break;
                 case Command.GetWork    : PushWork(); break;
-                case AddMachine m       : CreateMachines(Machines.Count + 1, this.Time, this.EngineConfig); break;
+                case AddMachine m       : CreateMachines(m.MachineRegistration, Machines.Count + 1, this.Time, this.EngineConfig); break; 
+                case MachineAgent.MachineReady m : SetMachineReady(m); break;
                 case ProductionOrderFinished m: ProvideMaterial(m); break;
-                default: new Exception("Message type could not be handled by SimulationElement"); break;
+                default: _ = new Exception("Message type could not be handled by SimulationElement"); break;
             }
         }
 
@@ -49,8 +50,8 @@ namespace Akka.Hive.Examples.Resources.Distributor
         private void MaterialRequest(object o)
         {
             var p = o as ProductionOrder;
-            var request = p.Message as MaterialRequest;
-            if (request.Material.Materials != null)
+            var request = p?.Message as MaterialRequest;
+            if (request?.Material.Materials != null)
             {
                 foreach (var child in request.Material.Materials)
                 {
@@ -58,18 +59,18 @@ namespace Akka.Hive.Examples.Resources.Distributor
                     {
                         var childRequest = new MaterialRequest(material: child,
                                                           childRequests: null,
-                                                                parent: request.Id,
+                                                                 parent: request.Id,
                                                                     due: request.Due - request.Material.AssemblyDuration - child.AssemblyDuration,
                                                                  isHead: false);
                         request.ChildRequests.Add(childRequest.Id, false);
                         var po = new ProductionOrder(childRequest, Self);
-                        ContextManager.Tell(po, Self);
+                        Send(po);
                     }
                 }
             }
-            if (request.Material.IsReady)
+            if (request != null && request.Material.IsReady)
                 ReadyItems.Enqueue(request);
-             else
+            else
                 WaitingItems.Add(request);
 
             PushWork();
@@ -77,45 +78,52 @@ namespace Akka.Hive.Examples.Resources.Distributor
 
         private void PushWork()
         {
-            if (Machines.ContainsValue(true) && ReadyItems.Count() != 0)
+            if (Machines.Any(x => x.IsReady && x.IsConnected) && ReadyItems.Count() != 0)
             {
-                var key = Machines.First(X => X.Value == true).Key;
-                Machines.Remove(key);
-                var m = new MachineAgent.Work(ReadyItems.Dequeue(), key);
-                Machines.Add(key, false);
-                ContextManager.Tell(m, Sender);
+                var machine = Machines.First(X => X.IsReady);
+                var m = new MachineAgent.Work(ReadyItems.Dequeue(), machine.ActorRef);
+                machine.SetWorking();
+                Send(m);
             };
         }
 
-        private void CreateMachines(int machineNumber, Time time, HiveConfig engineConfig)
+        private void CreateMachines(MachineRegistration registration, int machineNumber, Time time, HiveConfig engineConfig)
         {
-            Logger.Log(LogLevel.Warn, "Creating Maschine No: {arg} !",  new object[] { machineNumber });
-            Machines.Add(Context.ActorOf(MachineAgent.Props(ContextManager, time, engineConfig), "Maschine_" + machineNumber), true);
+            Logger.Log(LogLevel.Warn, "Creating Machine No: {arg} !",  new object[] { machineNumber });
+            registration.ActorRef = Context.ActorOf(registration.MachineProps, "Machine_" + machineNumber);
+            Machines.Add(registration);
         }
+
+        private void SetMachineReady(MachineAgent.MachineReady ready)
+        {
+            Machines.Single(x => x.ActorRef.Equals(Sender))
+                    .SetReady()
+                    .SetConnected();
+            PushWork();
+        }
+
 
         private void ProvideMaterial(object o)
         {
-            var po = o as JobDistributor.ProductionOrderFinished;
-            var request = po.Message as MaterialRequest;
-            if (request.Material.Name == "Table")
+            var po = o as ProductionOrderFinished;
+            var request = po?.Message as MaterialRequest;
+            if (request?.Material.Name == "Table")
                 Logger.Log(LogLevel.Warn, "Simulation: Table No: {arg} has finished at {}",  new object[] { ++MaterialCounter, Time.Value });
             //Console.WriteLine("Time: " + TimePeriod + " Number " + MaterialCounter + " Finished: " + request.Material.Name);
             if (!request.IsHead)
             {
-                var parrent = WaitingItems.Single(x => x.Id == request.Parent);
-                parrent.ChildRequests[request.Id] = true;
+                var parent = WaitingItems.Single(x => x.Id == request.Parent);
+                parent.ChildRequests[request.Id] = true;
                 
                 // now check if item can be deployd to ReadyQueue
-                if (parrent.ChildRequests.All(x => x.Value == true))
+                if (parent.ChildRequests.All(x => x.Value))
                 {
-                    WaitingItems.Remove(parrent);
-                    ReadyItems.Enqueue(parrent);
+                    WaitingItems.Remove(parent);
+                    ReadyItems.Enqueue(parent);
                 }
             }
-            Machines.Remove(Sender);
-            Machines.Add(Sender, true);
-
-            
+            Machines.Single(x => x.ActorRef.Equals(Sender))
+                    .SetReady();
             PushWork();
         }
 

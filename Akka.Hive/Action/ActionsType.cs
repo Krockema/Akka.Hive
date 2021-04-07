@@ -3,7 +3,7 @@
     /// <summary>
     /// Possible Actor action implementations
     /// </summary>
-    public enum Actions
+    public enum ActionsType
     {
         /// <summary>
         /// Custom action implementation

@@ -20,7 +20,7 @@ namespace Akka.Hive.Actors
         public IActorRef ContextManager { get; }
 
         /// <summary>
-        /// Not used for Simulation Approach! THis is the Akka Internal Timer for future task Scheduling in RealTime
+        /// Not used for Simulation Approach! This is the Akka internal timer for future task Scheduling in RealTime
         /// </summary>
         public ITimerScheduler Timers { get; set; }
 
@@ -73,15 +73,15 @@ namespace Akka.Hive.Actors
 
             switch (engineConfig.ActorActionFactory.ActorActions)
             {
-                case Actions.Holon : Become(Holon); break;
-                case Actions.Simulation : Become(Simulant); break;
+                case ActionsType.Holon : Become(Holon); break;
+                case ActionsType.Simulation : Become(Simulant); break;
                 default : throw new Exception($"Actor type specification unknown, actor type : {engineConfig.ActorActionFactory.ActorActions}");
             };
         }
 
         private void Holon()
         {
-            Receive<Schedule>(message => ActorActions.ScheduleMessages(message.AtTime, (HiveMessage)message.Message));
+            Receive<Schedule>(message => Do(message.Message));
             Receive<Finish>(f => ActorActions.Finish(f));
             ReceiveAny(a =>
             {
@@ -143,10 +143,8 @@ namespace Akka.Hive.Actors
         /// Free for implementing your own behave on messages 
         /// </summary>
         /// <param name="process"></param>
-        protected internal virtual void Do(object process)
-        {
-            
-        }
+        protected internal abstract void Do(object process);
+
 
         /// <summary>
         /// Anything that has to be done before shutdown, default it will terminate the Actor if the Actor hase no more childs.

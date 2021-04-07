@@ -49,8 +49,8 @@ namespace Akka.Hive.Action
         public virtual void Schedule(TimeSpan delay, IHiveMessage message)
         {
             var atTime = Actor.Time.Add(delay);
-            var s = new HiveMessage.Schedule(atTime, message);
-            Actor.Timers.StartSingleTimer(Guid.NewGuid(), s, delay);
+            var msg = new HiveMessage.Schedule(atTime, message);
+            Actor.Timers.StartSingleTimer(Guid.NewGuid(), msg, delay);
         }
 
         /// <summary>
@@ -61,7 +61,9 @@ namespace Akka.Hive.Action
         /// <param name="message"></param>
         public virtual void ScheduleMessages(Time atTime, HiveMessage message)
         {
-            throw new Exception("Should not be used for Holonic approaches.");
+            Send(message);
+            // no
+            //throw new Exception("Should not be used for Holonic approaches.");
         }
 
         /// <summary>

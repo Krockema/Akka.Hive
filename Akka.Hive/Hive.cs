@@ -47,9 +47,9 @@ namespace Akka.Hive
         {
             return engineConfig.ActorActionFactory.ActorActions switch
             {
-                Actions.Simulation => ActorSystem.ActorOf(Props.Create(() 
+                ActionsType.Simulation => ActorSystem.ActorOf(Props.Create(() 
                                    => new SimulationManager(engineConfig)), ContextName),
-                Actions.Holon =>  ActorSystem.ActorOf(Props.Create(() 
+                ActionsType.Holon =>  ActorSystem.ActorOf(Props.Create(() 
                               => new HolonManager(engineConfig)), ContextName),
                 _ => throw new NotImplementedException(),
             };
