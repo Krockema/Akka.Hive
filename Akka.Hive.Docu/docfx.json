@@ -42,7 +42,8 @@
       {
         "files": [
           "images/**",
-          "images/logo.svg"
+          "images/logo.svg",
+          "images/favicon.ico"
         ]
       }
     ],
@@ -53,7 +54,8 @@
         ],
         "exclude": [
           "obj/**",
-          "../docs/**"
+          "../docs/**",
+          "../docs/favicon.ico"
         ]
       }
     ],

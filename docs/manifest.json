@@ -36,7 +36,7 @@
           "hash": "a6XVALL3FCgLiN99RxXbNw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -60,7 +60,7 @@
           "hash": "Yh40PwMRTJeLDql8unIW4g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -591,6 +591,17 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "images/Icon.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/Icon.svg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "images/Init.png",
       "output": {
         "resource": {
@@ -624,6 +635,17 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "images/Tile.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/Tile.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "images/VirtualTime.png",
       "output": {
         "resource": {
@@ -639,6 +661,17 @@
       "output": {
         "resource": {
           "relative_path": "images/VirtualTime.svg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/favicon.ico",
+      "output": {
+        "resource": {
+          "relative_path": "images/favicon.ico"
         }
       },
       "is_incremental": false,
@@ -675,7 +708,7 @@
           "hash": "oZ/KRNCU81iA+7iVm6cnPw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -704,13 +737,13 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 7,
-          "skipped_file_count": 6
+          "skipped_file_count": 7
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 39,
-          "skipped_file_count": 39
+          "skipped_file_count": 38
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
