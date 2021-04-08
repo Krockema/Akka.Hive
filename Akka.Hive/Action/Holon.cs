@@ -63,7 +63,7 @@ namespace Akka.Hive.Action
         {
             Send(message);
             // no
-            //throw new Exception("Should not be used for Holonic approaches.");
+            throw new Exception("Should not be used for Holonic approaches.");
         }
 
         /// <summary>

@@ -81,7 +81,7 @@ namespace Akka.Hive.Actors
 
         private void Holon()
         {
-            Receive<Schedule>(message => Do(message.Message));
+            Receive<Schedule>(message => Send(message.Message));
             Receive<Finish>(f => ActorActions.Finish(f));
             ReceiveAny(a =>
             {

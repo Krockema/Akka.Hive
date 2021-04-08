@@ -83,7 +83,7 @@ namespace AkkaMQTT
 
         private static Task DoWorkTask(string fromTopic, string[] payload, IManagedMqttClient client, string targetTopic)
         {
-            Console.WriteLine($"Message received: {payload} | From Topic: {fromTopic}.");
+            Console.WriteLine($"Message received: {payload[0]} | From Topic: {fromTopic}.");
             Working(int.Parse(payload[1]));
             return client.PublishAsync(new MqttApplicationMessageBuilder()
                 .WithTopic(targetTopic)
