@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace SimTest.SimulationHelper
+﻿namespace Akka.Hive.Examples.SimulationHelper
 {
     /// <summary>
     /// Meta-data class. Nested/child actors can build path
