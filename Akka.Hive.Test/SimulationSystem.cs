@@ -25,7 +25,7 @@ namespace Akka.Hive.Test
         public static Hive SimulationCreator(bool debugMode, long timeToAdvance)
         {
             HiveConfig simConfig = HiveConfig.CreateSimulationConfig(debugAkka: false
-                , debugEngine: debugMode
+                , debugHive: debugMode
                 , interruptInterval: TimeSpan.FromMinutes(120)
                 , timeToAdvance: TimeSpan.FromMilliseconds(timeToAdvance)
                 , startTime: Time.Now);

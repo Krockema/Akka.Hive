@@ -1,0 +1,781 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Users/marti/source/repos/Akka.Hive/Akka.Hive.Docu",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Action.ActionFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Action.ActionFactory.html",
+          "hash": "Dxgjz10xINt84lEvQPLwpg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Action.Actions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Action.Actions.html",
+          "hash": "i8UnU1hf9P3LQzHIc9hghA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Action.Holon.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Action.Holon.html",
+          "hash": "a6XVALL3FCgLiN99RxXbNw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Action.Simulation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Action.Simulation.html",
+          "hash": "Ayf1YdRKoVVmll/Ne7WEQw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Action.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Action.html",
+          "hash": "Yh40PwMRTJeLDql8unIW4g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Actors.HeartBeat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Actors.HeartBeat.html",
+          "hash": "ZMITjRa+SBcUEBpNqrQCgg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Actors.HiveActor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Actors.HiveActor.html",
+          "hash": "TCtR+QutK8KqpVjmJWbA3w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Actors.HolonManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Actors.HolonManager.html",
+          "hash": "VK+Xai7QiN2NLclzqpY69g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Actors.MessageMonitor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Actors.MessageMonitor.html",
+          "hash": "uuAYoMVmQzrLUwh2BrRi4g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Actors.SimulationManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Actors.SimulationManager.html",
+          "hash": "W2YVmtiPAZQ4Zpbv0JMGfQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Actors.TimeMonitor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Actors.TimeMonitor.html",
+          "hash": "YkXUPz+ZpctwIbU0nrFqJA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Actors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Actors.html",
+          "hash": "0MZ4HoWoN8411dyWaCg6Fg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Definitions.ActorMetaData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Definitions.ActorMetaData.html",
+          "hash": "fYKfGymM2mBydmyDNeaxEA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Definitions.Command.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Definitions.Command.html",
+          "hash": "+kvqKOi1PnCf0sBtBCDiaw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Definitions.HiveConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Definitions.HiveConfig.html",
+          "hash": "2gvRzsCfsKg/QWwqSktHzg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Definitions.Priority.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Definitions.Priority.html",
+          "hash": "dHKLgTMX/nM8Kk8Tw2DThA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Definitions.PriorityQueue-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Definitions.PriorityQueue-1.html",
+          "hash": "yNjz8Z9jBabrERe2yPXH9Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Definitions.SimulationState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Definitions.SimulationState.html",
+          "hash": "Irdx/iTfBlgdq2drPzovNg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Definitions.Time.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Definitions.Time.html",
+          "hash": "DGXT0qkOf4cEdOXdpcALfQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Definitions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Definitions.html",
+          "hash": "oEsm/w8GatOcK0EkFFUB0g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Hive.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Hive.html",
+          "hash": "37g1PKyReH/iemIS2da1lw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Instructions.FeatureStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Instructions.FeatureStore.html",
+          "hash": "oQAR774cHbfWMKogEcF+sw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Instructions.ICurrentInstructions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Instructions.ICurrentInstructions.html",
+          "hash": "yfCEECHl0z7ugblxGM9Www=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Instructions.IFeatureInstructions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Instructions.IFeatureInstructions.html",
+          "hash": "vamyIH0L1wjKk0fTsc183g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Instructions.InstructionStoreFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Instructions.InstructionStoreFactory.html",
+          "hash": "Ne1Amr5toUNslFMh1ToZ6A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Instructions.IntegerStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Instructions.IntegerStore.html",
+          "hash": "7Pz86GFfQVudixuNsGKfuQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Instructions.MessageStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Instructions.MessageStore.html",
+          "hash": "omI+GCn6GJzaNFXApS3GiQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Instructions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Instructions.html",
+          "hash": "d14KGYo3+AKRDGgdsWXn6A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Interfaces.ActorRefFactoryExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Interfaces.ActorRefFactoryExtensions.html",
+          "hash": "0gs9ymWCSXFs8lL1UCc2/w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Interfaces.IHiveAction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Interfaces.IHiveAction.html",
+          "hash": "hryiGiBmeETpScbhoHF2PQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Interfaces.IHiveActor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Interfaces.IHiveActor.html",
+          "hash": "Gru3MFGI6Io/JdjkdTpxgA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Interfaces.IHiveMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Interfaces.IHiveMessage.html",
+          "hash": "ZKoNGnR0Gym9dLaxYyALfA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Interfaces.html",
+          "hash": "yxNk+V4tbavDafGqnZBBSA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Logging.LogConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Logging.LogConfiguration.html",
+          "hash": "eqSHevIevOTngBt4OxU0gQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Logging.TargetNames.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Logging.TargetNames.html",
+          "hash": "BilSvbxqaRE4NNS225Z+7A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Logging.TargetTypes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Logging.TargetTypes.html",
+          "hash": "37tObJ77QCbnYOBdw3eD3Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Logging.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Logging.html",
+          "hash": "gvEYct3Lbu8dTZKZ+iek0Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.StateManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.StateManager.html",
+          "hash": "oXMBFZltlWehJZ978T+IJw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.html",
+          "hash": "H8m77A1UxmnnjCO+Mjh1ng=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "i3LvYIpxxjxMo8LYLd4WaQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "vG1UYdUvDV0sITmOUQmDGQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/Akka.Hive.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/Akka.Hive.html",
+          "hash": "sAcNWHKKMWVK2lFN2WOe2Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/Hive.Actions.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/Hive.Actions.html",
+          "hash": "ryaIZWuWxRcf6cJDxXrtQg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/Hive.Actors.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/Hive.Actors.html",
+          "hash": "5yWyIdX9NNMDxfDCJCG4Rw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/Hive.StateManager.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/Hive.StateManager.html",
+          "hash": "KPr5CzG3O7ZwOSjG4Cv/6g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "ByIv0mgeqrOk/H8b/5684g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "Uziaj1YnfltRR2NLxkaRjA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/HiveLogo.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/HiveLogo.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/HiveLogo2.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/HiveLogo2.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Icon.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/Icon.svg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Init.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/Init.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/NormalTime.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/NormalTime.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/NormalTime.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/NormalTime.svg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Tile.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/Tile.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/VirtualTime.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/VirtualTime.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/VirtualTime.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/VirtualTime.svg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/favicon.ico",
+      "output": {
+        "resource": {
+          "relative_path": "images/favicon.ico"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/init.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/init.svg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/logo.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/logo.svg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "oZ/KRNCU81iA+7iVm6cnPw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "+rHUkRZHZRi5gd1aTU6lJA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 7,
+          "skipped_file_count": 7
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 39,
+          "skipped_file_count": 38
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

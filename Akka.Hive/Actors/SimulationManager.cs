@@ -1,7 +1,7 @@
 ﻿using System;
 using Akka.Actor;
 using Akka.Hive.Definitions;
-using Akka.Hive.Definitions.Instructions;
+using Akka.Hive.Instructions;
 using Akka.Hive.Interfaces;
 using Akka.Hive.Logging;
 using NLog;
@@ -9,6 +9,9 @@ using static Akka.Hive.Definitions.HiveMessage;
 
 namespace Akka.Hive.Actors
 {
+    /// <summary>
+    /// Global Simulation Manager that manages the time, message processing, and heartbeat of the system. 
+    /// </summary>
     public class SimulationManager : ReceiveActor
     {
         // for Normal Mode

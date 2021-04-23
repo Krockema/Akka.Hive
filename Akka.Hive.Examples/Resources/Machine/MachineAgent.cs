@@ -1,10 +1,10 @@
-﻿using System;
-using Akka.Actor;
+﻿using Akka.Actor;
 using Akka.Hive.Actors;
 using Akka.Hive.Definitions;
 using Akka.Hive.Examples.Domain;
 using Akka.Hive.Examples.Resources.Distributor;
 using NLog;
+using System;
 
 namespace Akka.Hive.Examples.Resources.Machine
 {
@@ -17,9 +17,9 @@ namespace Akka.Hive.Examples.Resources.Machine
         {
             Logger.Log(LogLevel.Info, "Time: " + Time.Value + " - " + Self.Path + " is Ready");
         }
-        public static Props Props(IActorRef simulationContext, Time time, HiveConfig engineConfig)
+        public static Props Props(IActorRef simulationContext, Time time, HiveConfig hiveConfig)
         {
-            return Akka.Actor.Props.Create(() => new MachineAgent(simulationContext, time, engineConfig));
+            return Actor.Props.Create(() => new MachineAgent(simulationContext, time, hiveConfig));
         }
 
         protected override void Do(object o)
@@ -36,7 +36,7 @@ namespace Akka.Hive.Examples.Resources.Machine
         {
             var material = m.Message as MaterialRequest;
             var dur = material.Material.AssemblyDuration + r.Next(-1, 2);
-            Schedule(TimeSpan.FromSeconds(dur),  new FinishWork(m.Message, Self));
+            Schedule(TimeSpan.FromSeconds(dur), new FinishWork(m.Message, Self));
             Logger.Log(LogLevel.Info, "{0} {1} started to work : {2} ",  new object[] {  this.Time.Value, Self.Path.Name, material.Material.Name });
         }
 
@@ -46,6 +46,8 @@ namespace Akka.Hive.Examples.Resources.Machine
             var material = finishWork.Message as MaterialRequest;
             Send(new JobDistributor.ProductionOrderFinished(material, Context.Parent));
         }
+
+     
 
         protected override void Finish()
         {

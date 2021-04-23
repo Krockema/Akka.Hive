@@ -4,6 +4,9 @@ using Akka.Hive.Definitions;
 
 namespace Akka.Hive.Interfaces
 {
+    /// <summary>
+    /// Interface that any message that is passed between actors have to implement.
+    /// </summary>
     public interface IHiveMessage
     {
         Guid Key { get; }

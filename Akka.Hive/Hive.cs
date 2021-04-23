@@ -9,11 +9,15 @@ using static Akka.Hive.Definitions.HiveMessage;
 
 namespace Akka.Hive
 {
+    /// <summary>
+    /// ... creates and holds the Actor System, Hive Configuration, Context Manager. Loads the Akka Configuration and provides basic functionality.
+    /// </summary>
     public class Hive
     {
         public const string ContextName = "HiveContext";
         public ActorSystem ActorSystem { get; }
         public HiveConfig Config { get; }
+        public Inbox Inbox => Config.Inbox;
         public IActorRef ContextManager { get; }
         /// <summary>
         /// Prepare Simulation Environment
@@ -34,7 +38,7 @@ namespace Akka.Hive
             //    var monitorExtension = ActorMonitoringExtension.RegisterMonitor(ActorSystem, monitor);
             // }
             Config = engineConfig;
-            engineConfig.Inbox = Inbox.Create(ActorSystem);
+            engineConfig.Inbox =  Inbox.Create(ActorSystem);
             ContextManager = CreateContextRef(engineConfig);
 
         }
@@ -43,9 +47,9 @@ namespace Akka.Hive
         {
             return engineConfig.ActorActionFactory.ActorActions switch
             {
-                Actions.Simulation => ActorSystem.ActorOf(Props.Create(() 
+                ActionsType.Simulation => ActorSystem.ActorOf(Props.Create(() 
                                    => new SimulationManager(engineConfig)), ContextName),
-                Actions.Holon =>  ActorSystem.ActorOf(Props.Create(() 
+                ActionsType.Holon =>  ActorSystem.ActorOf(Props.Create(() 
                               => new HolonManager(engineConfig)), ContextName),
                 _ => throw new NotImplementedException(),
             };

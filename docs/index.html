@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Welcome to the world of Akka.Hive </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Welcome to the world of Akka.Hive ">
+    <meta name="generator" content="docfx 2.56.7.0">
+    
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta property="docfx:navrel" content="toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+
+<p><img src="images/logo.svg" alt="image logo"></p>
+<h1 id="welcome-to-the-world-of-akkahive">Welcome to the world of Akka.Hive</h1>
+<h2 id="initialization">Initialization</h2>
+<div style="border: 1px solid #ddd; background-color: #f9f9f9; color: #333; padding: 5px; display: inline-block;">
+    <div style="max-width: 580px; float: left; background-color: #f9f9f9;">
+        <p>Based on the Hive configuration Akka.Hive performes a slightly different initialization but the basic pattern is executed as folows:</p><br>
+        <ol>
+            <li>Initializing of Akka Hive</li>
+            <li>Initializing a Mailbox to comunicate with the hive residents </li>
+            <li>Create a context manager</li>
+            <li>Create the Hive residents</li>
+        </ol>
+    </div>
+    <div style="width=350px; height: fit-content; background-color: #f9f9f9; float: right; padding: 5px">
+       <img src="images/init.svg" width="340" style="float: right">
+    </div>
+</div>
+<h2 id="execution-with-normal-time">Execution with normal time</h2>
+<div style="border: 1px solid #ddd; background-color: #f9f9f9; color: #333; padding: 5px; display: inline-block;">
+    <div style="max-width: 580px; float: left; background-color: #f9f9f9;">
+        <p>Each hive resident has its own mailbox and is able to receive messages, according to the rules of Akka. For nomal Execution the...</p>
+        <ol>
+            <li>... context manager send regulary bounce for periodic task execution</li>
+            <li>... Holons themself can comunicate directly without any changes, by using "Send(..)" method. In addition the holon sets the local time before a message is processed to keep the time static through the complete processing time.</li>
+        </ol>
+    </div>
+    <div style="width=350px; height: fit-content; background-color: #f9f9f9; float: right; padding: 5px">
+       <img src="images/NormalTime.svg" width="340" style="float: right">
+    </div>
+</div>
+<h2 id="execution-with-virtual-time">Execution with virtual time</h2>
+<div style="border: 1px solid #ddd; background-color: #f9f9f9; color: #333; padding: 5px; display: inline-block;">
+    <div style="max-width: 580px; float: left; background-color: #f9f9f9;">
+        <p>To enable the hive to pass the time more quickly, all messages are routed over the context manager that keeps track of all activies for the current point in time.</p>
+        <ol>
+            <li>The Context manager stops the simulation after a given time "InterruptInterval" and sends a "Stop" message to the State Manager. The State Manager can now Collect and analyze the hive and resume the Simulation. Of course the Interval can be set to Zero and no intervall will occure.</li>
+            <li>All comunication beween holons are automaticaly routed to the Context manager, by using "Send(..)", there is no need to change method calls. </li>
+            <li>The context manager incements the internal message counter for messages that shall be processed. Alternatively it incements a future message counter if the message shall be delayed. By calling "Send(message, delay)"</li>
+            <li>After the Holon proceeded a message the holon sends an processing aknowledgement to the context manager.</li>
+            <li>If all messages for the current time are processed the context manager Broadcasts a "AdvanceTo" to the next point in time where messages can be processed. All holons release the messages for the new time and proceed processing.</li>
+        </ol> 
+    </div>
+    <div style="width=350px; height: fit-content; background-color: #f9f9f9; float: right; padding: 5px"><img src="images/VirtualTime.svg" width="340" style="float: right"></div>
+</div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive.Docu/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

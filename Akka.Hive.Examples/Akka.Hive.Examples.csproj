@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MQTTnet.Extensions.ManagedClient" Version="3.0.15" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Akka.Hive\Akka.Hive.csproj" />
   </ItemGroup>
 

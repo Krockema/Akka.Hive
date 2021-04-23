@@ -1,5 +1,6 @@
 ﻿using Akka.Actor;
 using Akka.Hive.Definitions;
+using Akka.Hive.Examples.Domain;
 
 namespace Akka.Hive.Examples.Resources.Distributor
 {
@@ -25,9 +26,10 @@ namespace Akka.Hive.Examples.Resources.Distributor
 
         public record AddMachine : HiveMessage
         {
-            public AddMachine(object message, IActorRef target) : base(message, target)
+            public AddMachine(MachineRegistration message, IActorRef target) : base(message, target)
             {
             }
+            public MachineRegistration MachineRegistration => base.Message as MachineRegistration;
         }
     }
 }

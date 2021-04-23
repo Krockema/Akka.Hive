@@ -3,6 +3,9 @@ using Akka.Hive.Definitions;
 
 namespace Akka.Hive.Interfaces
 {
+    /// <summary>
+    /// Basic actor functionality that every Hive resident has to implement.
+    /// </summary>
     public interface IHiveAction
     {
         void Send(IHiveMessage instruction, TimeSpan waitFor = new());

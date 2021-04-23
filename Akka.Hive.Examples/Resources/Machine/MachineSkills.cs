@@ -22,5 +22,10 @@ namespace Akka.Hive.Examples.Resources.Machine
             public FinishWork(object Message, IActorRef target) : base(Message, target)
             { }
         }
+        public record MachineReady : HiveMessage
+        {
+            public MachineReady(object Message, IActorRef target) : base(Message, target)
+            { }
+        }
     }
 }

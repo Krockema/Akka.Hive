@@ -15,10 +15,19 @@
             Path = string.Format("{0}/{1}", parentPath, Name);
         }
 
+        /// <summary>
+        /// Name of the Actor
+        /// </summary>
         public string Name { get; private set; }
 
+        /// <summary>
+        /// Reference to the parent Actor
+        /// </summary>
         public ActorMetaData Parent { get; set; }
 
+        /// <summary>
+        /// Actor path as string
+        /// </summary>
         public string Path { get; private set; }
     }
 }

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 
 namespace Akka.Hive.Definitions
 { 
-    // Priority Queue implementation from 
-    // https://visualstudiomagazine.com/Articles/2012/11/01/Priority-Queues-with-C.aspx?Page=2
+    /// <summary>
+    /// Priority Queue implementation from 
+    /// https://visualstudiomagazine.com/Articles/2012/11/01/Priority-Queues-with-C.aspx?Page=2/// </summary>
+    /// <typeparam name="T">anything</typeparam>
     public class PriorityQueue<T> where T : IComparable<T>
     {
         private List<T> data;

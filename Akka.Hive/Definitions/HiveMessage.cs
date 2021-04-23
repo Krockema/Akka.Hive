@@ -15,6 +15,7 @@ namespace Akka.Hive.Definitions
         public Guid Key { get; }
         /// <summary>
         /// !- Immutable -! Message Object
+        /// May change to data type "record" in the future!
         /// </summary>
         public object Message { get; }
         /// <summary>

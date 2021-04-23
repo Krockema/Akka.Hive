@@ -4,6 +4,9 @@ using Akka.Hive.Definitions;
 
 namespace Akka.Hive.Interfaces
 {
+    /// <summary>
+    /// Basic interface that any Hive resident has to implement.
+    /// </summary>
     public interface IHiveActor
     {
         Guid Key { get; }

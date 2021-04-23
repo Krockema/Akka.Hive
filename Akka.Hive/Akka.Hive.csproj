@@ -11,9 +11,11 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Company>-</Company>
     <Authors>Krockert, Martin; Marvin Matthes</Authors>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <Description>Initial Release</Description>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReleaseNotes>Added: Fullblown Example for all three execution scenarios.
+Fixed: naming</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="LICENSE">
+    <None Include="..\LICENSE">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
