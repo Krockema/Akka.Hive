@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SimTest.SimulationHelper
+﻿namespace Akka.Hive.Examples.SimulationHelper
 {
     /// <summary>
     /// Static helper class used to define paths to fixed-name actors
