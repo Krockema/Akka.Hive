@@ -7,7 +7,7 @@ namespace Akka.Hive.Instructions
     /// <summary>
     /// ... that saves the message that shall be process within the current virtual time
     /// </summary>
-    public class MessageStore : ICurrentInstructions
+    public class InstructionStore : ICurrentInstructions
     {
         private readonly Dictionary<Guid, IHiveMessage> _store = new();
         private int _wait = 0;

@@ -1,4 +1,5 @@
-# Akka.Hive
+![image](docs/images/logo.png)
+
 This is an extension of the Akka actor framework that allows switching the environment between simulation with virtual time, simulation with real time or integration of real endpoints.
 
 # Build Status
@@ -15,7 +16,7 @@ Based on my Master thesis with a kinda slow solution for a .Net based discrete e
 
 # ToDo's
 - [ ] More / Better Unit Tests
-- [ ] Detailed Documentation
+- [ ] More / Better Detailed Documentation
 - [ ] May implement a diffrent Distributed Clock like
   * https://en.wikipedia.org/wiki/Vector_clock or 
   * https://en.wikipedia.org/wiki/Lamport_timestamps

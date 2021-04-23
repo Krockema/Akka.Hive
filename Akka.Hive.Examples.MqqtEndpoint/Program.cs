@@ -1,11 +1,11 @@
-﻿using MQTTnet;
-using MQTTnet.Client.Options;
-using MQTTnet.Extensions.ManagedClient;
-using System;
+﻿using System;
 using System.Text;
 using System.Threading.Tasks;
+using MQTTnet;
+using MQTTnet.Client.Options;
+using MQTTnet.Extensions.ManagedClient;
 
-namespace AkkaMQTT
+namespace Akka.Hive.Examples.MqqtEndpoint
 {
     class Program
     {

@@ -81,7 +81,7 @@ namespace Akka.Hive.Examples
             // example to monitor for FinishWork Messages.
             var monitor = hive.ActorSystem.ActorOf(props: Monitoring.WorkTimeMonitor.Props(time: time),
                 name: "Monitor");
-
+            Console.WriteLine("Machines initialized. Press any key to continue.");
             Console.ReadKey();
             Console.WriteLine("System is running!");
 
@@ -92,6 +92,7 @@ namespace Akka.Hive.Examples
                 hive.ContextManager.Tell(request, null);
             }
 
+            Console.WriteLine("Orders Distributed. Press any key to continue.");
             if (hive.IsReady())
             {
                 var terminated = hive.RunAsync();

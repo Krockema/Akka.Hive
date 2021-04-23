@@ -8,7 +8,7 @@
 
         public static ICurrentInstructions CreateCurrent(bool debug)
         {
-            return debug ? new MessageStore() : new IntegerStore();
+            return debug ? new InstructionStore() : new IntegerStore();
         }
         
         public static IFeatureInstructions CreateFeatureStore(bool debug)
