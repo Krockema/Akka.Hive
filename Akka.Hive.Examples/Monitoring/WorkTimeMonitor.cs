@@ -10,9 +10,14 @@ namespace Akka.Hive.Examples.Monitoring
 {
     public class WorkTimeMonitor : MessageMonitor
     {
-        public WorkTimeMonitor(Time time) 
-            : base(time, new List<Type> { typeof(MachineAgent.FinishWork) })
+        public WorkTimeMonitor(Time time, List<Type> messageTypes) 
+            : base(time, messageTypes)
         {
+        }
+
+        public static Props Props(Time time, List<Type> channels)
+        {
+            return Akka.Actor.Props.Create(() => new WorkTimeMonitor(time, channels));
         }
 
         protected override void EventHandle(object o)
@@ -20,12 +25,9 @@ namespace Akka.Hive.Examples.Monitoring
             // base.EventHandle(o);
             var m = o as MachineAgent.FinishWork;
             var material = m.Message as MaterialRequest;
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Finished: " + material.Material.Name + " on Time: " + Time.Value);
-        }
-
-        public static Props Props(Time time)
-        {
-            return Akka.Actor.Props.Create(() => new WorkTimeMonitor(time));
+            Console.ResetColor();
         }
     }
 }

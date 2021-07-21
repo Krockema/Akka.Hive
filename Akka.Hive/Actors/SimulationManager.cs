@@ -20,7 +20,7 @@ namespace Akka.Hive.Actors
         
         private readonly NLog.Logger _logger = LogManager.GetLogger(TargetNames.LOG_AKKA);
 
-        private HiveConfig HiveConfig { get; }
+        private IHiveConfig HiveConfig { get; }
         
         /// <summary>
         /// Contains the next interval time where the simulation will stop.
@@ -51,37 +51,24 @@ namespace Akka.Hive.Actors
         /// Probe Constructor for Simulation context
         /// </summary>
         /// <returns>IActorRef of the SimulationContext</returns>
-        public static Props Props(HiveConfig config)
+        public static Props Props(IHiveConfig config)
         {
             return Akka.Actor.Props.Create(() => new SimulationManager(config));
         }
 
-        public SimulationManager(HiveConfig config)
+        public SimulationManager(IHiveConfig config)
         {
             #region init
             HiveConfig = config;
             _featuredInstructions = InstructionStoreFactory.CreateFeatureStore(config.DebugHive);
             _currentInstructions = InstructionStoreFactory.CreateCurrent(config.DebugHive);
-            Heart = Context.ActorOf(HeartBeat.Props(config.TimeToAdvance));
+            Heart = Context.ActorOf(HeartBeat.Props(config.TickSpeed));
             Time = config.StartTime;
             NextInterrupt =  config.StartTime;
             #endregion init
 
             Become(SimulationMode);
         }
-
-        /// <summary>
-        /// Enables Message logging for explicit Messages
-        /// </summary>
-        /// <param name="message"></param>
-        private void LogInterceptor(IHiveMessage message)
-        {
-            if (message.LogThis)
-            {
-                Context.System.EventStream.Publish(message);
-            }
-        }
-
         /// <summary>
         /// Does not track Simulation Messages, only the amount that has to be processed
         /// </summary>
@@ -169,8 +156,6 @@ namespace Akka.Hive.Actors
 
             Receive<Schedule>(m =>
             {
-                LogInterceptor(m.Message);
-
                 if (_featuredInstructions.TryGetValue(m.AtTime.Value, out ICurrentInstructions instructions))
                     instructions.Add(m.Message.Key, m.Message);
                 else
@@ -185,8 +170,6 @@ namespace Akka.Hive.Actors
 
             Receive<IHiveMessage>(m =>
             {
-                LogInterceptor(m);
-
                 if (m.Target != ActorRefs.NoSender) {
                     m.Target.Forward(m);
                 } else {
@@ -204,7 +187,7 @@ namespace Akka.Hive.Actors
         /// </summary>
         private void Systole()
         {
-            if (HiveConfig.TimeToAdvance.Ticks == 0 || !IsRunning) 
+            if (HiveConfig.TickSpeed.Ticks == 0 || !IsRunning) 
                 return;
             Heart.Tell(Command.HeartBeat, Self);
             _currentInstructions.WaitForDiastole(true);

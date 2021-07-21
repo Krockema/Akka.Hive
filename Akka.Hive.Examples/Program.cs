@@ -6,6 +6,7 @@ using Akka.Hive.Examples.Domain;
 using Akka.Hive.Examples.Resources;
 using Akka.Hive.Examples.Resources.Distributor;
 using Akka.Hive.Examples.Resources.Machine;
+using Akka.Hive.Examples.SimulationHelper;
 using Akka.Hive.Logging;
 using LogLevel = NLog.LogLevel;
 using MachineAgent = Akka.Hive.Examples.Resources.Machine.MachineAgent;
@@ -46,9 +47,9 @@ namespace Akka.Hive.Examples
             }
         }
 
-        private static void RunHive(HiveConfig hiveConfig, bool withMqtt = false)
+        private static void RunHive(IHiveConfig hiveConfig, bool withMqtt = false)
         {
-            // LogConfiguration.LogTo(TargetTypes.File, TargetNames.LOG_AGENTS, LogLevel.Info, LogLevel.Warn);
+            LogConfiguration.LogTo(TargetTypes.File, TargetNames.LOG_ACTORS, LogLevel.Info, LogLevel.Warn);
             LogConfiguration.LogTo(TargetTypes.Console, TargetNames.LOG_ACTORS, LogLevel.Info, LogLevel.Warn);
             LogConfiguration.LogTo(TargetTypes.Console, TargetNames.LOG_AKKA, LogLevel.Warn);
             // LogConfiguration.LogTo(TargetTypes.File, TargetNames.LOG_AKKA, LogLevel.Trace);
@@ -79,8 +80,8 @@ namespace Akka.Hive.Examples
             }
 
             // example to monitor for FinishWork Messages.
-            var monitor = hive.ActorSystem.ActorOf(props: Monitoring.WorkTimeMonitor.Props(time: time),
-                name: "Monitor");
+            var monitor = hive.ActorSystem.ActorOf(props: Monitoring.WorkTimeMonitor.Props(time: time, hiveConfig.MessageTrace.GetTracedMessages(typeof(MachineAgent)))
+                                                  , name: "Monitor");
             Console.WriteLine("Machines initialized. Press any key to continue.");
             Console.ReadKey();
             Console.WriteLine("System is running!");
@@ -96,7 +97,10 @@ namespace Akka.Hive.Examples
             if (hive.IsReady())
             {
                 var terminated = hive.RunAsync();
-                new StateManager().Continuation(hiveConfig.Inbox, hive);
+                CustomStateManager.Base.WithDistributor(jobDistributor)
+                                       .WithHive(hive)
+                                       .WithInbox(hiveConfig.Inbox)
+                                       .Start();
                 terminated.Wait();
             }
 
@@ -104,33 +108,35 @@ namespace Akka.Hive.Examples
             Console.WriteLine("System Runtime " + hive.ActorSystem.Uptime);
         }
 
-        private static HiveConfig CreateHolonicApproach(Time time)
+        private static IHiveConfig CreateHolonicApproach(Time time)
         {
-            var ActionFactory = new ActionFactory(agent =>
-            {
-                return agent switch
-                {
-                    MachineMqttAgent => new MachineMqttActions(agent),
-                    MachineAgent => new HolonActions(agent),
-                    JobDistributor => new HolonActions(agent),
-                    _ => throw new Exception($"Could not match agent type! Type was { agent.GetType().Name }")
-                };
-            });
-            
-            return HiveConfig.CreateHolonConfig(debugAkka: false
-                                              , debugHive: true
-                                              , interruptInterval: TimeSpan.FromSeconds(10)
-                                              , startTime: time
-                                              , actorActionFactory: ActionFactory);
+ 
+            return HiveConfig.ConfigureHolon()
+                             .WithActionFactory(new ActionFactory(agent => {
+                                    return agent switch
+                                    {
+                                        MachineMqttAgent => new MachineMqttActions(agent),
+                                        MachineAgent => new HolonActions(agent),
+                                        JobDistributor => new HolonActions(agent),
+                                        _ => throw new Exception($"Could not match agent type! Type was { agent.GetType().Name }")
+                                    };
+                                 })
+                             )
+                             .WithDebugging(akka: false, hive: true)
+                             .WithInterruptInterval(TimeSpan.FromSeconds(10))
+                             .WithStartTime(time)
+                             .Build();
         }
 
-        private static HiveConfig CreateSimulationApproach(Time time)
+        private static IHiveConfig CreateSimulationApproach(Time time)
         {
-            return HiveConfig.CreateSimulationConfig(debugAkka: false
-                                                    , debugHive: true
-                                                    , interruptInterval: TimeSpan.FromMinutes(10)
-                                                    , startTime: time
-                                                    , timeToAdvance: TimeSpan.FromSeconds(0));
+            var tracer = new MessageTrace().AddTrace(typeof(MachineAgent), typeof(MachineAgent.FinishWork));
+            return HiveConfig.ConfigureSimulation()
+                             .WithDebugging(akka: false, hive: true)
+                             .WithInterruptInterval(TimeSpan.FromSeconds(10))
+                             .WithStartTime(time)
+                             .WithMessageTracer(tracer)
+                             .Build();
         }
     }
 }

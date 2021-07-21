@@ -11,12 +11,11 @@ namespace Akka.Hive.Actors
     /// <summary>
     /// ... is a  Message interceptor that is listening to the void for a given set of object types
     /// </summary>
-    public class MessageMonitor : UntypedActor, ILogReceive
+    public abstract class MessageMonitor : UntypedActor, ILogReceive
     {
         protected Time Time;
         private readonly List<Type> _channels;
         private readonly NLog.Logger _logger = LogManager.GetLogger(TargetNames.LOG_AKKA);
-        
        
         public MessageMonitor(Time time, List<Type> channels)
         {
@@ -31,11 +30,6 @@ namespace Akka.Hive.Actors
             Context.System.EventStream.Subscribe(Self, typeof(AdvanceTo));
 
             base.PreStart();
-        }
-
-        public static Props Props(Time time, List<Type> channels)
-        {
-            return Akka.Actor.Props.Create(() => new MessageMonitor(time, channels));
         }
 
         protected override void PostStop()

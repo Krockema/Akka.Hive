@@ -16,14 +16,14 @@ namespace Akka.Hive
     {
         public const string ContextName = "HiveContext";
         public ActorSystem ActorSystem { get; }
-        public HiveConfig Config { get; }
+        public IHiveConfig Config { get; }
         public Inbox Inbox => Config.Inbox;
         public IActorRef ContextManager { get; }
         /// <summary>
         /// Prepare Simulation Environment
         /// </summary>
         /// <param name="engineConfig">Several Simulation Configurations</param>
-        public Hive(HiveConfig engineConfig)
+        public Hive(IHiveConfig engineConfig)
         {
             Config config = (engineConfig.DebugAkka) ? ConfigurationFactory.ParseString(GetConfiguration(NLog.LogLevel.Debug)) 
                                        /* else */ : ConfigurationFactory.ParseString(GetConfiguration(NLog.LogLevel.Info));
@@ -43,7 +43,7 @@ namespace Akka.Hive
 
         }
 
-        private IActorRef CreateContextRef(HiveConfig engineConfig)
+        private IActorRef CreateContextRef(IHiveConfig engineConfig)
         {
             return engineConfig.ActorActionFactory.ActorActions switch
             {
@@ -66,6 +66,10 @@ namespace Akka.Hive
             ContextManager.Tell(Command.Start);
         }
 
+        public Task Terminate()
+        {
+            return ActorSystem.Terminate();
+        }
 
         public Task RunAsync()
         {

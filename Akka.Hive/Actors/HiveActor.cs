@@ -1,5 +1,6 @@
 ﻿using System;
 using Akka.Actor;
+using Akka.Event;
 using Akka.Hive.Action;
 using Akka.Hive.Definitions;
 using Akka.Hive.Interfaces;
@@ -47,6 +48,8 @@ namespace Akka.Hive.Actors
         /// </summary>
         private IHiveAction ActorActions { get; }
 
+        private Action<IHiveMessage, EventStream> Trace { get; }
+
         /// <summary>
         /// Register the simulation element at the Simulation
         /// </summary>
@@ -56,26 +59,27 @@ namespace Akka.Hive.Actors
             base.PreStart();
         }
 
-        public HiveConfig EngineConfig {get;} 
+        public IHiveConfig EngineConfig {get;} 
 
-        protected HiveActor(IActorRef simulationContext, Time time, HiveConfig engineConfig)
+        protected HiveActor(IActorRef simulationContext, Time time, IHiveConfig hiveConfig)
         {
             #region Init
 
-            ActorActions = engineConfig.ActorActionFactory.Create(this);
+            ActorActions = hiveConfig.ActorActionFactory.Create(this);
             Key = Guid.NewGuid();
             Logger = LogManager.GetLogger(TargetNames.LOG_ACTORS);
-            EngineConfig = engineConfig;
+            EngineConfig = hiveConfig;
             Time = time;
             ContextManager = simulationContext;
+            Trace = hiveConfig.MessageTrace.GetTracer(this);
             
             #endregion Init
 
-            switch (engineConfig.ActorActionFactory.ActorActions)
+            switch (hiveConfig.ActorActionFactory.ActorActions)
             {
                 case ActionsType.Holon : Become(Holon); break;
                 case ActionsType.Simulation : Become(Simulant); break;
-                default : throw new Exception($"Actor type specification unknown, actor type : {engineConfig.ActorActionFactory.ActorActions}");
+                default : throw new Exception($"Actor type specification unknown, actor type : {hiveConfig.ActorActionFactory.ActorActions}");
             };
         }
 
@@ -96,20 +100,22 @@ namespace Akka.Hive.Actors
             Receive<Finish>(f => act.Finish(f));
             Receive<Schedule>(message => act.ScheduleMessages(message.AtTime, (HiveMessage)message.Message));
             Receive<AdvanceTo>(m => act.AdvanceTo(m.Time));
+            Receive<IDirectMessage>(message => Do(message));
             ReceiveAny(act.MapMessageToMethod);
         }
-
 
         protected internal void Send(IHiveMessage instruction, TimeSpan waitFor = new ())
         {
             ActorActions.Send(instruction, waitFor);
+            Trace(instruction, ActorContext.System.EventStream);
         }
 
         protected internal void Schedule(TimeSpan waitFor, IHiveMessage instruction)
         {
             ActorActions.Schedule(waitFor, instruction);
+            Trace(instruction, ActorContext.System.EventStream);
         }
-
+        
         /// <summary>
         /// Deregister the Actor from Context and Tell parrent Elements that his work is done.
         /// </summary>
@@ -132,7 +138,11 @@ namespace Akka.Hive.Actors
             // geratefully shutdown
             Context.Stop(Self);
         }
-
+        /// <summary>
+        /// Free for implementing
+        /// is called before the simulation clock is advancing one tick 
+        /// and this is only called by simulation system.
+        /// </summary>
         protected internal virtual void PostAdvance()
         {
 

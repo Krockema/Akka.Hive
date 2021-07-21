@@ -15,7 +15,7 @@ namespace Akka.Hive.Actors
       
         private readonly NLog.Logger _logger = LogManager.GetLogger(TargetNames.LOG_AKKA);
 
-        private HiveConfig EngineConfig { get; }
+        private IHiveConfig EngineConfig { get; }
         public ITimerScheduler Timers { get; set; }
 
         /// <summary>
@@ -27,12 +27,12 @@ namespace Akka.Hive.Actors
         /// Probe Constructor for Simulation context
         /// </summary>
         /// <returns>IActorRef of the SimulationContext</returns>
-        public static Props Props(HiveConfig config)
+        public static Props Props(IHiveConfig config)
         {
             return Akka.Actor.Props.Create(() => new HolonManager(config));
         }
 
-        public HolonManager(HiveConfig config)
+        public HolonManager(IHiveConfig config)
         {
             #region init
             EngineConfig = config;

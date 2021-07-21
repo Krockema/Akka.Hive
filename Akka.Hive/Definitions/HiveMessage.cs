@@ -25,11 +25,11 @@ namespace Akka.Hive.Definitions
         /// <summary>
         /// Priority to Order msg
         /// </summary>
-        public Priority Priority { get; }
+        public Priority Priority { get; init; }
         /// <summary>
         /// Log this Message to the event Stream.
         /// </summary>
-        public bool LogThis { get; }        
+        public bool LogThis { get; init; }        
         /// <summary>
         /// For simple and fast internal instructions
         /// </summary>
@@ -92,7 +92,7 @@ namespace Akka.Hive.Definitions
         /// </summary>
         public record Shutdown : HiveMessage
         {
-            public Shutdown(IActorRef simulationContextRef) : base(null, simulationContextRef, false, Priority.Low) { }
+            public Shutdown(IActorRef simulationContextRef) : base(null, simulationContextRef) { }
         }
 
         /// <summary>
@@ -131,14 +131,39 @@ namespace Akka.Hive.Definitions
         /// <param name="target"></param>
         /// <param name="logThis">default: False</param>
         /// <param name="priority">default: Medium</param>
-        public HiveMessage(object message, IActorRef target, bool logThis = false, Priority priority = Priority.Medium)
+        public HiveMessage(object message, IActorRef target)
         {
             Key = Guid.NewGuid();
             Message = message;
             Target = target;
-            Priority = priority;
-            LogThis = logThis;
+            Priority = Priority.Medium;
+            LogThis = false;
         }
+
+        /// <summary>
+        /// Enables Message Tracing for this message by publishing it to event hub.
+        /// </summary>
+        /// <returns></returns>
+        public IHiveMessage WithTraceing()
+        {
+            return this with { LogThis = true };
+        }
+
+        /// <summary>
+        /// Altering the Message Priority
+        /// VeryHigh = 100,
+        /// High = 200,
+        /// Medium = 300,
+        /// Low  = 400,
+        /// VeryLow = 500
+        /// </summary>
+        /// <param name="priority">default is Medium</param>
+        /// <returns></returns>
+        public IHiveMessage WithPriority(Priority priority)
+        {
+            return this with { Priority = priority };
+        }
+
 
         /// <summary>
         /// Broadcast message by ActorSelection

@@ -7,7 +7,7 @@ namespace Akka.Hive.Test.Moc
 {
     public class ActingObject : HiveActor
     {
-        public ActingObject(IActorRef simulationContext, Time time, HiveConfig engineConfig) : base(simulationContext, time, engineConfig)
+        public ActingObject(IActorRef simulationContext, Time time, IHiveConfig engineConfig) : base(simulationContext, time, engineConfig)
         {
         }
 
