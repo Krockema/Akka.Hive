@@ -6,6 +6,7 @@ using Akka.Event;
 using Akka.Hive.Actors;
 using Akka.Hive.Definitions;
 using Akka.Hive.Examples.Domain;
+using Akka.Hive.Examples.SimulationHelper;
 using LogLevel = NLog.LogLevel;
 using MachineAgent = Akka.Hive.Examples.Resources.Machine.MachineAgent;
 
@@ -20,11 +21,11 @@ namespace Akka.Hive.Examples.Resources.Distributor
 
         public HashSet<MaterialRequest> WaitingItems { get; set; } = new ();
 
-        public static Props Props(EventStream eventStream, IActorRef simulationContext, Time time, HiveConfig engineConfig)
+        public static Props Props(EventStream eventStream, IActorRef simulationContext, Time time, IHiveConfig engineConfig)
         {
             return Akka.Actor.Props.Create(() => new JobDistributor(simulationContext, time, engineConfig));
         }
-        public JobDistributor(IActorRef contextManager, Time time, HiveConfig engineConfig) 
+        public JobDistributor(IActorRef contextManager, Time time, IHiveConfig engineConfig) 
             : base(contextManager, time, engineConfig)
         {
             
@@ -36,9 +37,10 @@ namespace Akka.Hive.Examples.Resources.Distributor
             {
                 case ProductionOrder m  : MaterialRequest(m); break;
                 case Command.GetWork    : PushWork(); break;
-                case AddMachine m       : CreateMachines(m.MachineRegistration, Machines.Count + 1, this.Time, this.EngineConfig); break; 
+                case AddMachine m       : CreateMachines(m.MachineRegistration, Machines.Count + 1, this.Time, this.HiveConfig); break; 
                 case MachineAgent.MachineReady m : SetMachineReady(m); break;
                 case ProductionOrderFinished m: ProvideMaterial(m); break;
+                case RequestStatistics m: CreateStats(); break;
                 default: _ = new Exception("Message type could not be handled by SimulationElement"); break;
             }
         }
@@ -87,7 +89,7 @@ namespace Akka.Hive.Examples.Resources.Distributor
             };
         }
 
-        private void CreateMachines(MachineRegistration registration, int machineNumber, Time time, HiveConfig engineConfig)
+        private void CreateMachines(MachineRegistration registration, int machineNumber, Time time, IHiveConfig engineConfig)
         {
             Logger.Log(LogLevel.Warn, "Creating Machine No: {arg} !",  new object[] { machineNumber });
             registration.ActorRef = Context.ActorOf(registration.MachineProps, "Machine_" + machineNumber);
@@ -127,6 +129,13 @@ namespace Akka.Hive.Examples.Resources.Distributor
             PushWork();
         }
 
+        private void CreateStats()
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Production orders remaining " + ReadyItems.Count());
+            Console.ResetColor();
+            Sender.Tell("Done", Self);
+        }
         protected override void Finish()
         {
             Logger.Log(LogLevel.Debug, "Simulation: {arg} has been Killed",  new object[] { Sender.Path });

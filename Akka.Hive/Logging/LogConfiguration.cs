@@ -15,12 +15,29 @@ namespace Akka.Hive.Logging
 
         private static readonly LoggingConfiguration Config = new ();
 
+        /// <summary>
+        /// Creates a custom logging target
+        /// </summary>
+        /// <param name="targetType">Akka.Hive.Logging.TargetType [Console, File, Memmory, Debugger]</param>
+        /// <param name="target">target directory below $/{basedir}/Logs/</param>
+        /// <param name="logLevel">Nlog.LogLevel</param>
+        /// <param name="final">default false</param>
+        /// <param name="logFilter">default "*"</param>
         public static void LogTo(TargetTypes targetType, string target, LogLevel logLevel, bool final = false,
             string logFilter = "*")
         {
             LogTo(targetType, target, logLevel, logLevel);
         }
 
+        /// <summary>
+        /// Creates a custom logging target
+        /// </summary>
+        /// <param name="targetType">Akka.Hive.Logging.TargetType [Console, File, Memmory, Debugger]</param>
+        /// <param name="target">target directory below $/{basedir}/Logs/</param>
+        /// <param name="minLevel">Nlog.LogLevel</param>
+        /// <param name="maxLevel">Nlog.LogLevel</param>
+        /// <param name="final">default false</param>
+        /// <param name="logFilter">default "*"</param>
         public static void LogTo(TargetTypes targetType, string target, LogLevel minLevel, LogLevel maxLevel, bool final = false, string logFilter = "*")
         {
            

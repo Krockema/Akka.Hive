@@ -6,7 +6,7 @@ namespace Akka.Hive.Examples.Domain
 {
     public class MachineRegistration 
     {
-        public static MachineRegistration CreateDefault(IActorRef contextManager, Time time, HiveConfig hiveConfig)
+        public static MachineRegistration CreateDefault(IActorRef contextManager, Time time, IHiveConfig hiveConfig)
         {
             var r = new MachineRegistration();
             r.IsReady = true;
@@ -15,7 +15,7 @@ namespace Akka.Hive.Examples.Domain
             return r;
         }
 
-        public static MachineRegistration CreateMqtt(IActorRef contextManager, Time time, HiveConfig hiveConfig, IActorRef jobDistributor)
+        public static MachineRegistration CreateMqtt(IActorRef contextManager, Time time, IHiveConfig hiveConfig, IActorRef jobDistributor)
         {
             var r = new MachineRegistration();
             r.IsReady = false;

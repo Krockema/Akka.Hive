@@ -14,16 +14,32 @@ namespace Akka.Hive
     /// </summary>
     public class Hive
     {
+        /// <summary>
+        /// Public Contextname for identification
+        /// </summary>
         public const string ContextName = "HiveContext";
+        /// <summary>
+        /// The actor system itself
+        /// </summary>
         public ActorSystem ActorSystem { get; }
-        public HiveConfig Config { get; }
+
+        /// <summary>
+        /// The hive Configuration
+        /// </summary>
+        public IHiveConfig Config { get; }
+        /// <summary>
+        /// Global Inbox that is used for comunication with the state manager
+        /// </summary>
         public Inbox Inbox => Config.Inbox;
+        /// <summary>
+        /// Actor managing the virtual time, is triggered by interupts and can be used for external comunication
+        /// </summary>
         public IActorRef ContextManager { get; }
         /// <summary>
         /// Prepare Simulation Environment
         /// </summary>
         /// <param name="engineConfig">Several Simulation Configurations</param>
-        public Hive(HiveConfig engineConfig)
+        public Hive(IHiveConfig engineConfig)
         {
             Config config = (engineConfig.DebugAkka) ? ConfigurationFactory.ParseString(GetConfiguration(NLog.LogLevel.Debug)) 
                                        /* else */ : ConfigurationFactory.ParseString(GetConfiguration(NLog.LogLevel.Info));
@@ -43,7 +59,7 @@ namespace Akka.Hive
 
         }
 
-        private IActorRef CreateContextRef(HiveConfig engineConfig)
+        private IActorRef CreateContextRef(IHiveConfig engineConfig)
         {
             return engineConfig.ActorActionFactory.ActorActions switch
             {
@@ -55,18 +71,36 @@ namespace Akka.Hive
             };
         }
         
-
+        /// <summary>
+        /// Request a ready signal from system context
+        /// </summary>
+        /// <returns>true as soon as the initialization is finished</returns>
         public bool IsReady()
         {
             var r = ContextManager.Ask(Command.IsReady).Result;
             return r is Command.IsReady;
         }
-
+        /// <summary>
+        /// Confiniues the system after a stop.
+        /// Only on simulation contexts
+        /// </summary>
         public void Continue() {
             ContextManager.Tell(Command.Start);
         }
 
+        /// <summary>
+        /// Terminates the ActorSystem.
+        /// </summary>
+        /// <returns>Task when the system is terminated</returns>
+        public Task Terminate()
+        {
+            return ActorSystem.Terminate();
+        }
 
+        /// <summary>
+        /// Starts the actor system
+        /// </summary>
+        /// <returns>when the system is terminated</returns>
         public Task RunAsync()
         {
             ContextManager.Tell(Command.Start);

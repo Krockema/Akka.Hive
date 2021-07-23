@@ -7,65 +7,112 @@ namespace Akka.Hive.Definitions
     /// <summary>
     /// Global Akka Hive Configuration, containing start time, interrupt interval, simulation break, actor action factory, and debug switches.
     /// </summary>
-    public class HiveConfig
+    public record HiveConfig: IHiveConfig, IHiveConfigBase, IHiveConfigHolon
     {
-        /// <summary>
-        /// Global Akka Hive Configuration 
-        /// </summary>
-        /// <param name="debugAkka">Debug the Akka Core System</param>
-        /// <param name="debugHive">Debug Akka driven engine for Simulation and Realtime </param>
-        /// <param name="interruptInterval">At what TimeSpan shall the system stop and wait for further Commands
-        ///                                 the System will continue by calling the SimulationContext.Continue() method.</param>
-        /// <param name="timeToAdvance">minimum time to Advance to advance the simulation clock</param>
-        /// <param name="startTime"></param>
-        /// <param name="actorActionFactory"></param>
-        private HiveConfig(bool debugAkka, bool debugHive, TimeSpan interruptInterval, TimeSpan timeToAdvance, Time startTime,  ActionFactory actorActionFactory)
+        private HiveConfig()
         {
-            InterruptInterval = interruptInterval;
-            DebugAkka = debugAkka;
-            DebugHive = debugHive;
-            TimeToAdvance = timeToAdvance;
-            StartTime = startTime;
-            ActorActionFactory = actorActionFactory;
+            InterruptInterval = TimeSpan.MaxValue;
+            DebugAkka = false;
+            DebugHive = false;
+            TickSpeed = TimeSpan.Zero;
+            StartTime = Time.Now;
+            ActorActionFactory = new ActionFactory();
+            MessageTrace = new MessageTrace();
         }
 
         /// <summary>
-        /// Creates Akka Hive Configuration for Simulation purpose.
+        /// Time at wich the system start to calculate.
         /// </summary>
-        /// <param name="debugAkka">Debug the Akka Core System</param>
-        /// <param name="debugHive">Debug Akka Hive for simulation and normal time</param>
-        /// <param name="interruptInterval">At what TimeSpan shall the system stop and wait for further Commands
-        ///                                 the System will continue by calling the SimulationContext.Continue() method.</param>
-        /// <param name="timeToAdvance">Minimum time span to Advance to advance the simulation clock</param>
-        /// <param name="startTime">Start time of the simulation</param>
-        /// <returns>HiveConfig</returns>
-        public static HiveConfig CreateSimulationConfig(bool debugAkka, bool debugHive, TimeSpan interruptInterval,
-            TimeSpan timeToAdvance, Time startTime)
+        /// <param name="startTime">Default is Time.Now</param>
+        /// <returns></returns>
+        public IHiveConfigBase WithStartTime(Time startTime)
         {
-            return new HiveConfig(debugAkka, debugHive, interruptInterval, timeToAdvance, startTime, new ActionFactory());
+            return this with { StartTime = startTime };
         }
 
         /// <summary>
-        /// 
+        /// Creates basic Hive Configuration
         /// </summary>
-        /// <param name="debugAkka"></param>
-        /// <param name="debugHive"></param>
-        /// <param name="interruptInterval"></param>
-        /// <param name="startTime">Start time of the system</param>
-        /// <param name="actorActionFactory">Actor action factory for custom Holon functionality</param>
-        /// <returns>HiveConfig</returns>
-        public static HiveConfig CreateHolonConfig(bool debugAkka, bool debugHive, TimeSpan interruptInterval,
-            Time startTime, ActionFactory actorActionFactory)
+        /// <returns></returns>
+        public static IHiveConfigBase ConfigureSimulation()
         {
-            return new HiveConfig(debugAkka, debugHive, interruptInterval, TimeSpan.Zero, startTime, actorActionFactory);
+            return new HiveConfig();
         }
 
-        public TimeSpan TimeToAdvance { get; }
-        public Time StartTime { get; }
-        public TimeSpan InterruptInterval { get; }
-        public bool DebugAkka { get; }
-        public bool DebugHive { get; }
-        public ActionFactory ActorActionFactory { get; }
+        /// <summary>
+        /// Creates basic Hive Configuration Holonic message flow
+        /// </summary>
+        /// <returns></returns>
+        public static IHiveConfigHolon ConfigureHolon()
+        {
+            return new HiveConfig();
+        }
+
+        /// <summary>
+        /// Transforms from HiveConfigBase to HiveConfig
+        /// </summary>
+        /// <returns></returns>
+        public IHiveConfig Build() => this;
+
+        /// <summary>
+        /// Debugging
+        /// </summary>
+        /// <param name="akka"> akka internal using nLog </param>
+        /// <param name="hive"> hive internal unsing nLog </param>
+        /// <returns></returns>
+        public IHiveConfigBase WithDebugging(bool akka, bool hive)
+        {
+            return this with { DebugAkka = akka, DebugHive = hive};
+        }
+
+        /// <summary>
+        /// TimeSpan in wich the SimulationStateManager is triggered
+        /// </summary>
+        /// <param name="timeSpan"></param>
+        /// <returns></returns>
+        public IHiveConfigBase WithInterruptInterval(TimeSpan timeSpan)
+        {
+            return this with { InterruptInterval =  timeSpan };
+        }
+
+        /// <summary>
+        /// Configures the simulation runspeed for each tick.
+        /// </summary>
+        /// <param name="timeSpan">Default is TimeSpan.Zero</param>
+        /// <returns></returns>
+        public IHiveConfigBase WithTickSpeed(TimeSpan timeSpan)
+        {
+            return this with { TickSpeed = timeSpan };
+        }
+
+        /// <summary>
+        /// Configurates the Actor Action Factory for Holonic Apporach
+        /// </summary>
+        /// <param name="actionFactory"></param>
+        /// <returns></returns>
+        public IHiveConfigBase WithActionFactory(ActionFactory actionFactory)
+        {
+            return this with { ActorActionFactory = actionFactory };
+        }
+
+
+        /// <summary>
+        /// Enables Message Tracing
+        /// </summary>
+        /// <returns></returns>
+        public IHiveConfigBase WithMessageTracer(MessageTrace tracer)
+        {
+            return this with { MessageTrace = tracer  };
+        }
+
+
+        public TimeSpan TickSpeed { get; init; }
+        public Time StartTime { get; init; }
+        public TimeSpan InterruptInterval { get; init; }
+        public bool DebugAkka { get; init; }
+        public bool DebugHive { get; init; }
+        public ActionFactory ActorActionFactory { get; init; }
+        public MessageTrace MessageTrace { get; init; }
         public Inbox Inbox { get; set; }
     }
 }

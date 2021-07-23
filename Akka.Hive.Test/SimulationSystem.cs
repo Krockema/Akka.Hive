@@ -24,11 +24,11 @@ namespace Akka.Hive.Test
 
         public static Hive SimulationCreator(bool debugMode, long timeToAdvance)
         {
-            HiveConfig simConfig = HiveConfig.CreateSimulationConfig(debugAkka: false
-                , debugHive: debugMode
-                , interruptInterval: TimeSpan.FromMinutes(120)
-                , timeToAdvance: TimeSpan.FromMilliseconds(timeToAdvance)
-                , startTime: Time.Now);
+            var simConfig = HiveConfig.ConfigureSimulation()
+                                      .WithDebugging(akka: false, hive: true)
+                                      .WithInterruptInterval(TimeSpan.FromMinutes(120))
+                                      .WithTickSpeed(TimeSpan.FromMilliseconds(timeToAdvance))
+                                      .Build();
             var sim = new Hive(simConfig);
             // ActorMonitoringExtension.Monitors(sim.ActorSystem).IncrementActorCreated();
             // ActorMonitoringExtension.Monitors(sim.ActorSystem).IncrementMessagesReceived();

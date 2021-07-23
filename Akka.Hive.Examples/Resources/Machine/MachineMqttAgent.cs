@@ -18,14 +18,14 @@ namespace Akka.Hive.Examples.Resources.Machine
 
         public Action<object> SendExtern { get; set; }
 
-        public MachineMqttAgent(IActorRef context, Time time, HiveConfig engineConfig, IActorRef jobDistributor) : base(context, time, engineConfig)
+        public MachineMqttAgent(IActorRef context, Time time, IHiveConfig hiveConfig, IActorRef jobDistributor) : base(context, time, hiveConfig)
         {
             Logger.Log(LogLevel.Info, "Time: " + Time.Value + " - " + Self.Path + " is Ready");
             _jobDistributor = jobDistributor;
         }
-        public static Props Props(IActorRef simulationContext, Time time, HiveConfig engineConfig, IActorRef jobDistributor)
+        public static Props Props(IActorRef simulationContext, Time time, IHiveConfig hiveConfig, IActorRef jobDistributor)
         {
-            return Actor.Props.Create(() => new MachineMqttAgent(simulationContext, time, engineConfig, jobDistributor));
+            return Actor.Props.Create(() => new MachineMqttAgent(simulationContext, time, hiveConfig, jobDistributor));
         }
 
         protected override void Do(object o)

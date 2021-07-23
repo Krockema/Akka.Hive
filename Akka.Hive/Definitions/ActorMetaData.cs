@@ -6,6 +6,11 @@
     /// </summary>
     public class ActorMetaData
     {
+        /// <summary>
+        /// default ActorMetaData 
+        /// </summary>
+        /// <param name="name">ActorName</param>
+        /// <param name="parent">Parent Actor, default null</param>
         public ActorMetaData(string name, ActorMetaData parent = null)
         {
             Name = name;

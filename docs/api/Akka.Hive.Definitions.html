@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Namespace Akka.Hive.Definitions
    ">
-    <meta name="generator" content="docfx 2.56.7.0">
+    <meta name="generator" content="docfx 2.58.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -84,6 +84,20 @@ based on their parent(s) / position in hierarchy.</p>
       <h4><a class="xref" href="Akka.Hive.Definitions.HiveConfig.html">HiveConfig</a></h4>
       <section><p>Global Akka Hive Configuration, containing start time, interrupt interval, simulation break, actor action factory, and debug switches.</p>
 </section>
+      <h4><a class="xref" href="Akka.Hive.Definitions.HiveMessage.html">HiveMessage</a></h4>
+      <section><p>Data Structure</p>
+</section>
+      <h4><a class="xref" href="Akka.Hive.Definitions.HiveMessage.Done.html">HiveMessage.Done</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Akka.Hive.Definitions.HiveMessage.Schedule.html">HiveMessage.Schedule</a></h4>
+      <section><p>A Wrapper for messages to pop after given delay</p>
+</section>
+      <h4><a class="xref" href="Akka.Hive.Definitions.HiveMessage.Shutdown.html">HiveMessage.Shutdown</a></h4>
+      <section><p>Use this message to force System shutdown, it waits till all messages for the current timespan are processed
+and then terminates the System, regardless of feature messages.</p>
+</section>
+      <h4><a class="xref" href="Akka.Hive.Definitions.MessageTrace.html">MessageTrace</a></h4>
+      <section></section>
       <h4><a class="xref" href="Akka.Hive.Definitions.PriorityQueue-1.html">PriorityQueue&lt;T&gt;</a></h4>
       <section><p>Priority Queue implementation from
 <a href="https://visualstudiomagazine.com/Articles/2012/11/01/Priority-Queues-with-C.aspx?Page=2///">https://visualstudiomagazine.com/Articles/2012/11/01/Priority-Queues-with-C.aspx?Page=2///</a></p>
@@ -92,16 +106,24 @@ based on their parent(s) / position in hierarchy.</p>
       <section><p>Time wrapper that cuts milliseconds on creation, to enable async time comparison.
 This ensures a true even if the time is some milliseconds of, due to the async actor calls.</p>
 </section>
+    <h3 id="interfaces">Interfaces
+  </h3>
+      <h4><a class="xref" href="Akka.Hive.Definitions.IHiveConfig.html">IHiveConfig</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Akka.Hive.Definitions.IHiveConfigBase.html">IHiveConfigBase</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Akka.Hive.Definitions.IHiveConfigHolon.html">IHiveConfigHolon</a></h4>
+      <section></section>
     <h3 id="enums">Enums
   </h3>
-      <h4><a class="xref" href="Akka.Hive.Definitions.Command.html">Command</a></h4>
+      <h4><a class="xref" href="Akka.Hive.Definitions.HiveMessage.Command.html">HiveMessage.Command</a></h4>
       <section><p>For simple and fast internal instructions</p>
+</section>
+      <h4><a class="xref" href="Akka.Hive.Definitions.HiveMessage.SimulationState.html">HiveMessage.SimulationState</a></h4>
+      <section><p>Used to build a start / stop / mechanic with this</p>
 </section>
       <h4><a class="xref" href="Akka.Hive.Definitions.Priority.html">Priority</a></h4>
       <section><p>Possible message priorities, Medium is default.</p>
-</section>
-      <h4><a class="xref" href="Akka.Hive.Definitions.SimulationState.html">SimulationState</a></h4>
-      <section><p>Used to build a start / stop / mechanic with this</p>
 </section>
 </article>
           </div>

@@ -13,11 +13,11 @@ namespace Akka.Hive.Examples.Resources.Machine
         // Temp for test
         Random r = new Random(1337);
 
-        public MachineAgent(IActorRef simulationContext, Time time, HiveConfig engineConfig) : base(simulationContext, time, engineConfig)
+        public MachineAgent(IActorRef simulationContext, Time time, IHiveConfig engineConfig) : base(simulationContext, time, engineConfig)
         {
             Logger.Log(LogLevel.Info, "Time: " + Time.Value + " - " + Self.Path + " is Ready");
         }
-        public static Props Props(IActorRef simulationContext, Time time, HiveConfig hiveConfig)
+        public static Props Props(IActorRef simulationContext, Time time, IHiveConfig hiveConfig)
         {
             return Actor.Props.Create(() => new MachineAgent(simulationContext, time, hiveConfig));
         }
@@ -32,11 +32,11 @@ namespace Akka.Hive.Examples.Resources.Machine
             }
         }
 
-        private void DoWork(MachineAgent.Work m)
+        private void DoWork(Work m)
         {
             var material = m.Message as MaterialRequest;
             var dur = material.Material.AssemblyDuration + r.Next(-1, 2);
-            Schedule(TimeSpan.FromSeconds(dur), new FinishWork(m.Message, Self));
+            Schedule(TimeSpan.FromSeconds(dur), new FinishWork(m.Message, Self).WithTraceing());
             Logger.Log(LogLevel.Info, "{0} {1} started to work : {2} ",  new object[] {  this.Time.Value, Self.Path.Name, material.Material.Name });
         }
 
