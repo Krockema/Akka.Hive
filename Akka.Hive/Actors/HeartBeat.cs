@@ -10,22 +10,22 @@ namespace Akka.Hive.Actors
     /// </summary>
     public class HeartBeat :  ReceiveActor
     {
-        private TimeSpan _timeToAdvance;
+        private TimeSpan _tickSpeed;
         /// <summary>
         /// Creation method for HeartBeat Actor
         /// </summary>
-        /// <param name="timeToAdvance">minimum time that is spend for each global tick</param>
+        /// <param name="tickSpeed">minimum time that is spend for each global tick</param>
         /// <returns></returns>
-        public static Props Props(TimeSpan timeToAdvance)
+        public static Props Props(TimeSpan tickSpeed)
         {
-            return Actor.Props.Create(() => new HeartBeat(timeToAdvance));
+            return Actor.Props.Create(() => new HeartBeat(tickSpeed));
         }
 
 
-        public HeartBeat(TimeSpan timeToAdvance)
+        private HeartBeat(TimeSpan timeToAdvance)
         {
             #region init
-            _timeToAdvance = timeToAdvance;
+            _tickSpeed = timeToAdvance;
             #endregion
             
             Receive<HiveMessage.Command>(dl =>
@@ -33,13 +33,13 @@ namespace Akka.Hive.Actors
             );
 
             Receive<TimeSpan>(tta =>
-                _timeToAdvance = tta
+                _tickSpeed = tta
             );
         }
 
         private void SendHeartBeat()
         {
-            Task.Delay(_timeToAdvance).Wait();
+            Task.Delay(_tickSpeed).Wait();
             Sender.Tell(HiveMessage.Command.HeartBeat);
         }
 

@@ -9,6 +9,10 @@ namespace Akka.Hive.Actors
     /// </summary>
     public class TimeMonitor :  ReceiveActor
     {
+        /// <summary>
+        /// Time monitor that is triggered for each time step in simulative context
+        /// </summary>
+        /// <param name="report"></param>
         public TimeMonitor(Action<Time> report)
         {
             Receive<HiveMessage.AdvanceTo>(dl =>

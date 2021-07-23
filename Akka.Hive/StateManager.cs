@@ -19,11 +19,11 @@ namespace Akka.Hive
         private Inbox Inbox;
         private Hive Hive;
         /// <summary>
-        /// Method do handle simulation State
+        /// Method to handle simulation State
         /// </summary>
         /// <param name="inbox"></param>
         /// <param name="hive"></param>
-        public void Continuation()
+        private void Continuation()
         {
             while (IsRunning)
             {
@@ -44,7 +44,7 @@ namespace Akka.Hive
                     case HiveMessage.SimulationState.Finished:
                         Logger.Log(LogLevel.Warn, "Hive Finished !");
                         this.SimulationIsTerminating();
-                        Hive.ActorSystem.Terminate().Wait();
+                        Hive.Terminate().Wait();
                         IsRunning = false;
                         break;
                     case HiveMessage.SimulationState.Bounced:
@@ -59,16 +59,33 @@ namespace Akka.Hive
         }
 
         public static IStateManagerBase Base => new StateManager();
+
+        /// <summary>
+        /// Adds the reference to the basic system to the StateManager
+        /// </summary>
+        /// <param name="hive"></param>
+        /// <returns></returns>
         public IWithHive WithHive(Hive hive)
         {
             Hive = hive;
             return this;
         }
+
+        /// <summary>
+        /// Adds an Inbox to the configuration
+        /// </summary>
+        /// <param name="inbox">Mailbox that can be used to communicate with the stateManager</param>
+        /// <returns></returns>
         public IWithInbox WithInbox(Inbox inbox)
         {
             Inbox = inbox;
             return this;
         }
+
+        /// <summary>
+        /// Starts the Actor system after Initialisation has been done.
+        /// </summary>
+        /// <returns></returns>
         public StateManager Start()
         {
             Continuation();

@@ -15,11 +15,13 @@ namespace Akka.Hive.Actors
     public class SimulationManager : ReceiveActor
     {
         // for Normal Mode
+        private readonly NLog.Logger _logger = LogManager.GetLogger(TargetNames.LOG_AKKA);
         private readonly IFeatureInstructions _featuredInstructions;
         private ICurrentInstructions _currentInstructions;
         
-        private readonly NLog.Logger _logger = LogManager.GetLogger(TargetNames.LOG_AKKA);
-
+        /// <summary>
+        /// Hive configuration
+        /// </summary>
         private IHiveConfig HiveConfig { get; }
         
         /// <summary>

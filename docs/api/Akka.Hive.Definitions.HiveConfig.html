@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class HiveConfig
    ">
-    <meta name="generator" content="docfx 2.56.7.0">
+    <meta name="generator" content="docfx 2.58.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -81,6 +81,13 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">HiveConfig</span></div>
   </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Akka.Hive.Definitions.IHiveConfig.html">IHiveConfig</a></div>
+    <div><a class="xref" href="Akka.Hive.Definitions.IHiveConfigBase.html">IHiveConfigBase</a></div>
+    <div><a class="xref" href="Akka.Hive.Definitions.IHiveConfigHolon.html">IHiveConfigHolon</a></div>
+    <div><span class="xref">System.IEquatable</span>&lt;<a class="xref" href="Akka.Hive.Definitions.HiveConfig.html">HiveConfig</a>&gt;</div>
+  </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
@@ -109,24 +116,19 @@
   <h6><strong>Assembly</strong>: Akka.Hive.dll</h6>
   <h5 id="Akka_Hive_Definitions_HiveConfig_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class HiveConfig</code></pre>
+    <pre><code class="lang-csharp hljs">public class HiveConfig : IHiveConfig, IHiveConfigBase, IHiveConfigHolon, IEquatable&lt;HiveConfig&gt;</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Krockema/Akka.Hive/new/develop/apiSpec/new?filename=Akka_Hive_Definitions_HiveConfig_ActorActionFactory.md&amp;value=---%0Auid%3A%20Akka.Hive.Definitions.HiveConfig.ActorActionFactory%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Definitions/HiveConfig.cs/#L68">View Source</a>
-  </span>
+  
+  
   <a id="Akka_Hive_Definitions_HiveConfig_ActorActionFactory_" data-uid="Akka.Hive.Definitions.HiveConfig.ActorActionFactory*"></a>
   <h4 id="Akka_Hive_Definitions_HiveConfig_ActorActionFactory" data-uid="Akka.Hive.Definitions.HiveConfig.ActorActionFactory">ActorActionFactory</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ActionFactory ActorActionFactory { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public ActionFactory ActorActionFactory { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -143,20 +145,15 @@
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Krockema/Akka.Hive/new/develop/apiSpec/new?filename=Akka_Hive_Definitions_HiveConfig_DebugAkka.md&amp;value=---%0Auid%3A%20Akka.Hive.Definitions.HiveConfig.DebugAkka%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Definitions/HiveConfig.cs/#L66">View Source</a>
-  </span>
+  
+  
   <a id="Akka_Hive_Definitions_HiveConfig_DebugAkka_" data-uid="Akka.Hive.Definitions.HiveConfig.DebugAkka*"></a>
   <h4 id="Akka_Hive_Definitions_HiveConfig_DebugAkka" data-uid="Akka.Hive.Definitions.HiveConfig.DebugAkka">DebugAkka</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool DebugAkka { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool DebugAkka { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -173,20 +170,15 @@
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Krockema/Akka.Hive/new/develop/apiSpec/new?filename=Akka_Hive_Definitions_HiveConfig_DebugHive.md&amp;value=---%0Auid%3A%20Akka.Hive.Definitions.HiveConfig.DebugHive%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Definitions/HiveConfig.cs/#L67">View Source</a>
-  </span>
+  
+  
   <a id="Akka_Hive_Definitions_HiveConfig_DebugHive_" data-uid="Akka.Hive.Definitions.HiveConfig.DebugHive*"></a>
   <h4 id="Akka_Hive_Definitions_HiveConfig_DebugHive" data-uid="Akka.Hive.Definitions.HiveConfig.DebugHive">DebugHive</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool DebugHive { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool DebugHive { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -203,13 +195,8 @@
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Krockema/Akka.Hive/new/develop/apiSpec/new?filename=Akka_Hive_Definitions_HiveConfig_Inbox.md&amp;value=---%0Auid%3A%20Akka.Hive.Definitions.HiveConfig.Inbox%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Definitions/HiveConfig.cs/#L69">View Source</a>
-  </span>
+  
+  
   <a id="Akka_Hive_Definitions_HiveConfig_Inbox_" data-uid="Akka.Hive.Definitions.HiveConfig.Inbox*"></a>
   <h4 id="Akka_Hive_Definitions_HiveConfig_Inbox" data-uid="Akka.Hive.Definitions.HiveConfig.Inbox">Inbox</h4>
   <div class="markdown level1 summary"></div>
@@ -233,20 +220,15 @@
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Krockema/Akka.Hive/new/develop/apiSpec/new?filename=Akka_Hive_Definitions_HiveConfig_InterruptInterval.md&amp;value=---%0Auid%3A%20Akka.Hive.Definitions.HiveConfig.InterruptInterval%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Definitions/HiveConfig.cs/#L65">View Source</a>
-  </span>
+  
+  
   <a id="Akka_Hive_Definitions_HiveConfig_InterruptInterval_" data-uid="Akka.Hive.Definitions.HiveConfig.InterruptInterval*"></a>
   <h4 id="Akka_Hive_Definitions_HiveConfig_InterruptInterval" data-uid="Akka.Hive.Definitions.HiveConfig.InterruptInterval">InterruptInterval</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TimeSpan InterruptInterval { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public TimeSpan InterruptInterval { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -263,20 +245,40 @@
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Krockema/Akka.Hive/new/develop/apiSpec/new?filename=Akka_Hive_Definitions_HiveConfig_StartTime.md&amp;value=---%0Auid%3A%20Akka.Hive.Definitions.HiveConfig.StartTime%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Definitions/HiveConfig.cs/#L64">View Source</a>
-  </span>
+  
+  
+  <a id="Akka_Hive_Definitions_HiveConfig_MessageTrace_" data-uid="Akka.Hive.Definitions.HiveConfig.MessageTrace*"></a>
+  <h4 id="Akka_Hive_Definitions_HiveConfig_MessageTrace" data-uid="Akka.Hive.Definitions.HiveConfig.MessageTrace">MessageTrace</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MessageTrace MessageTrace { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Akka.Hive.Definitions.MessageTrace.html">MessageTrace</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <a id="Akka_Hive_Definitions_HiveConfig_StartTime_" data-uid="Akka.Hive.Definitions.HiveConfig.StartTime*"></a>
   <h4 id="Akka_Hive_Definitions_HiveConfig_StartTime" data-uid="Akka.Hive.Definitions.HiveConfig.StartTime">StartTime</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Time StartTime { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public Time StartTime { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -293,20 +295,15 @@
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Krockema/Akka.Hive/new/develop/apiSpec/new?filename=Akka_Hive_Definitions_HiveConfig_TimeToAdvance.md&amp;value=---%0Auid%3A%20Akka.Hive.Definitions.HiveConfig.TimeToAdvance%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Definitions/HiveConfig.cs/#L63">View Source</a>
-  </span>
-  <a id="Akka_Hive_Definitions_HiveConfig_TimeToAdvance_" data-uid="Akka.Hive.Definitions.HiveConfig.TimeToAdvance*"></a>
-  <h4 id="Akka_Hive_Definitions_HiveConfig_TimeToAdvance" data-uid="Akka.Hive.Definitions.HiveConfig.TimeToAdvance">TimeToAdvance</h4>
+  
+  
+  <a id="Akka_Hive_Definitions_HiveConfig_TickSpeed_" data-uid="Akka.Hive.Definitions.HiveConfig.TickSpeed*"></a>
+  <h4 id="Akka_Hive_Definitions_HiveConfig_TickSpeed" data-uid="Akka.Hive.Definitions.HiveConfig.TickSpeed">TickSpeed</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TimeSpan TimeToAdvance { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public TimeSpan TickSpeed { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -325,91 +322,137 @@
   </table>
   <h3 id="methods">Methods
   </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Krockema/Akka.Hive/new/develop/apiSpec/new?filename=Akka_Hive_Definitions_HiveConfig_CreateHolonConfig_System_Boolean_System_Boolean_System_TimeSpan_Akka_Hive_Definitions_Time_Akka_Hive_Action_ActionFactory_.md&amp;value=---%0Auid%3A%20Akka.Hive.Definitions.HiveConfig.CreateHolonConfig(System.Boolean%2CSystem.Boolean%2CSystem.TimeSpan%2CAkka.Hive.Definitions.Time%2CAkka.Hive.Action.ActionFactory)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Definitions/HiveConfig.cs/#L57">View Source</a>
-  </span>
-  <a id="Akka_Hive_Definitions_HiveConfig_CreateHolonConfig_" data-uid="Akka.Hive.Definitions.HiveConfig.CreateHolonConfig*"></a>
-  <h4 id="Akka_Hive_Definitions_HiveConfig_CreateHolonConfig_System_Boolean_System_Boolean_System_TimeSpan_Akka_Hive_Definitions_Time_Akka_Hive_Action_ActionFactory_" data-uid="Akka.Hive.Definitions.HiveConfig.CreateHolonConfig(System.Boolean,System.Boolean,System.TimeSpan,Akka.Hive.Definitions.Time,Akka.Hive.Action.ActionFactory)">CreateHolonConfig(Boolean, Boolean, TimeSpan, Time, ActionFactory)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static HiveConfig CreateHolonConfig(bool debugAkka, bool debugHive, TimeSpan interruptInterval, Time startTime, ActionFactory actorActionFactory)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">debugAkka</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">debugHive</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.TimeSpan</span></td>
-        <td><span class="parametername">interruptInterval</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Akka.Hive.Definitions.Time.html">Time</a></td>
-        <td><span class="parametername">startTime</span></td>
-        <td><p>Start time of the system</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Akka.Hive.Action.ActionFactory.html">ActionFactory</a></td>
-        <td><span class="parametername">actorActionFactory</span></td>
-        <td><p>Actor action factory for custom Holon functionality</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Akka.Hive.Definitions.HiveConfig.html">HiveConfig</a></td>
-        <td><p>HiveConfig</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Krockema/Akka.Hive/new/develop/apiSpec/new?filename=Akka_Hive_Definitions_HiveConfig_CreateSimulationConfig_System_Boolean_System_Boolean_System_TimeSpan_System_TimeSpan_Akka_Hive_Definitions_Time_.md&amp;value=---%0Auid%3A%20Akka.Hive.Definitions.HiveConfig.CreateSimulationConfig(System.Boolean%2CSystem.Boolean%2CSystem.TimeSpan%2CSystem.TimeSpan%2CAkka.Hive.Definitions.Time)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Definitions/HiveConfig.cs/#L42">View Source</a>
-  </span>
-  <a id="Akka_Hive_Definitions_HiveConfig_CreateSimulationConfig_" data-uid="Akka.Hive.Definitions.HiveConfig.CreateSimulationConfig*"></a>
-  <h4 id="Akka_Hive_Definitions_HiveConfig_CreateSimulationConfig_System_Boolean_System_Boolean_System_TimeSpan_System_TimeSpan_Akka_Hive_Definitions_Time_" data-uid="Akka.Hive.Definitions.HiveConfig.CreateSimulationConfig(System.Boolean,System.Boolean,System.TimeSpan,System.TimeSpan,Akka.Hive.Definitions.Time)">CreateSimulationConfig(Boolean, Boolean, TimeSpan, TimeSpan, Time)</h4>
-  <div class="markdown level1 summary"><p>Creates Akka Hive Configuration for Simulation purpose.</p>
+  
+  
+  <a id="Akka_Hive_Definitions_HiveConfig_Build_" data-uid="Akka.Hive.Definitions.HiveConfig.Build*"></a>
+  <h4 id="Akka_Hive_Definitions_HiveConfig_Build" data-uid="Akka.Hive.Definitions.HiveConfig.Build">Build()</h4>
+  <div class="markdown level1 summary"><p>Transforms from HiveConfigBase to HiveConfig</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static HiveConfig CreateSimulationConfig(bool debugAkka, bool debugHive, TimeSpan interruptInterval, TimeSpan timeToAdvance, Time startTime)</code></pre>
+    <pre><code class="lang-csharp hljs">public IHiveConfig Build()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Akka.Hive.Definitions.IHiveConfig.html">IHiveConfig</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Akka_Hive_Definitions_HiveConfig_ConfigureHolon_" data-uid="Akka.Hive.Definitions.HiveConfig.ConfigureHolon*"></a>
+  <h4 id="Akka_Hive_Definitions_HiveConfig_ConfigureHolon" data-uid="Akka.Hive.Definitions.HiveConfig.ConfigureHolon">ConfigureHolon()</h4>
+  <div class="markdown level1 summary"><p>Creates basic Hive Configuration Holonic message flow</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IHiveConfigHolon ConfigureHolon()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Akka.Hive.Definitions.IHiveConfigHolon.html">IHiveConfigHolon</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Akka_Hive_Definitions_HiveConfig_ConfigureSimulation_" data-uid="Akka.Hive.Definitions.HiveConfig.ConfigureSimulation*"></a>
+  <h4 id="Akka_Hive_Definitions_HiveConfig_ConfigureSimulation" data-uid="Akka.Hive.Definitions.HiveConfig.ConfigureSimulation">ConfigureSimulation()</h4>
+  <div class="markdown level1 summary"><p>Creates basic Hive Configuration</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IHiveConfigBase ConfigureSimulation()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Akka.Hive.Definitions.IHiveConfigBase.html">IHiveConfigBase</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Akka_Hive_Definitions_HiveConfig_WithActionFactory_" data-uid="Akka.Hive.Definitions.HiveConfig.WithActionFactory*"></a>
+  <h4 id="Akka_Hive_Definitions_HiveConfig_WithActionFactory_Akka_Hive_Action_ActionFactory_" data-uid="Akka.Hive.Definitions.HiveConfig.WithActionFactory(Akka.Hive.Action.ActionFactory)">WithActionFactory(ActionFactory)</h4>
+  <div class="markdown level1 summary"><p>Configurates the Actor Action Factory for Holonic Apporach</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IHiveConfigBase WithActionFactory(ActionFactory actionFactory)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Akka.Hive.Action.ActionFactory.html">ActionFactory</a></td>
+        <td><span class="parametername">actionFactory</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Akka.Hive.Definitions.IHiveConfigBase.html">IHiveConfigBase</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Akka_Hive_Definitions_HiveConfig_WithDebugging_" data-uid="Akka.Hive.Definitions.HiveConfig.WithDebugging*"></a>
+  <h4 id="Akka_Hive_Definitions_HiveConfig_WithDebugging_System_Boolean_System_Boolean_" data-uid="Akka.Hive.Definitions.HiveConfig.WithDebugging(System.Boolean,System.Boolean)">WithDebugging(Boolean, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Debugging</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IHiveConfigBase WithDebugging(bool akka, bool hive)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -423,33 +466,14 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">debugAkka</span></td>
-        <td><p>Debug the Akka Core System</p>
+        <td><span class="parametername">akka</span></td>
+        <td><p>akka internal using nLog</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">debugHive</span></td>
-        <td><p>Debug Akka Hive for simulation and normal time</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.TimeSpan</span></td>
-        <td><span class="parametername">interruptInterval</span></td>
-        <td><p>At what TimeSpan shall the system stop and wait for further Commands
-the System will continue by calling the SimulationContext.Continue() method.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.TimeSpan</span></td>
-        <td><span class="parametername">timeToAdvance</span></td>
-        <td><p>Minimum time span to Advance to advance the simulation clock</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Akka.Hive.Definitions.Time.html">Time</a></td>
-        <td><span class="parametername">startTime</span></td>
-        <td><p>Start time of the simulation</p>
+        <td><span class="parametername">hive</span></td>
+        <td><p>hive internal unsing nLog</p>
 </td>
       </tr>
     </tbody>
@@ -464,12 +488,198 @@ the System will continue by calling the SimulationContext.Continue() method.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Akka.Hive.Definitions.HiveConfig.html">HiveConfig</a></td>
-        <td><p>HiveConfig</p>
+        <td><a class="xref" href="Akka.Hive.Definitions.IHiveConfigBase.html">IHiveConfigBase</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Akka_Hive_Definitions_HiveConfig_WithInterruptInterval_" data-uid="Akka.Hive.Definitions.HiveConfig.WithInterruptInterval*"></a>
+  <h4 id="Akka_Hive_Definitions_HiveConfig_WithInterruptInterval_System_TimeSpan_" data-uid="Akka.Hive.Definitions.HiveConfig.WithInterruptInterval(System.TimeSpan)">WithInterruptInterval(TimeSpan)</h4>
+  <div class="markdown level1 summary"><p>TimeSpan in wich the SimulationStateManager is triggered</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IHiveConfigBase WithInterruptInterval(TimeSpan timeSpan)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.TimeSpan</span></td>
+        <td><span class="parametername">timeSpan</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Akka.Hive.Definitions.IHiveConfigBase.html">IHiveConfigBase</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Akka_Hive_Definitions_HiveConfig_WithMessageTracer_" data-uid="Akka.Hive.Definitions.HiveConfig.WithMessageTracer*"></a>
+  <h4 id="Akka_Hive_Definitions_HiveConfig_WithMessageTracer_Akka_Hive_Definitions_MessageTrace_" data-uid="Akka.Hive.Definitions.HiveConfig.WithMessageTracer(Akka.Hive.Definitions.MessageTrace)">WithMessageTracer(MessageTrace)</h4>
+  <div class="markdown level1 summary"><p>Enables Message Tracing</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IHiveConfigBase WithMessageTracer(MessageTrace tracer)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Akka.Hive.Definitions.MessageTrace.html">MessageTrace</a></td>
+        <td><span class="parametername">tracer</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Akka.Hive.Definitions.IHiveConfigBase.html">IHiveConfigBase</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Akka_Hive_Definitions_HiveConfig_WithStartTime_" data-uid="Akka.Hive.Definitions.HiveConfig.WithStartTime*"></a>
+  <h4 id="Akka_Hive_Definitions_HiveConfig_WithStartTime_Akka_Hive_Definitions_Time_" data-uid="Akka.Hive.Definitions.HiveConfig.WithStartTime(Akka.Hive.Definitions.Time)">WithStartTime(Time)</h4>
+  <div class="markdown level1 summary"><p>Time at wich the system start to calculate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IHiveConfigBase WithStartTime(Time startTime)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Akka.Hive.Definitions.Time.html">Time</a></td>
+        <td><span class="parametername">startTime</span></td>
+        <td><p>Default is Time.Now</p>
 </td>
       </tr>
     </tbody>
   </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Akka.Hive.Definitions.IHiveConfigBase.html">IHiveConfigBase</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Akka_Hive_Definitions_HiveConfig_WithTickSpeed_" data-uid="Akka.Hive.Definitions.HiveConfig.WithTickSpeed*"></a>
+  <h4 id="Akka_Hive_Definitions_HiveConfig_WithTickSpeed_System_TimeSpan_" data-uid="Akka.Hive.Definitions.HiveConfig.WithTickSpeed(System.TimeSpan)">WithTickSpeed(TimeSpan)</h4>
+  <div class="markdown level1 summary"><p>Configures the simulation runspeed for each tick.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IHiveConfigBase WithTickSpeed(TimeSpan timeSpan)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.TimeSpan</span></td>
+        <td><span class="parametername">timeSpan</span></td>
+        <td><p>Default is TimeSpan.Zero</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Akka.Hive.Definitions.IHiveConfigBase.html">IHiveConfigBase</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Akka.Hive.Definitions.IHiveConfig.html">IHiveConfig</a>
+  </div>
+  <div>
+      <a class="xref" href="Akka.Hive.Definitions.IHiveConfigBase.html">IHiveConfigBase</a>
+  </div>
+  <div>
+      <a class="xref" href="Akka.Hive.Definitions.IHiveConfigHolon.html">IHiveConfigHolon</a>
+  </div>
+  <div>
+      <span class="xref">System.IEquatable&lt;T&gt;</span>
+  </div>
 </article>
           </div>
           
@@ -477,12 +687,6 @@ the System will continue by calling the SimulationContext.Continue() method.</p>
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
-                  <li>
-                    <a href="https://github.com/Krockema/Akka.Hive/new/develop/apiSpec/new?filename=Akka_Hive_Definitions_HiveConfig.md&amp;value=---%0Auid%3A%20Akka.Hive.Definitions.HiveConfig%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/Definitions/HiveConfig.cs/#L10" class="contribution-link">View Source</a>
-                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

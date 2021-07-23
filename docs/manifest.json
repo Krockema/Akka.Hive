@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "C:/Users/marti/source/repos/Akka.Hive/Akka.Hive.Docu",
+  "source_base_path": "C:/Users/marti/source/repos/Krockema/Akka.Hive/Akka.Hive.Docu",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Action.ActionFactory.html",
-          "hash": "Dxgjz10xINt84lEvQPLwpg=="
+          "hash": "/eUXw8sxHkOPOasdSe6dl9gYOrOopW+Nj4vacm/r4zQ="
         }
       },
       "is_incremental": true,
@@ -17,11 +17,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/Akka.Hive.Action.Actions.yml",
+      "source_relative_path": "api/Akka.Hive.Action.ActionsType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Akka.Hive.Action.Actions.html",
-          "hash": "i8UnU1hf9P3LQzHIc9hghA=="
+          "relative_path": "api/Akka.Hive.Action.ActionsType.html",
+          "hash": "MAR9e5ecALiSXsVlunDpy3J8ZxKS2JnFvLJvtbPBGpE="
         }
       },
       "is_incremental": true,
@@ -33,10 +33,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Action.Holon.html",
-          "hash": "a6XVALL3FCgLiN99RxXbNw=="
+          "hash": "QB254lys0SlE6xd5dcKqEB42YEZjVg7nH810vkhvjQQ="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -45,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Action.Simulation.html",
-          "hash": "Ayf1YdRKoVVmll/Ne7WEQw=="
+          "hash": "rAVbASpZ9R2UM2IWWVlnuBejet+H/ltoreLF8qAfMPk="
         }
       },
       "is_incremental": true,
@@ -57,10 +57,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Action.html",
-          "hash": "Yh40PwMRTJeLDql8unIW4g=="
+          "hash": "TJ18yW+L7vis4CXlU6Ix1EHUK9COufwH0n++hn+6Hy4="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -69,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Actors.HeartBeat.html",
-          "hash": "ZMITjRa+SBcUEBpNqrQCgg=="
+          "hash": "r1o/aj67Le6eRs8LCV2QdLpEedQnN+yPdKsffbNnDF0="
         }
       },
       "is_incremental": true,
@@ -81,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Actors.HiveActor.html",
-          "hash": "TCtR+QutK8KqpVjmJWbA3w=="
+          "hash": "rPb25ILgxR3QmOKZBzpD/gNmzsC4Rhc+TwRCQQCCcJ0="
         }
       },
       "is_incremental": true,
@@ -93,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Actors.HolonManager.html",
-          "hash": "VK+Xai7QiN2NLclzqpY69g=="
+          "hash": "WSTB5PMhij2ODR+ILtZ2G44jOR5A7tQhM9c87wIUK5c="
         }
       },
       "is_incremental": true,
@@ -105,7 +105,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Actors.MessageMonitor.html",
-          "hash": "uuAYoMVmQzrLUwh2BrRi4g=="
+          "hash": "zj3iNvvsIZOktSY0CXCDW0lARA3whjBc9/aWEwbdRSE="
         }
       },
       "is_incremental": true,
@@ -117,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Actors.SimulationManager.html",
-          "hash": "W2YVmtiPAZQ4Zpbv0JMGfQ=="
+          "hash": "bSQgPlu9HXc1ORxabQrmleS35MnUHOQGX190UOQlWAk="
         }
       },
       "is_incremental": true,
@@ -129,7 +129,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Actors.TimeMonitor.html",
-          "hash": "YkXUPz+ZpctwIbU0nrFqJA=="
+          "hash": "SZpMYe/qhHDtSqaq3GEwyBvU3MWE786p3Y3PzYyt0TM="
         }
       },
       "is_incremental": true,
@@ -141,7 +141,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Actors.html",
-          "hash": "0MZ4HoWoN8411dyWaCg6Fg=="
+          "hash": "R2FPqxEIaP33SfFeWFk5R4n4uRLDmbxmUiS6QXjSx44="
         }
       },
       "is_incremental": true,
@@ -153,19 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Definitions.ActorMetaData.html",
-          "hash": "fYKfGymM2mBydmyDNeaxEA=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Akka.Hive.Definitions.Command.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Akka.Hive.Definitions.Command.html",
-          "hash": "+kvqKOi1PnCf0sBtBCDiaw=="
+          "hash": "erAxWzNQrxBvTCSZ/avTMqtlBYeQcy0TK1j7BTKLeNU="
         }
       },
       "is_incremental": true,
@@ -177,7 +165,127 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Definitions.HiveConfig.html",
-          "hash": "2gvRzsCfsKg/QWwqSktHzg=="
+          "hash": "g+GdAQLtZXPK5+EEaA7XAFplDfz6PSF5qmM/Qg1pdEg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Definitions.HiveMessage.Command.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Definitions.HiveMessage.Command.html",
+          "hash": "VIIWF7yjAbeHZLJ45vq7OAKPFz9fljTVBeJnpBIzBKQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Definitions.HiveMessage.Done.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Definitions.HiveMessage.Done.html",
+          "hash": "Ge1GLyA0ovBUDpLx4/dZl2kQXtUc8cQpmdGtjeK4Eow="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Definitions.HiveMessage.Schedule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Definitions.HiveMessage.Schedule.html",
+          "hash": "tO+XKhEMH4w/bKywzKrIwZgVE4r3wnCNt/vVHXkbDbA="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Definitions.HiveMessage.Shutdown.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Definitions.HiveMessage.Shutdown.html",
+          "hash": "aAxwL+T8Fg1ksECj9BkUyGCdefaM1OuHtUytCKhw6fQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Definitions.HiveMessage.SimulationState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Definitions.HiveMessage.SimulationState.html",
+          "hash": "BU/OsSWOikoiKvf6Q4YNKFumNCJx0bqaWm207YHAm3g="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Definitions.HiveMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Definitions.HiveMessage.html",
+          "hash": "MzOwFeTG5tB4vCea3eJD5ebq22ea3FhrUNtORwy6LfM="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Definitions.IHiveConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Definitions.IHiveConfig.html",
+          "hash": "Kple/X7cuXGaBBDo34R1udi8TrGme3AXLYcXeEqgyvc="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Definitions.IHiveConfigBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Definitions.IHiveConfigBase.html",
+          "hash": "H7TAgvJvshfGw2LX+aX4wchr4R7dCY4LNmO0DkbXmUQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Definitions.IHiveConfigHolon.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Definitions.IHiveConfigHolon.html",
+          "hash": "QzjDzQ0/R5zgb0p9knw2h+KudJb1tnGmQk3r5Ect42M="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Definitions.MessageTrace.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Definitions.MessageTrace.html",
+          "hash": "+0R1dyTbY/vMqYdr6Ii70M9dAEUpgTEDopvuaJVp/18="
         }
       },
       "is_incremental": true,
@@ -189,7 +297,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Definitions.Priority.html",
-          "hash": "dHKLgTMX/nM8Kk8Tw2DThA=="
+          "hash": "5/3cvjwt3nES1q//45xGdzYIcmABZ25/9uekavPKlO8="
         }
       },
       "is_incremental": true,
@@ -201,19 +309,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Definitions.PriorityQueue-1.html",
-          "hash": "yNjz8Z9jBabrERe2yPXH9Q=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Akka.Hive.Definitions.SimulationState.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Akka.Hive.Definitions.SimulationState.html",
-          "hash": "Irdx/iTfBlgdq2drPzovNg=="
+          "hash": "F8SVDAEKS95QX22EpP6edfaa7kWUvit1plWS2XZHTj8="
         }
       },
       "is_incremental": true,
@@ -225,7 +321,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Definitions.Time.html",
-          "hash": "DGXT0qkOf4cEdOXdpcALfQ=="
+          "hash": "iWJxFq9H9DZ1yYXgSq/ryBChEz0WfnXbAK5yyUuUtY0="
         }
       },
       "is_incremental": true,
@@ -237,7 +333,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Definitions.html",
-          "hash": "oEsm/w8GatOcK0EkFFUB0g=="
+          "hash": "wA5EIFGRlLUapyrEhu+I55VgcpTnQYOhXiSFM3YEcfc="
         }
       },
       "is_incremental": true,
@@ -249,7 +345,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Hive.html",
-          "hash": "37g1PKyReH/iemIS2da1lw=="
+          "hash": "ywjgRXlS3wCSTxoaTDfJWOUly025Klb8Ca9CNrGrdww="
         }
       },
       "is_incremental": true,
@@ -261,7 +357,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Instructions.FeatureStore.html",
-          "hash": "oQAR774cHbfWMKogEcF+sw=="
+          "hash": "U/etMlTpwUnlrAa6MxNCaTvKbgakgYap2ISjN8giSUI="
         }
       },
       "is_incremental": true,
@@ -273,7 +369,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Instructions.ICurrentInstructions.html",
-          "hash": "yfCEECHl0z7ugblxGM9Www=="
+          "hash": "J07blvCLRuSsb/P8MrFymVj4bwL4hyosRjxnQtuiKpw="
         }
       },
       "is_incremental": true,
@@ -285,7 +381,19 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Instructions.IFeatureInstructions.html",
-          "hash": "vamyIH0L1wjKk0fTsc183g=="
+          "hash": "x7RngRWnBy9RaekeDKhFHFD5ktc5om7jlcWuj0F6+BA="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Instructions.InstructionStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Instructions.InstructionStore.html",
+          "hash": "g6B89PFuMecz8F6ym63Ct2mxknN7F1WGK5UQkyQ/00A="
         }
       },
       "is_incremental": true,
@@ -297,7 +405,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Instructions.InstructionStoreFactory.html",
-          "hash": "Ne1Amr5toUNslFMh1ToZ6A=="
+          "hash": "J+6IPYrubniJT6Md2/ZZchiUMohv1dg0WUGvSdQmxws="
         }
       },
       "is_incremental": true,
@@ -309,19 +417,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Instructions.IntegerStore.html",
-          "hash": "7Pz86GFfQVudixuNsGKfuQ=="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Akka.Hive.Instructions.MessageStore.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Akka.Hive.Instructions.MessageStore.html",
-          "hash": "omI+GCn6GJzaNFXApS3GiQ=="
+          "hash": "6JPCQDY07DzrpPbl8yKrAN15VXu8+VnYsICl2AYq4No="
         }
       },
       "is_incremental": true,
@@ -333,7 +429,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Instructions.html",
-          "hash": "d14KGYo3+AKRDGgdsWXn6A=="
+          "hash": "f+13ayChgC3c4lpZuGiQ8Bnpagm4aHAYk2azdWmzG5s="
         }
       },
       "is_incremental": true,
@@ -345,7 +441,19 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Interfaces.ActorRefFactoryExtensions.html",
-          "hash": "0gs9ymWCSXFs8lL1UCc2/w=="
+          "hash": "Pqd92QbP6W22LRcveT07A1gBX8NRR9xZ63P5JAcQSdM="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Interfaces.IDirectMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Interfaces.IDirectMessage.html",
+          "hash": "KUwByv5HgaxrMTAYKt9tlpsEt7cil7wPRRN+y+rCwiQ="
         }
       },
       "is_incremental": true,
@@ -357,7 +465,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Interfaces.IHiveAction.html",
-          "hash": "hryiGiBmeETpScbhoHF2PQ=="
+          "hash": "lb4wdyegs2lfaDtri7G1Yy8jxWx+F6vQzXR4fD9wwks="
         }
       },
       "is_incremental": true,
@@ -369,7 +477,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Interfaces.IHiveActor.html",
-          "hash": "Gru3MFGI6Io/JdjkdTpxgA=="
+          "hash": "wOzSaRTxFkSNwSPQV1EHcc/F627TdG/YJG5ec0ITkf4="
         }
       },
       "is_incremental": true,
@@ -381,7 +489,55 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Interfaces.IHiveMessage.html",
-          "hash": "ZKoNGnR0Gym9dLaxYyALfA=="
+          "hash": "iFaMUPNj3Bx3RvBRbe0Bte72tU8vhy6xu8PDyzWZKII="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Interfaces.IStateManagerBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Interfaces.IStateManagerBase.html",
+          "hash": "cdxrPjPvmsH1DbNd6T818a7DqbffsHY2r7IOaOBgE+U="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Interfaces.IWithExternalConnection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Interfaces.IWithExternalConnection.html",
+          "hash": "Kgw/Ktn5+A0c4+nGYg9En3HTUg7UflURvbWga4hpPYs="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Interfaces.IWithHive.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Interfaces.IWithHive.html",
+          "hash": "qVvsCnn6MUXslvjgjLvd0TH8nUvYvOleP57eykxPfWM="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Akka.Hive.Interfaces.IWithInbox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Akka.Hive.Interfaces.IWithInbox.html",
+          "hash": "CBtxAg+n8f/+8toInFTaw/gmjthfYL3JJqNl0BOXSgU="
         }
       },
       "is_incremental": true,
@@ -393,7 +549,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Interfaces.html",
-          "hash": "yxNk+V4tbavDafGqnZBBSA=="
+          "hash": "50Sd4XnY2a7ZdKvK2ZTmMhoCmTdOStX3xlQrfN49E6U="
         }
       },
       "is_incremental": true,
@@ -405,7 +561,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Logging.LogConfiguration.html",
-          "hash": "eqSHevIevOTngBt4OxU0gQ=="
+          "hash": "4sUbsQvzJcwin7Vzs/s7qNnArfC+/yoCsbSBqBF3TGE="
         }
       },
       "is_incremental": true,
@@ -417,7 +573,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Logging.TargetNames.html",
-          "hash": "BilSvbxqaRE4NNS225Z+7A=="
+          "hash": "vnvAP877/VisAo55DSc5EyyYTBlPfruimHdnbv15MEE="
         }
       },
       "is_incremental": true,
@@ -429,7 +585,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Logging.TargetTypes.html",
-          "hash": "37tObJ77QCbnYOBdw3eD3Q=="
+          "hash": "XS6XJ3eSMod19wPwajFEiuvDLisPt7YUhW52PAglL+Q="
         }
       },
       "is_incremental": true,
@@ -441,7 +597,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.Logging.html",
-          "hash": "gvEYct3Lbu8dTZKZ+iek0Q=="
+          "hash": "bdALkw+iYiAHgvyc7g/TH7brQUVihXs7dUGtaPldeE0="
         }
       },
       "is_incremental": true,
@@ -453,7 +609,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.StateManager.html",
-          "hash": "oXMBFZltlWehJZ978T+IJw=="
+          "hash": "XAXhumnTylkXw4/7E7xuITylEnH5ouT+k0BgtnM7/1k="
         }
       },
       "is_incremental": true,
@@ -465,7 +621,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Akka.Hive.html",
-          "hash": "H8m77A1UxmnnjCO+Mjh1ng=="
+          "hash": "ORB7EISXulyJ4hcjWsYv2QNDJ+lAKgd86TEvPzOEDSo="
         }
       },
       "is_incremental": true,
@@ -477,7 +633,7 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "i3LvYIpxxjxMo8LYLd4WaQ=="
+          "hash": "4fAQgyr/1Y9B6D972SOXoPYApTPNtKL9bf7BClCPCDo="
         }
       },
       "is_incremental": true,
@@ -489,7 +645,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "vG1UYdUvDV0sITmOUQmDGQ=="
+          "hash": "wAfKJSwxFK0MLn7YGVFevrMkKJvIfR6mhyjkl0wvAlU="
         }
       },
       "is_incremental": false,
@@ -501,7 +657,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/Akka.Hive.html",
-          "hash": "sAcNWHKKMWVK2lFN2WOe2Q=="
+          "hash": "5KAYVMsGH9PsoW2Ul30Eea8jOShgi+5tqWHe7Hi8Y8w="
         }
       },
       "is_incremental": true,
@@ -513,7 +669,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/Hive.Actions.html",
-          "hash": "ryaIZWuWxRcf6cJDxXrtQg=="
+          "hash": "d3vlXK5EMD+f8rk44xX6iwcHHoYsP5zNE+H9kQ8EcoI="
         }
       },
       "is_incremental": true,
@@ -525,7 +681,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/Hive.Actors.html",
-          "hash": "5yWyIdX9NNMDxfDCJCG4Rw=="
+          "hash": "7+fMsroTGf2aLeVHsnEj0uJGzICftfcQbrp3DzcbK0o="
         }
       },
       "is_incremental": true,
@@ -537,7 +693,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/Hive.StateManager.html",
-          "hash": "KPr5CzG3O7ZwOSjG4Cv/6g=="
+          "hash": "WfphVELbPx2S8oAIu2IIk2RiRWj/3wm0iOWCoMUckZo="
         }
       },
       "is_incremental": true,
@@ -549,7 +705,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "ByIv0mgeqrOk/H8b/5684g=="
+          "hash": "9u96CTnqsTeU5UYMFztuyxgLDzguPvv8TMYdWdaG7jo="
         }
       },
       "is_incremental": true,
@@ -561,7 +717,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/toc.html",
-          "hash": "Uziaj1YnfltRR2NLxkaRjA=="
+          "hash": "ZO53xGsKeqTJFLLIEUNCPWThU+lQCSNMHtMdrHHfy/Q="
         }
       },
       "is_incremental": false,
@@ -705,7 +861,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "oZ/KRNCU81iA+7iVm6cnPw=="
+          "hash": "ZRuADR2sPBvKh0Ynlhh05z6eMYwNwV97AtGOxOwa7nk="
         }
       },
       "is_incremental": true,
@@ -717,7 +873,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "+rHUkRZHZRi5gd1aTU6lJA=="
+          "hash": "WSuRrYiGwKKMbtdG9z8W9fXmLoCyTnGg9AxbPKLXm2Y="
         }
       },
       "is_incremental": false,
@@ -742,8 +898,8 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 39,
-          "skipped_file_count": 38
+          "total_file_count": 52,
+          "skipped_file_count": 52
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,

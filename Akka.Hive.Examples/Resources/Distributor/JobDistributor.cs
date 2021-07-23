@@ -37,7 +37,7 @@ namespace Akka.Hive.Examples.Resources.Distributor
             {
                 case ProductionOrder m  : MaterialRequest(m); break;
                 case Command.GetWork    : PushWork(); break;
-                case AddMachine m       : CreateMachines(m.MachineRegistration, Machines.Count + 1, this.Time, this.EngineConfig); break; 
+                case AddMachine m       : CreateMachines(m.MachineRegistration, Machines.Count + 1, this.Time, this.HiveConfig); break; 
                 case MachineAgent.MachineReady m : SetMachineReady(m); break;
                 case ProductionOrderFinished m: ProvideMaterial(m); break;
                 case RequestStatistics m: CreateStats(); break;

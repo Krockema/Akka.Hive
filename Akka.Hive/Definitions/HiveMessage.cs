@@ -54,6 +54,9 @@ namespace Akka.Hive.Definitions
             Bounced
         }
 
+        /// <summary>
+        /// Message that is send in simulation context when an message has been processed
+        /// </summary>
         public record Done : HiveMessage
         {
             public Done(IHiveMessage with)

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class StateManager
    ">
-    <meta name="generator" content="docfx 2.56.7.0">
+    <meta name="generator" content="docfx 2.58.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -81,6 +81,12 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">StateManager</span></div>
   </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Akka.Hive.Interfaces.IStateManagerBase.html">IStateManagerBase</a></div>
+    <div><a class="xref" href="Akka.Hive.Interfaces.IWithInbox.html">IWithInbox</a></div>
+    <div><a class="xref" href="Akka.Hive.Interfaces.IWithHive.html">IWithHive</a></div>
+  </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
@@ -109,94 +115,133 @@
   <h6><strong>Assembly</strong>: Akka.Hive.dll</h6>
   <h5 id="Akka_Hive_StateManager_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class StateManager</code></pre>
+    <pre><code class="lang-csharp hljs">public class StateManager : IStateManagerBase, IWithInbox, IWithHive</code></pre>
   </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="Akka_Hive_StateManager__ctor_" data-uid="Akka.Hive.StateManager.#ctor*"></a>
+  <h4 id="Akka_Hive_StateManager__ctor" data-uid="Akka.Hive.StateManager.#ctor">StateManager()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected StateManager()</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="Akka_Hive_StateManager_Base_" data-uid="Akka.Hive.StateManager.Base*"></a>
+  <h4 id="Akka_Hive_StateManager_Base" data-uid="Akka.Hive.StateManager.Base">Base</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IStateManagerBase Base { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Akka.Hive.Interfaces.IStateManagerBase.html">IStateManagerBase</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="methods">Methods
   </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Krockema/Akka.Hive/new/develop/apiSpec/new?filename=Akka_Hive_StateManager_AfterSimulationStarted_Akka_Hive_Hive_.md&amp;value=---%0Auid%3A%20Akka.Hive.StateManager.AfterSimulationStarted(Akka.Hive.Hive)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/StateManager.cs/#L70">View Source</a>
-  </span>
+  
+  
   <a id="Akka_Hive_StateManager_AfterSimulationStarted_" data-uid="Akka.Hive.StateManager.AfterSimulationStarted*"></a>
-  <h4 id="Akka_Hive_StateManager_AfterSimulationStarted_Akka_Hive_Hive_" data-uid="Akka.Hive.StateManager.AfterSimulationStarted(Akka.Hive.Hive)">AfterSimulationStarted(Hive)</h4>
+  <h4 id="Akka_Hive_StateManager_AfterSimulationStarted" data-uid="Akka.Hive.StateManager.AfterSimulationStarted">AfterSimulationStarted()</h4>
   <div class="markdown level1 summary"><p>This is Called after the Simulation started. Does nothing on default.
 You can overwrite this to</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void AfterSimulationStarted(Hive engine)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual void AfterSimulationStarted()</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Akka.Hive.Hive.html">Hive</a></td>
-        <td><span class="parametername">engine</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Krockema/Akka.Hive/new/develop/apiSpec/new?filename=Akka_Hive_StateManager_AfterSimulationStopped_Akka_Hive_Hive_.md&amp;value=---%0Auid%3A%20Akka.Hive.StateManager.AfterSimulationStopped(Akka.Hive.Hive)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/StateManager.cs/#L79">View Source</a>
-  </span>
+  
+  
   <a id="Akka_Hive_StateManager_AfterSimulationStopped_" data-uid="Akka.Hive.StateManager.AfterSimulationStopped*"></a>
-  <h4 id="Akka_Hive_StateManager_AfterSimulationStopped_Akka_Hive_Hive_" data-uid="Akka.Hive.StateManager.AfterSimulationStopped(Akka.Hive.Hive)">AfterSimulationStopped(Hive)</h4>
+  <h4 id="Akka_Hive_StateManager_AfterSimulationStopped" data-uid="Akka.Hive.StateManager.AfterSimulationStopped">AfterSimulationStopped()</h4>
   <div class="markdown level1 summary"><p>This is Called after the Simulation started. Does nothing on default.
 You can overwrite this to</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void AfterSimulationStopped(Hive engine)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual void AfterSimulationStopped()</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Akka.Hive.Hive.html">Hive</a></td>
-        <td><span class="parametername">engine</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Krockema/Akka.Hive/new/develop/apiSpec/new?filename=Akka_Hive_StateManager_Bounce_Akka_Hive_Hive_.md&amp;value=---%0Auid%3A%20Akka.Hive.StateManager.Bounce(Akka.Hive.Hive)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/StateManager.cs/#L60">View Source</a>
-  </span>
+  
+  
   <a id="Akka_Hive_StateManager_Bounce_" data-uid="Akka.Hive.StateManager.Bounce*"></a>
-  <h4 id="Akka_Hive_StateManager_Bounce_Akka_Hive_Hive_" data-uid="Akka.Hive.StateManager.Bounce(Akka.Hive.Hive)">Bounce(Hive)</h4>
+  <h4 id="Akka_Hive_StateManager_Bounce" data-uid="Akka.Hive.StateManager.Bounce">Bounce()</h4>
   <div class="markdown level1 summary"><p>This is Called after the Systems Heart bounced. Does nothing on default.
 You can overwrite this to</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void Bounce(Hive engine)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual void Bounce()</code></pre>
+  </div>
+  
+  
+  <a id="Akka_Hive_StateManager_SimulationIsTerminating_" data-uid="Akka.Hive.StateManager.SimulationIsTerminating*"></a>
+  <h4 id="Akka_Hive_StateManager_SimulationIsTerminating" data-uid="Akka.Hive.StateManager.SimulationIsTerminating">SimulationIsTerminating()</h4>
+  <div class="markdown level1 summary"><p>This is Called after the Simulation started. Does nothing on default.
+You can overwrite this to</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void SimulationIsTerminating()</code></pre>
+  </div>
+  
+  
+  <a id="Akka_Hive_StateManager_Start_" data-uid="Akka.Hive.StateManager.Start*"></a>
+  <h4 id="Akka_Hive_StateManager_Start" data-uid="Akka.Hive.StateManager.Start">Start()</h4>
+  <div class="markdown level1 summary"><p>Starts the Actor system after Initialisation has been done.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public StateManager Start()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Akka.Hive.StateManager.html">StateManager</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Akka_Hive_StateManager_WithHive_" data-uid="Akka.Hive.StateManager.WithHive*"></a>
+  <h4 id="Akka_Hive_StateManager_WithHive_Akka_Hive_Hive_" data-uid="Akka.Hive.StateManager.WithHive(Akka.Hive.Hive)">WithHive(Hive)</h4>
+  <div class="markdown level1 summary"><p>Adds the reference to the basic system to the StateManager</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IWithHive WithHive(Hive hive)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -210,26 +255,36 @@ You can overwrite this to</p>
     <tbody>
       <tr>
         <td><a class="xref" href="Akka.Hive.Hive.html">Hive</a></td>
-        <td><span class="parametername">engine</span></td>
+        <td><span class="parametername">hive</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Krockema/Akka.Hive/new/develop/apiSpec/new?filename=Akka_Hive_StateManager_Continuation_Akka_Actor_Inbox_Akka_Hive_Hive_.md&amp;value=---%0Auid%3A%20Akka.Hive.StateManager.Continuation(Akka.Actor.Inbox%2CAkka.Hive.Hive)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/StateManager.cs/#L21">View Source</a>
-  </span>
-  <a id="Akka_Hive_StateManager_Continuation_" data-uid="Akka.Hive.StateManager.Continuation*"></a>
-  <h4 id="Akka_Hive_StateManager_Continuation_Akka_Actor_Inbox_Akka_Hive_Hive_" data-uid="Akka.Hive.StateManager.Continuation(Akka.Actor.Inbox,Akka.Hive.Hive)">Continuation(Inbox, Hive)</h4>
-  <div class="markdown level1 summary"><p>Method do handle simulation State</p>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Akka.Hive.Interfaces.IWithHive.html">IWithHive</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Akka_Hive_StateManager_WithInbox_" data-uid="Akka.Hive.StateManager.WithInbox*"></a>
+  <h4 id="Akka_Hive_StateManager_WithInbox_Akka_Actor_Inbox_" data-uid="Akka.Hive.StateManager.WithInbox(Akka.Actor.Inbox)">WithInbox(Inbox)</h4>
+  <div class="markdown level1 summary"><p>Adds an Inbox to the configuration</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Continuation(Inbox inbox, Hive hive)</code></pre>
+    <pre><code class="lang-csharp hljs">public IWithInbox WithInbox(Inbox inbox)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -244,49 +299,36 @@ You can overwrite this to</p>
       <tr>
         <td><span class="xref">Akka.Actor.Inbox</span></td>
         <td><span class="parametername">inbox</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Akka.Hive.Hive.html">Hive</a></td>
-        <td><span class="parametername">hive</span></td>
-        <td></td>
+        <td><p>Mailbox that can be used to communicate with the stateManager</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/Krockema/Akka.Hive/new/develop/apiSpec/new?filename=Akka_Hive_StateManager_SimulationIsTerminating_Akka_Hive_Hive_.md&amp;value=---%0Auid%3A%20Akka.Hive.StateManager.SimulationIsTerminating(Akka.Hive.Hive)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/StateManager.cs/#L88">View Source</a>
-  </span>
-  <a id="Akka_Hive_StateManager_SimulationIsTerminating_" data-uid="Akka.Hive.StateManager.SimulationIsTerminating*"></a>
-  <h4 id="Akka_Hive_StateManager_SimulationIsTerminating_Akka_Hive_Hive_" data-uid="Akka.Hive.StateManager.SimulationIsTerminating(Akka.Hive.Hive)">SimulationIsTerminating(Hive)</h4>
-  <div class="markdown level1 summary"><p>This is Called after the Simulation started. Does nothing on default.
-You can overwrite this to</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void SimulationIsTerminating(Hive engine)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
+  <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
-        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Akka.Hive.Hive.html">Hive</a></td>
-        <td><span class="parametername">engine</span></td>
+        <td><a class="xref" href="Akka.Hive.Interfaces.IWithInbox.html">IWithInbox</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Akka.Hive.Interfaces.IStateManagerBase.html">IStateManagerBase</a>
+  </div>
+  <div>
+      <a class="xref" href="Akka.Hive.Interfaces.IWithInbox.html">IWithInbox</a>
+  </div>
+  <div>
+      <a class="xref" href="Akka.Hive.Interfaces.IWithHive.html">IWithHive</a>
+  </div>
 </article>
           </div>
           
@@ -294,12 +336,6 @@ You can overwrite this to</p>
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
-                  <li>
-                    <a href="https://github.com/Krockema/Akka.Hive/new/develop/apiSpec/new?filename=Akka_Hive_StateManager.md&amp;value=---%0Auid%3A%20Akka.Hive.StateManager%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/Krockema/Akka.Hive/blob/develop/Akka.Hive/StateManager.cs/#L12" class="contribution-link">View Source</a>
-                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

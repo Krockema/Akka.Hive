@@ -36,6 +36,9 @@ namespace Akka.Hive.Actors
         /// </summary>
         public Time Time { get; internal set; }
 
+        /// <summary>
+        /// Self referenc 
+        /// </summary>
         public new IActorRef Self => base.Self;
 
         internal IUntypedActorContext ActorContext => Context;
@@ -59,7 +62,7 @@ namespace Akka.Hive.Actors
             base.PreStart();
         }
 
-        public IHiveConfig EngineConfig {get;} 
+        protected IHiveConfig HiveConfig {get;} 
 
         protected HiveActor(IActorRef simulationContext, Time time, IHiveConfig hiveConfig)
         {
@@ -68,7 +71,7 @@ namespace Akka.Hive.Actors
             ActorActions = hiveConfig.ActorActionFactory.Create(this);
             Key = Guid.NewGuid();
             Logger = LogManager.GetLogger(TargetNames.LOG_ACTORS);
-            EngineConfig = hiveConfig;
+            HiveConfig = hiveConfig;
             Time = time;
             ContextManager = simulationContext;
             Trace = hiveConfig.MessageTrace.GetTracer(this);

@@ -110,7 +110,7 @@ namespace Akka.Hive.Examples
 
         private static IHiveConfig CreateHolonicApproach(Time time)
         {
- 
+            var tracer = new MessageTrace().AddTrace(typeof(MachineAgent), typeof(MachineAgent.FinishWork));
             return HiveConfig.ConfigureHolon()
                              .WithActionFactory(new ActionFactory(agent => {
                                     return agent switch
@@ -125,6 +125,7 @@ namespace Akka.Hive.Examples
                              .WithDebugging(akka: false, hive: true)
                              .WithInterruptInterval(TimeSpan.FromSeconds(10))
                              .WithStartTime(time)
+                             .WithMessageTracer(tracer)
                              .Build();
         }
 
