@@ -20,9 +20,8 @@ namespace Akka.Hive.Actors
         {
             return Actor.Props.Create(() => new HeartBeat(tickSpeed));
         }
-
-
-        private HeartBeat(TimeSpan timeToAdvance)
+        
+        public HeartBeat(TimeSpan timeToAdvance)
         {
             #region init
             _tickSpeed = timeToAdvance;
