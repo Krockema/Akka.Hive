@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Akka.Hive.Interfaces;
+using Akka.Hive.Logging;
+using NLog;
 
 namespace Akka.Hive.Instructions
 {
@@ -11,6 +14,16 @@ namespace Akka.Hive.Instructions
     {
         private readonly Dictionary<Guid, IHiveMessage> _store = new();
         private int _wait = 0;
+        private Guid _lastMessageKey;
+        private int _lastStoredMessageCount;
+        private int _equalRounds;
+        public NLog.Logger Logger;
+
+        public InstructionStore()
+        {
+            Logger = LogManager.GetLogger(TargetNames.LOOP_DETECTION);
+            _lastMessageKey = Guid.Empty;
+        }
 
         public bool Add(Guid key, IHiveMessage message)
         {
@@ -20,6 +33,33 @@ namespace Akka.Hive.Instructions
         public int Count()
         {
             return _store.Count + _wait;
+        }
+
+        public void IntegrityCheck()
+        {
+            if (_store.Count == 0)
+                return;
+
+            if (_lastStoredMessageCount != _store.Count)
+            {
+                _equalRounds = 1;
+                _lastStoredMessageCount = _store.Count;
+                _lastMessageKey = _store.FirstOrDefault().Key;
+                return;
+            }
+                
+            // [ something might be wrong ]
+            if (_store.ContainsKey(_lastMessageKey)) // something is wrong 
+                Logger.Log(LogLevel.Debug, $"Possible deadlock detected, msg count :{_lastStoredMessageCount} " +
+                                            $"last changed {_equalRounds}" +
+                                            $"message {_store[_lastMessageKey].Message.GetType()}" +
+                                            $"target {_store[_lastMessageKey].Target.Path.Address}" +
+                                            $"sender {_store[_lastMessageKey].Message}");
+            else // loop ?
+                Logger.Log(LogLevel.Debug, $"Possible loop detected, msg count :{_lastStoredMessageCount} last changed {_equalRounds}");
+
+            // count this was happening
+            _equalRounds++;
         }
 
         public bool Remove(Guid msg)

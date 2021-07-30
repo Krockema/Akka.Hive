@@ -12,5 +12,6 @@ namespace Akka.Hive.Instructions
         bool Remove(Guid msg);
         bool Add(Guid key, IHiveMessage message);
         void WaitForDiastole(bool token);
+        void IntegrityCheck();
     }
 }
