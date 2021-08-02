@@ -7,7 +7,7 @@ namespace Akka.Hive.Definitions
     /// <summary>
     /// Global Akka Hive Configuration, containing start time, interrupt interval, simulation break, actor action factory, and debug switches.
     /// </summary>
-    public record HiveConfig: IHiveConfig, IHiveConfigBase, IHiveConfigHolon
+    public record HiveConfig: IHiveConfig, IHiveConfigBase, IHiveConfigHolon, IHiveConfigSimulation
     {
         private HiveConfig()
         {
@@ -34,7 +34,7 @@ namespace Akka.Hive.Definitions
         /// Creates basic Hive Configuration
         /// </summary>
         /// <returns></returns>
-        public static IHiveConfigBase ConfigureSimulation()
+        public static IHiveConfigSimulation ConfigureSimulation()
         {
             return new HiveConfig();
         }
@@ -105,7 +105,18 @@ namespace Akka.Hive.Definitions
             return this with { MessageTrace = tracer  };
         }
 
+        /// <summary>
+        /// Terminates the simulation at (DateTime)Start + (TimeSpan)End
+        /// it will execute the current time step
+        /// </summary>
+        /// <param name="timeSpan"></param>
+        /// <returns></returns>
+        public IHiveConfigBase WithTimeSpanToTerminate(TimeSpan timeSpanToTerminate)
+        {
+            return this with { TimeSpanToTerminate = timeSpanToTerminate };
+        }
 
+        public TimeSpan TimeSpanToTerminate { get; init; }
         public TimeSpan TickSpeed { get; init; }
         public Time StartTime { get; init; }
         public TimeSpan InterruptInterval { get; init; }

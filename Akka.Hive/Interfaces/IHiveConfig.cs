@@ -14,6 +14,7 @@ namespace Akka.Hive.Definitions
         bool DebugHive { get; }
         TimeSpan InterruptInterval { get; }
         TimeSpan TickSpeed { get; }
+        TimeSpan TimeSpanToTerminate { get; }
         Time StartTime { get; }
         ActionFactory ActorActionFactory { get; }
         MessageTrace MessageTrace { get; }
@@ -28,6 +29,11 @@ namespace Akka.Hive.Definitions
         IHiveConfigBase WithTickSpeed(TimeSpan timeSpan);
         IHiveConfigBase WithStartTime(Time timeSpan);
         IHiveConfigBase WithMessageTracer(MessageTrace tracer);
+    }
+
+    public interface IHiveConfigSimulation
+    {
+        IHiveConfigBase WithTimeSpanToTerminate(TimeSpan timeSpanToTerminate);
     }
 
     public interface IHiveConfigHolon
