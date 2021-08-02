@@ -37,7 +37,6 @@ namespace Akka.Hive.Definitions
         {
             Start,
             Stop,
-            Done,
             Finish,
             IsReady,
             HeartBeat

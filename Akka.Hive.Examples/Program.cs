@@ -133,9 +133,11 @@ namespace Akka.Hive.Examples
         {
             var tracer = new MessageTrace().AddTrace(typeof(MachineAgent), typeof(MachineAgent.FinishWork));
             return HiveConfig.ConfigureSimulation()
+                             .WithTimeSpanToTerminate(TimeSpan.FromSeconds(18))
                              .WithDebugging(akka: false, hive: true)
                              .WithInterruptInterval(TimeSpan.FromSeconds(10))
                              .WithStartTime(time)
+                             .WithTickSpeed(TimeSpan.FromMilliseconds(5))
                              .WithMessageTracer(tracer)
                              .Build();
         }

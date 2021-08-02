@@ -44,6 +44,11 @@ namespace Akka.Hive.Actors
         private Time Time { get; set; }
 
         /// <summary>
+        /// Contains the current simulation Time
+        /// </summary>
+        private Time EndTime { get; set; }
+
+        /// <summary>
         /// For Normal Mode it regulates Simulation Speed
         /// For DebugMode you can break at each Beat to check simulation System is not running empty, waiting or looping.
         /// </summary>
@@ -66,6 +71,7 @@ namespace Akka.Hive.Actors
             _currentInstructions = InstructionStoreFactory.CreateCurrent(config.DebugHive);
             Heart = Context.ActorOf(HeartBeat.Props(config.TickSpeed));
             Time = config.StartTime;
+            EndTime = Time.Add(config.TimeSpanToTerminate);
             NextInterrupt =  config.StartTime;
             #endregion init
 
@@ -118,7 +124,6 @@ namespace Akka.Hive.Actors
             // Determine when The Simulation is Done.
             Receive<SimulationState>(s => s == SimulationState.Finished, s =>
             {
-                //if (_InstructionStore.Count() == 0)
                 if (_currentInstructions.Count() == 0)
                 {
                     HiveConfig.Inbox.Receiver.Tell(SimulationState.Finished);
@@ -209,14 +214,14 @@ namespace Akka.Hive.Actors
         {
             if (_currentInstructions.Count() == 0 && IsRunning && !IsComplete)
             {
-                if (_featuredInstructions.Count() != 0)
-                {
-                    Advance(_featuredInstructions.Next());
-                }
-                else
+                if (_featuredInstructions.Count() == 0 || _featuredInstructions.Next() >= EndTime.Value)
                 {
                     IsComplete = true;
                     HiveConfig.Inbox.Receiver.Tell(SimulationState.Finished);
+                }
+                else
+                {
+                    Advance(_featuredInstructions.Next());
                 }
             }
         }
