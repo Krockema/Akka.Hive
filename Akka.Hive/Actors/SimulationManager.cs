@@ -206,6 +206,7 @@ namespace Akka.Hive.Actors
         private void Diastole()
         {
             _currentInstructions.WaitForDiastole(false);
+            _currentInstructions.IntegrityCheck();
             Advance();
             Systole();
         }
