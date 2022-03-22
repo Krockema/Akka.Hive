@@ -1,4 +1,4 @@
-![image](docs/images/logo.png)
+![image](docs/images/Akka.Hive.png)
 
 This is an extension of the Akka actor framework that allows switching the environment between simulation with virtual time, simulation with real time or integration of real endpoints.
 
