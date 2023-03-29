@@ -23,7 +23,7 @@ namespace Akka.Hive.Examples.Resources.Distributor
 
         public static Props Props(EventStream eventStream, IActorRef simulationContext, Time time, IHiveConfig engineConfig)
         {
-            return Akka.Actor.Props.Create(() => new JobDistributor(simulationContext, time, engineConfig));
+            return Actor.Props.Create(() => new JobDistributor(simulationContext, time, engineConfig));
         }
         public JobDistributor(IActorRef contextManager, Time time, IHiveConfig engineConfig) 
             : base(contextManager, time, engineConfig)
@@ -98,16 +98,20 @@ namespace Akka.Hive.Examples.Resources.Distributor
 
         private void SetMachineReady(MachineAgent.MachineReady ready)
         {
-            Machines.Single(x => x.ActorRef.Equals(Sender))
+            SetMachineReady(Sender);
+        }
+
+        private void SetMachineReady(IActorRef sender)
+        {
+            Machines.Single(x => x.ActorRef.Equals(sender))
                     .SetReady()
                     .SetConnected();
             PushWork();
         }
 
 
-        private void ProvideMaterial(object o)
+        private void ProvideMaterial(ProductionOrderFinished po)
         {
-            var po = o as ProductionOrderFinished;
             var request = po?.Message as MaterialRequest;
             if (request?.Material.Name == "Table")
                 Logger.Log(LogLevel.Warn, "Simulation: Table No: {arg} has finished at {}",  new object[] { ++MaterialCounter, Time.Value });
@@ -124,15 +128,16 @@ namespace Akka.Hive.Examples.Resources.Distributor
                     ReadyItems.Enqueue(parent);
                 }
             }
-            Machines.Single(x => x.ActorRef.Equals(Sender))
-                    .SetReady();
-            PushWork();
+             if(po.Sender != null)
+                SetMachineReady(po.Sender);
+             else
+                SetMachineReady(Sender);
         }
 
         private void CreateStats()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Production orders remaining " + ReadyItems.Count());
+            Console.WriteLine(this.Time.Value + " production orders remaining " + ReadyItems.Count());
             Console.ResetColor();
             Sender.Tell("Done", Self);
         }

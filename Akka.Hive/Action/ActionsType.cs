@@ -12,6 +12,10 @@
         /// <summary>
         /// Simulation action implementation
         /// </summary>
-        Simulation
+        Simulation,
+        /// <summary>
+        /// Sequencial simulation action implementation
+        /// </summary>
+        Sequencial
     }
 }

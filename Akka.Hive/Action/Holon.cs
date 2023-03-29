@@ -29,16 +29,9 @@ namespace Akka.Hive.Action
         /// </summary>
         /// <param name="message">message to send</param>
         /// <param name="waitFor">optional: possible delay until the message shall be send</param>
-        public virtual void Send(IHiveMessage message, TimeSpan waitFor = new TimeSpan())
+        public virtual void Send(IHiveMessage message)
         {
-            if (waitFor.Equals(TimeSpan.Zero))
-            {
-                message.Target.Tell(message: message, sender: Actor.Self);
-            }
-            else
-            {
-                Schedule(waitFor, message);
-            }
+            message.Target.Tell(message: message, sender: Actor.Self);
         }
 
         /// <summary>
@@ -84,5 +77,25 @@ namespace Akka.Hive.Action
         /// Possible Action implementation that is executed After Stop
         /// </summary>
         public abstract void PostStop();
+
+        /// <summary>
+        /// Not Required for Holonic Approach
+        /// </summary>
+        /// <param name="message"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        public void MapMessageToMethod(IHiveMessage message)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Not Required for Holonic Approach
+        /// </summary>
+        /// <param name="message"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        public void AdvanceTo(Time message)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

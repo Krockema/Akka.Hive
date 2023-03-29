@@ -12,18 +12,18 @@ namespace Akka.Hive.Actors
     /// <summary>
     /// Global Simulation Manager that manages the time, message processing, and heartbeat of the system. 
     /// </summary>
-    public class SimulationManager : ReceiveActor
+    public class SequenceManager : ReceiveActor
     {
         // for Normal Mode
         private readonly NLog.Logger _logger = LogManager.GetLogger(TargetNames.LOG_AKKA);
         private readonly IFeatureInstructions _featuredInstructions;
         private ICurrentInstructions _currentInstructions;
-        
+
         /// <summary>
         /// Hive configuration
         /// </summary>
         private IHiveConfig EngineConfig { get; }
-        
+
         /// <summary>
         /// Contains the next interval time where the simulation will stop.
         /// </summary>
@@ -49,30 +49,23 @@ namespace Akka.Hive.Actors
         private Time EndTime { get; set; }
 
         /// <summary>
-        /// For Normal Mode it regulates Simulation Speed
-        /// For DebugMode you can break at each Beat to check simulation System is not running empty, waiting or looping.
-        /// </summary>
-        private IActorRef Heart { get; }
-        
-        /// <summary>
         /// Probe Constructor for Simulation context
         /// </summary>
         /// <returns>IActorRef of the SimulationContext</returns>
         public static Props Props(IHiveConfig config)
         {
-            return Actor.Props.Create(() => new SimulationManager(config));
+            return Akka.Actor.Props.Create(() => new SequenceManager(config));
         }
 
-        public SimulationManager(IHiveConfig config)
+        public SequenceManager(IHiveConfig config)
         {
             #region init
             EngineConfig = config;
             _featuredInstructions = InstructionStoreFactory.CreateFeatureStore(config.DebugHive);
-            _currentInstructions = InstructionStoreFactory.CreateCurrent(config.DebugHive);
-            Heart = Context.ActorOf(HeartBeat.Props(config.TickSpeed));
+            _currentInstructions = InstructionStoreFactory.CreateSequencialCurrent();
             Time = config.StartTime;
             EndTime = Time.Add(config.TimeSpanToTerminate);
-            NextInterrupt =  config.StartTime;
+            NextInterrupt = config.StartTime;
             #endregion init
 
             Become(SimulationMode);
@@ -85,25 +78,18 @@ namespace Akka.Hive.Actors
 
             Receive<Command>(s => s == Command.Start, s =>
             {
-                if (_currentInstructions.Count() == 0)
+                if (_currentInstructions.Count() != 0)
                 {
-                    IsRunning = true;
-                    NextInterrupt = NextInterrupt.Add(EngineConfig.InterruptInterval) ;
-                    EngineConfig.Inbox.Receiver.Tell(SimulationState.Started);
-                    Systole();
-                    Advance();
+                    Context.Self.Forward(s);
                 }
                 else
                 {
-                    // Not Ready Yet, Try Again
-                    Context.Self.Tell(s);
+                    NextInterrupt = NextInterrupt.Add(EngineConfig.InterruptInterval);
+                    EngineConfig.Inbox.Receiver.Tell(SimulationState.Started);
+                    IsRunning = true;
+                    Advance();
                 }
 
-            });
-
-            Receive<Command>(s => s == Command.HeartBeat, s =>
-            {
-                Diastole();
             });
 
             // Determine when The Simulation is Done.
@@ -126,9 +112,9 @@ namespace Akka.Hive.Actors
             {
                 if (_currentInstructions.Count() == 0)
                 {
-                    IsComplete = true;
                     EngineConfig.Inbox.Receiver.Tell(SimulationState.Finished);
-                    _logger.Log(LogLevel.Trace ,"Simulation Finished...");
+                    IsComplete = true;
+                    _logger.Log(LogLevel.Trace, "Simulation Finished...");
                 }
                 else
                 {
@@ -139,11 +125,9 @@ namespace Akka.Hive.Actors
 
             Receive<HiveMessage.Done>(c =>
             {
-                var msg = ((IHiveMessage) c.Message);
+                var msg = ((IHiveMessage)c.Message);
                 if (!_currentInstructions.Remove(msg: msg.Key))
                     throw new Exception("Failed to remove message from Instruction store");
-                _logger.Log(LogLevel.Trace, "Time[{arg1}] | {arg2} | DONE -- | Instructions: {arg2} | Type: {arg3} | Sender: {arg4} | Target: {arg5}"
-                    , new object[] { Time.Value, msg.Key, _currentInstructions.Count(), msg.GetType().ToString(), Sender.Path.Name, msg.Target.Path.Name });
                 Advance();
             });
 
@@ -169,53 +153,34 @@ namespace Akka.Hive.Actors
                     instructions.Add(m.Message.Key, m.Message);
                 else
                 {
-                    instructions = InstructionStoreFactory.CreateCurrent(EngineConfig.DebugHive);
+                    instructions = InstructionStoreFactory.CreateSequencialCurrent();
                     instructions.Add(m.Message.Key, m.Message);
                     _featuredInstructions.Add(m.AtTime.Value, instructions);
                 }
-                
-                m.Message.Target.Tell(m, Sender);
             });
 
             Receive<IHiveMessage>(m =>
             {
-                if (m.Target != ActorRefs.NoSender) {
-                    m.Target.Tell(m, Sender);
-                } else {
-                    Sender.Tell(m); // Should Throw ? Will throw at Sender Actor
-                }
+                if (m.Target == ActorRefs.NoSender)
+                    throw new Exception("No Target Specified");
+
                 //Console.WriteLine("++");
+                // m = m.WithSender(Sender);
                 _currentInstructions.Add(m.Key, m);
-                _logger.Log(LogLevel.Trace ,"Time[{arg1}] | {arg2} | DO ++ | Instructions: {arg2} | Type: {arg3} | Sender: {arg4} | Target: {arg5}"
-                    , new object[] { Time.Value, m.Key , _currentInstructions.Count(), m.GetType().ToString(), Sender.Path.Name, m.Target.Path.Name });
+                _logger.Log(LogLevel.Trace, "Time[{arg1}] | {arg2} | DO ++ | Instructions: {arg2} | Type: {arg3} | Sender: {arg4} | Target: {arg5}"
+                    , new object[] { Time.Value, m.Key, _currentInstructions.Count(), m.GetType().ToString(), Sender.Path.Name, m.Target.Path.Name });
             });
-        }
-
-        /// <summary>
-        /// Starts Heart Beat for normal mode that limits simulation Speed
-        /// </summary>
-        private void Systole()
-        {
-            if (EngineConfig.TickSpeed.Ticks == 0 || !IsRunning) 
-                return;
-            Heart.Tell(Command.HeartBeat, Self);
-            _currentInstructions.WaitForDiastole(true);
-        }
-
-        /// <summary>
-        /// End of an Heart Beat cycle for normal 
-        /// </summary>
-        private void Diastole()
-        {
-            _currentInstructions.WaitForDiastole(false);
-            _currentInstructions.IntegrityCheck();
-            Advance();
-            Systole();
         }
 
         private void Advance()
         {
-            if (_currentInstructions.Count() == 0 && IsRunning && !IsComplete)
+            if (_currentInstructions.Count() > 0)
+                {
+                    var m = _currentInstructions.GetNext();
+                    m.Target.Tell(m, m.Sender);
+                    return;
+                }
+            if (IsRunning && !IsComplete)
             {
                 if (_featuredInstructions.Count() == 0 || _featuredInstructions.Next() >= EndTime.Value)
                 {
@@ -233,7 +198,7 @@ namespace Akka.Hive.Actors
         {
             // advance time
             if (Time.Value >= to)
-                 throw new Exception("Time cant be undone.");
+                throw new Exception("Time cant be undone.");
             // stop sim at Interval
             if (Time.Value >= NextInterrupt.Value)
             {
@@ -244,18 +209,20 @@ namespace Akka.Hive.Actors
             Time = new Time(to);
             // get current Tasks
             MoveFeaturesToCurrentTimeSpan();
-            
+
         }
 
         private void MoveFeaturesToCurrentTimeSpan()
         {
-
             if (_featuredInstructions.TryGetValue(Time.Value, out _currentInstructions))
             {
                 _featuredInstructions.Remove(Time.Value);
                 // global Tick
                 var tick = new AdvanceTo(Time);
                 Context.System.EventStream.Publish(tick);
+
+                var m = _currentInstructions.GetNext();
+                m.Target.Tell(m, m.Sender);
             }
         }
     }

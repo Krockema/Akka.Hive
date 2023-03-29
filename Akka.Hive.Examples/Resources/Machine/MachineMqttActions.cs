@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Reflection.Metadata.Ecma335;
+using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Akka.Actor;
@@ -7,8 +7,9 @@ using Akka.Hive.Action;
 using Akka.Hive.Actors;
 using Akka.Hive.Interfaces;
 using MQTTnet;
-using MQTTnet.Client.Options;
+using MQTTnet.Client;
 using MQTTnet.Extensions.ManagedClient;
+using MQTTnet.Packets;
 
 namespace Akka.Hive.Examples.Resources.Machine
 {
@@ -35,7 +36,7 @@ namespace Akka.Hive.Examples.Resources.Machine
             var payload = System.Text.Json.JsonSerializer.Serialize(obj);
 
             Console.WriteLine($"Sending message with: {payload} | to topic: {_topicIn}.");
-            _mqttClient.PublishAsync(new MqttApplicationMessageBuilder()
+            _mqttClient.EnqueueAsync(new MqttApplicationMessageBuilder()
                 .WithTopic(_topicIn)
                 .WithPayload(Encoding.UTF8.GetBytes(payload)).Build()); 
         }
@@ -67,17 +68,16 @@ namespace Akka.Hive.Examples.Resources.Machine
 
                 _topicIn = $"ssop/{_name}_in";
                 _topicOut = $"ssop/{_name}_out";
-                
+
                 _mqttClient = new MqttFactory().CreateManagedMqttClient();
                 await _mqttClient.StartAsync(options);
-                await _mqttClient.SubscribeAsync(new MqttTopicFilterBuilder()
+                await _mqttClient.SubscribeAsync(new List<MqttTopicFilter> { new MqttTopicFilterBuilder()
                     .WithTopic(_topicIn)
-                    .Build());
-                await _mqttClient.SubscribeAsync(new MqttTopicFilterBuilder()
                     .WithTopic(_topicOut)
-                    .Build());
+                    .Build() });
 
-                _mqttClient.UseApplicationMessageReceivedHandler(async e =>
+
+                _mqttClient.ApplicationMessageReceivedAsync += (async e =>
                 {
                     try
                     {
@@ -85,7 +85,7 @@ namespace Akka.Hive.Examples.Resources.Machine
                             string topic = e.ApplicationMessage.Topic;
                             string payload = Encoding.UTF8.GetString(e.ApplicationMessage.Payload);
                             if (_topicOut == topic)
-                            {   
+                            {
                                 Console.WriteLine($"Message received: {payload} | From Topic: {topic}.");
                                 if (payload == _name)
                                     _self.Tell(new MachineAgent.MachineReady(null, _self));
@@ -95,7 +95,7 @@ namespace Akka.Hive.Examples.Resources.Machine
                             } else if (_topicIn == topic)
                             {
                                 Console.WriteLine($"Message Send and Returned: {payload} | From Topic: {topic}.");
-                            } else { 
+                            } else {
                                 throw new Exception("bad request");
                             }
 
@@ -107,11 +107,13 @@ namespace Akka.Hive.Examples.Resources.Machine
                     }
                 });
 
-                _mqttClient.UseConnectedHandler(e =>
+
+                _mqttClient.ConnectedAsync += e =>
                 {
                     Console.WriteLine($"Connected successfully with MQTT Broker");
                     Console.WriteLine("Press enter to publish msg.");
-                });
+                    return Task.CompletedTask;
+                };
             });
         }
     }

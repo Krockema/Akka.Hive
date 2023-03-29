@@ -8,6 +8,8 @@ using Akka.Hive.Examples.Resources.Distributor;
 using Akka.Hive.Examples.Resources.Machine;
 using Akka.Hive.Examples.SimulationHelper;
 using Akka.Hive.Logging;
+using static Akka.Hive.Definitions.HiveMessage;
+using static Akka.Hive.Examples.Resources.Distributor.JobDistributor;
 using LogLevel = NLog.LogLevel;
 using MachineAgent = Akka.Hive.Examples.Resources.Machine.MachineAgent;
 
@@ -26,8 +28,9 @@ namespace Akka.Hive.Examples
             Console.WriteLine("What mode do you want to start?");
             Console.WriteLine(" ");
             Console.WriteLine(" (1) Simulation with virtual clock");
-            Console.WriteLine(" (2) Simulation real time clock");
-            Console.WriteLine(" (3) Real time clock with Mqtt Endpoint ");
+            Console.WriteLine(" (2) Simulation with sequencial virtual clock");
+            Console.WriteLine(" (3) Simulation real time clock");
+            Console.WriteLine(" (4) Real time clock with Mqtt Endpoint ");
 
             var inputValid = false;
             while (!inputValid)
@@ -39,26 +42,60 @@ namespace Akka.Hive.Examples
                 switch (inputParsed)
                 {
                     case 1: RunHive(CreateSimulationApproach(new Time(new DateTime(2000,01,01)))); break;
-                    case 2: RunHive(CreateHolonicApproach(Time.Now)); break;
-                    case 3: RunHive(CreateHolonicApproach(Time.Now), true); break;
+                    case 2: RunHive(CreateSimulationApproach(new Time(new DateTime(2000, 01, 01)), sequencial: true)); break;
+                    case 3: RunHive(CreateHolonicApproach(Time.Now)); break;
+                    case 4: RunHive(CreateHolonicApproach(Time.Now), true); break;
                     default: Console.WriteLine("Could not parse input. Try again."); break;
                 }
                 
             }
         }
 
+        private static IHiveConfig CreateHolonicApproach(Time time)
+        {
+            var tracer = new MessageTrace().AddTrace(typeof(MachineAgent), typeof(ProductionOrderFinished));
+            return HiveConfig.ConfigureHolon()
+                             .WithActionFactory(new ActionFactory(agent => {
+                                 return agent switch
+                                 {
+                                     MachineMqttAgent => new MachineMqttActions(agent),
+                                     MachineAgent => new HolonActions(agent),
+                                     JobDistributor => new HolonActions(agent),
+                                     _ => throw new Exception($"Could not match agent type! Type was { agent.GetType().Name }")
+                                 };
+                             })
+                             )
+                             .WithDebugging(akka: false, hive: true)
+                             .WithInterruptInterval(TimeSpan.FromSeconds(10))
+                             .WithStartTime(time)
+                             .WithMessageTracer(tracer)
+                             .Build();
+        }
+
+        private static IHiveConfig CreateSimulationApproach(Time time, bool sequencial = false)
+        {
+            var tracer = new MessageTrace().AddTrace(typeof(MachineAgent), typeof(ProductionOrderFinished));
+            return HiveConfig.ConfigureSimulation(sequencial)
+                             .WithTimeSpanToTerminate(TimeSpan.FromDays(365))
+                             .WithDebugging(akka: false, hive: false)
+                             .WithInterruptInterval(TimeSpan.FromMinutes(480))
+                             .WithStartTime(time)
+                             .WithTickSpeed(TimeSpan.FromMilliseconds(0))
+                             .WithMessageTracer(tracer)
+                             .Build();
+        }
+
         private static void RunHive(IHiveConfig hiveConfig, bool withMqtt = false)
         {
-            LogConfiguration.LogTo(TargetTypes.File, TargetNames.LOG_ACTORS, LogLevel.Info, LogLevel.Warn);
-            LogConfiguration.LogTo(TargetTypes.Console, TargetNames.LOG_ACTORS, LogLevel.Info, LogLevel.Warn);
-            LogConfiguration.LogTo(TargetTypes.Console, TargetNames.LOG_AKKA, LogLevel.Warn);
-            // LogConfiguration.LogTo(TargetTypes.File, TargetNames.LOG_AKKA, LogLevel.Trace);
-            //InternalLogger.LogToConsole = true;
+            // LogConfiguration.LogTo(TargetTypes.File, TargetNames.LOG_ACTORS, LogLevel.Info, LogLevel.Warn);
+            // LogConfiguration.LogTo(TargetTypes.Console, TargetNames.LOG_ACTORS, LogLevel.Warn, LogLevel.Warn);
+            // LogConfiguration.LogTo(TargetTypes.Console, TargetNames.LOG_AKKA, LogLevel.Trace, LogLevel.Warn);
+            // InternalLogger.LogToConsole = true;
             //InternalLogger.LogLevel = LogLevel.Trace;
             var time = hiveConfig.StartTime;
 
 
-            Hive hive = new Hive(hiveConfig);
+            Hive hive = new (hiveConfig);
             var r = new Random();
 
             var jobDistributor =
@@ -69,38 +106,40 @@ namespace Akka.Hive.Examples
                                          name: "JobDistributor");
 
             // Tell all Machines
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 200; i++)
             {
                 // Create Machine Actors
                 var reg = (withMqtt) ? MachineRegistration.CreateMqtt(hive.ContextManager, time, hiveConfig, jobDistributor):
                           /* else */   MachineRegistration.CreateDefault(hive.ContextManager, time, hiveConfig);
                 
                 var createMachines = new JobDistributor.AddMachine(reg, jobDistributor);
-                hive.ContextManager.Tell(createMachines, null);
+                jobDistributor.Tell(createMachines, null);
             }
 
             // example to monitor for FinishWork Messages.
-            var monitor = hive.ActorSystem.ActorOf(props: Monitoring.WorkTimeMonitor.Props(time: time, hiveConfig.MessageTrace.GetTracedMessages(typeof(MachineAgent)))
-                                                  , name: "Monitor");
+            // var monitor = hive.ActorSystem.ActorOf(props: Monitoring.WorkTimeMonitor.Props(time: time, hiveConfig.MessageTrace.GetTracedMessages(typeof(MachineAgent)))
+            //                                      , name: "Monitor");
             Console.WriteLine("Machines initialized. Press any key to continue.");
-            Console.ReadKey();
-            Console.WriteLine("System is running!");
+            Console.WriteLine("How many Tables shall be produced?");
+            var noOfJobs = int.Parse(Console.ReadLine());
+            Console.WriteLine("Got " + noOfJobs);
+            Console.WriteLine("System is Starting!");
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < noOfJobs; i++)
             {
-                var materialRequest = new MaterialRequest(MaterialFactory.CreateTable(), new Dictionary<int, bool>(), 0, r.Next(50, 500), true);
+                var materialRequest = new MaterialRequest(MaterialFactory.CreateTable(), new Dictionary<int, bool>(), 0, r.Next(0, noOfJobs*10), true);
                 var request = new JobDistributor.ProductionOrder(materialRequest, jobDistributor);
-                hive.ContextManager.Tell(request, null);
+                hive.ContextManager.Tell(new Schedule(time.Add(TimeSpan.FromMinutes(1)), request), null);
             }
 
             Console.WriteLine("Orders Distributed. Press any key to continue.");
             if (hive.IsReady())
             {
-                var terminated = hive.RunAsync();
                 CustomStateManager.Base.WithDistributor(jobDistributor)
                                        .WithHive(hive)
                                        .WithInbox(hiveConfig.Inbox)
                                        .Start();
+                var terminated = hive.RunAsync();
                 terminated.Wait();
             }
 
@@ -108,38 +147,5 @@ namespace Akka.Hive.Examples
             Console.WriteLine("System Runtime " + hive.ActorSystem.Uptime);
         }
 
-        private static IHiveConfig CreateHolonicApproach(Time time)
-        {
-            var tracer = new MessageTrace().AddTrace(typeof(MachineAgent), typeof(MachineAgent.FinishWork));
-            return HiveConfig.ConfigureHolon()
-                             .WithActionFactory(new ActionFactory(agent => {
-                                    return agent switch
-                                    {
-                                        MachineMqttAgent => new MachineMqttActions(agent),
-                                        MachineAgent => new HolonActions(agent),
-                                        JobDistributor => new HolonActions(agent),
-                                        _ => throw new Exception($"Could not match agent type! Type was { agent.GetType().Name }")
-                                    };
-                                 })
-                             )
-                             .WithDebugging(akka: false, hive: true)
-                             .WithInterruptInterval(TimeSpan.FromSeconds(10))
-                             .WithStartTime(time)
-                             .WithMessageTracer(tracer)
-                             .Build();
-        }
-
-        private static IHiveConfig CreateSimulationApproach(Time time)
-        {
-            var tracer = new MessageTrace().AddTrace(typeof(MachineAgent), typeof(MachineAgent.FinishWork));
-            return HiveConfig.ConfigureSimulation()
-                             .WithTimeSpanToTerminate(TimeSpan.FromSeconds(18))
-                             .WithDebugging(akka: false, hive: true)
-                             .WithInterruptInterval(TimeSpan.FromSeconds(10))
-                             .WithStartTime(time)
-                             .WithTickSpeed(TimeSpan.FromMilliseconds(5))
-                             .WithMessageTracer(tracer)
-                             .Build();
-        }
     }
 }

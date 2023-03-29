@@ -23,6 +23,10 @@ namespace Akka.Hive.Definitions
         /// </summary>
         public IActorRef Target { get; }
         /// <summary>
+        /// Target Actor to whom the Simulation Message shall be forwarded.
+        /// </summary>
+        public IActorRef Sender { get; init; }
+        /// <summary>
         /// Priority to Order msg
         /// </summary>
         public Priority Priority { get; init; }
@@ -119,7 +123,7 @@ namespace Akka.Hive.Definitions
             /// </summary>
             public Time AtTime { get; }
             public IHiveMessage Message { get; }
-            internal Schedule(Time atTime, IHiveMessage message)
+            public Schedule(Time atTime, IHiveMessage message)
             {
                 AtTime = atTime;
                 Message = message;
@@ -150,6 +154,12 @@ namespace Akka.Hive.Definitions
         {
             return this with { LogThis = true };
         }
+
+        public IHiveMessage WithSender(IActorRef sender)
+        {
+            return this with { Sender = sender };
+        }
+
 
         /// <summary>
         /// Altering the Message Priority

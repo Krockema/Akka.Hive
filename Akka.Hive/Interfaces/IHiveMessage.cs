@@ -12,7 +12,9 @@ namespace Akka.Hive.Interfaces
         Guid Key { get; }
         object Message { get; }
         IActorRef Target { get; }
+        IActorRef Sender { get; }
         Priority Priority { get; }
+        IHiveMessage WithSender(IActorRef sender);
         bool LogThis { get;  }
         int CompareTo(IHiveMessage other);
     }

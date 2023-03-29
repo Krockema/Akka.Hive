@@ -13,5 +13,6 @@ namespace Akka.Hive.Instructions
         bool Add(Guid key, IHiveMessage message);
         void WaitForDiastole(bool token);
         void IntegrityCheck();
+        IHiveMessage GetNext() { throw new Exception("Not Implmenented for this Simulation Type"); }
     }
 }

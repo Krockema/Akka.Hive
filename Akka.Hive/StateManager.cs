@@ -15,7 +15,7 @@ namespace Akka.Hive
         protected StateManager() { }
 
         private readonly NLog.Logger Logger = LogManager.GetLogger(TargetNames.LOG_AKKA);
-        private bool IsRunning = true;
+        private bool IsRunning = false;
         private Inbox Inbox;
         private Hive Hive;
         /// <summary>
@@ -33,13 +33,11 @@ namespace Akka.Hive
                     case HiveMessage.SimulationState.Started:
                         Logger.Log(LogLevel.Warn, "Hive Started !");
                         this.AfterSimulationStarted();
-                        Continuation();
                         break;
                     case HiveMessage.SimulationState.Stopped:
                         Logger.Log(LogLevel.Warn, "Hive Stopped !");
                         this.AfterSimulationStopped();
                         Hive.Continue();
-                        Continuation();
                         break;
                     case HiveMessage.SimulationState.Finished:
                         Logger.Log(LogLevel.Warn, "Hive Finished !");
@@ -57,8 +55,6 @@ namespace Akka.Hive
                 }
             }
         }
-
-        public static IStateManagerBase Base => new StateManager();
 
         /// <summary>
         /// Adds the reference to the basic system to the StateManager
@@ -88,6 +84,8 @@ namespace Akka.Hive
         /// <returns></returns>
         public StateManager Start()
         {
+            Hive.Continue();
+            IsRunning = true;
             Continuation();
             return this;
         }

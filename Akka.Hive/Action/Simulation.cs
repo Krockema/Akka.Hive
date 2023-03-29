@@ -15,7 +15,7 @@ namespace Akka.Hive.Action
         /// <summary>
         /// Holds internal Actor Ref.
         /// </summary>
-        private readonly HiveActor _actor;
+        internal readonly HiveActor _actor;
         /// <summary>
         /// Store for featured messages
         /// </summary>
@@ -49,18 +49,9 @@ namespace Akka.Hive.Action
         /// </summary>
         /// <param name="message">message to send</param>
         /// <param name="waitFor">optional: possible delay until the message shall be send</param>
-        public void Send(IHiveMessage message, TimeSpan waitFor = new ())
+        public virtual void Send(IHiveMessage message)
         {
-            if (waitFor.Equals(TimeSpan.Zero))
-            {
-                // instruction.Target.Tell(message: instruction, sender: Self);
-                _actor.ContextManager.Tell(message: message, sender: _actor.Self);
-            }
-            else
-            {
-                // Context.System.Scheduler.ScheduleTellOnce(TimeSpan.FromSeconds((double)waitFor), Self, instruction, Self);
-                Schedule(delay: waitFor, message: message);
-            }
+            _actor.ContextManager.Tell(message: message, sender: _actor.Self);
         }
 
         /// <summary>
@@ -68,7 +59,7 @@ namespace Akka.Hive.Action
         /// </summary>
         /// <param name="delay"></param>
         /// <param name="message"></param>
-        public void Schedule(TimeSpan delay, IHiveMessage message)
+        public virtual void Schedule(TimeSpan delay, IHiveMessage message)
         {
             var atTime = _actor.Time.Add(delay);
             var s = new HiveMessage.Schedule(atTime, message);
@@ -93,11 +84,10 @@ namespace Akka.Hive.Action
         /// Maps a specific message to the "Do" method of the Actor and sends "Done" to the supervising actor
         /// </summary>
         /// <param name="message"></param>
-        public void MapMessageToMethod(object message)
+        public virtual void MapMessageToMethod(IHiveMessage message)
         {
-            var m = message as IHiveMessage;
-            _actor.Do(message);
-            _actor.ContextManager.Tell(new HiveMessage.Done(m), ActorRefs.NoSender);
+             _actor.Do(message);
+            _actor.ContextManager.Tell(new HiveMessage.Done(message), _actor.Self);
         }
 
         /// <summary>

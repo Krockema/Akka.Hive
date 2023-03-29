@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using Akka.Actor;
 using Akka.Hive.Action;
 
@@ -9,14 +10,14 @@ namespace Akka.Hive.Definitions
     /// </summary>
     public record HiveConfig: IHiveConfig, IHiveConfigBase, IHiveConfigHolon, IHiveConfigSimulation
     {
-        private HiveConfig()
+        private HiveConfig(bool sequencial = false)
         {
             InterruptInterval = TimeSpan.MaxValue;
             DebugAkka = false;
             DebugHive = false;
             TickSpeed = TimeSpan.Zero;
             StartTime = Time.Now;
-            ActorActionFactory = new ActionFactory();
+            ActorActionFactory = new ActionFactory(sequencial);
             MessageTrace = new MessageTrace();
         }
 
@@ -34,9 +35,9 @@ namespace Akka.Hive.Definitions
         /// Creates basic Hive Configuration
         /// </summary>
         /// <returns></returns>
-        public static IHiveConfigSimulation ConfigureSimulation()
+        public static IHiveConfigSimulation ConfigureSimulation(bool sequencial)
         {
-            return new HiveConfig();
+            return new HiveConfig(sequencial);
         }
 
         /// <summary>
@@ -47,7 +48,6 @@ namespace Akka.Hive.Definitions
         {
             return new HiveConfig();
         }
-
         /// <summary>
         /// Transforms from HiveConfigBase to HiveConfig
         /// </summary>

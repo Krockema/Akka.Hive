@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using Akka.Actor;
 using Akka.Hive.Definitions;
+using Akka.Hive.Logging;
+using NLog;
 
 namespace Akka.Hive.Actors
 {
@@ -10,6 +12,7 @@ namespace Akka.Hive.Actors
     /// </summary>
     public class HeartBeat :  ReceiveActor
     {
+        private readonly NLog.Logger _logger = LogManager.GetLogger(TargetNames.LOG_AKKA);
         private TimeSpan _tickSpeed;
         /// <summary>
         /// Creation method for HeartBeat Actor
@@ -26,7 +29,7 @@ namespace Akka.Hive.Actors
             #region init
             _tickSpeed = timeToAdvance;
             #endregion
-            
+
             Receive<HiveMessage.Command>(dl =>
                 SendHeartBeat()
             );
@@ -38,6 +41,7 @@ namespace Akka.Hive.Actors
 
         private void SendHeartBeat()
         {
+            _logger.Log(LogLevel.Debug, "Beat");
             Task.Delay(_tickSpeed).Wait();
             Sender.Tell(HiveMessage.Command.HeartBeat);
         }

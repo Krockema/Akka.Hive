@@ -1,10 +1,6 @@
 ﻿using Akka.Actor;
 using Akka.Hive.Action;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Akka.Hive.Definitions
 {
@@ -34,8 +30,8 @@ namespace Akka.Hive.Definitions
     public interface IHiveConfigSimulation
     {
         IHiveConfigBase WithTimeSpanToTerminate(TimeSpan timeSpanToTerminate);
-    }
 
+    }
     public interface IHiveConfigHolon
     {
         IHiveConfigBase WithActionFactory(ActionFactory actionFactory);
