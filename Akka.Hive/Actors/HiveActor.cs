@@ -82,6 +82,7 @@ namespace Akka.Hive.Actors
             {
                 case ActionsType.Holon : Become(Holon); break;
                 case ActionsType.Simulation : Become(Simulant); break;
+                case ActionsType.Sequencial: Become(Simulant); break;
                 default : throw new Exception($"Actor type specification unknown, actor type : {hiveConfig.ActorActionFactory.ActorActions}");
             };
         }
@@ -104,12 +105,12 @@ namespace Akka.Hive.Actors
             Receive<Schedule>(message => act.ScheduleMessages(message.AtTime, (HiveMessage)message.Message));
             Receive<AdvanceTo>(m => act.AdvanceTo(m.Time));
             Receive<IDirectMessage>(message => Do(message));
-            ReceiveAny(act.MapMessageToMethod);
+            ReceiveAny(m => act.MapMessageToMethod(m as IHiveMessage));
         }
 
-        protected internal void Send(IHiveMessage instruction, TimeSpan waitFor = new ())
+        protected internal void Send(IHiveMessage instruction)
         {
-            ActorActions.Send(instruction, waitFor);
+            ActorActions.Send(instruction);
             Trace(instruction, ActorContext.System.EventStream);
         }
 

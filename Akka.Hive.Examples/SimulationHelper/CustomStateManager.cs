@@ -10,7 +10,7 @@ namespace Akka.Hive.Examples.SimulationHelper
         }
         private IActorRef DistributorRef;
 
-        public static new IWithDistributorRef Base => new CustomStateManager();
+        public static IWithDistributorRef Base => new CustomStateManager();
         
         public IStateManagerBase WithDistributor(IActorRef actorRef)
         {

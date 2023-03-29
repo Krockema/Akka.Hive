@@ -14,18 +14,25 @@ namespace Akka.Hive.Action
         /// Default => Simulation
         /// Custom => Holon
         /// </summary>
-        public ActionsType ActorActions { get; }
+        public ActionsType ActorActions { get; private set; }
         private Func<HiveActor, IHiveAction> ActionCreator { get; }
 
         /// <summary>
         /// Creates default actor ActionFactory with simulation environment
         /// </summary>
-        public ActionFactory()
+        public ActionFactory(bool sequencial = false)
         {
-            ActorActions = ActionsType.Simulation;
-            ActionCreator = (actor) => new Simulation(actor);
+            if (sequencial)
+            {
+                ActorActions = ActionsType.Sequencial;
+                ActionCreator = (actor) => new Sequencial(actor);
+            } 
+            else
+            {
+                ActorActions = ActionsType.Simulation;
+                ActionCreator = (actor) => new Simulation(actor);
+            }
         }
-
         /// <summary>
         /// Creates customized actor ActionFactory that targets an IHiveAction implementation.
         /// </summary>

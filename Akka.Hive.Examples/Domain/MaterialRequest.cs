@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Akka.Hive.Examples.Domain
 {
-    public class MaterialRequest : IComparable<MaterialRequest>
+    public record MaterialRequest : IComparable<MaterialRequest>
     {
         private static int count = 1;
         public MaterialRequest(Material material, Dictionary<int, bool> childRequests,int parent, long due, bool isHead)
@@ -26,6 +26,7 @@ namespace Akka.Hive.Examples.Domain
         public int Parent { get; }
         public Dictionary<int, bool> ChildRequests { get; }
         public long Due { get; }
+        public DateTime Done { get; init; }
 
         public int CompareTo(MaterialRequest other)
         {

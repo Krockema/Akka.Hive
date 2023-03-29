@@ -10,18 +10,18 @@ namespace Akka.Hive.Instructions
     /// <summary>
     /// ... that saves the message that shall be process within the current virtual time
     /// </summary>
-    public class InstructionStore : ICurrentInstructions
+    public class SequenceStore : ICurrentInstructions
     {
         private readonly SortedDictionary<Guid, IHiveMessage> _store = new();
         private int _wait = 0;
         private Guid _lastMessageKey;
         private int _lastStoredMessageCount;
         private int _equalRounds;
-        public NLog.Logger Logger; 
+        private NLog.Logger _logger;
 
-        public InstructionStore()
+        public SequenceStore()
         {
-            Logger = LogManager.GetLogger(TargetNames.LOOP_DETECTION);
+            _logger = LogManager.GetLogger(TargetNames.LOOP_DETECTION);
             _lastMessageKey = Guid.Empty;
         }
 
@@ -50,13 +50,13 @@ namespace Akka.Hive.Instructions
                 
             // [ something might be wrong ]
             if (_store.ContainsKey(_lastMessageKey)) // something is wrong 
-                Logger.Log(LogLevel.Debug, $"Possible deadlock detected, msg count :{_lastStoredMessageCount} " +
+                _logger.Log(LogLevel.Debug, $"Possible deadlock detected, msg count :{_lastStoredMessageCount} " +
                                             $"last changed {_equalRounds}" +
                                             $"message {_store[_lastMessageKey].Message.GetType()}" +
                                             $"target {_store[_lastMessageKey].Target.Path.Address}" +
                                             $"sender {_store[_lastMessageKey].Message}");
             else // loop ?
-                Logger.Log(LogLevel.Debug, $"Possible loop detected, msg count :{_lastStoredMessageCount} last changed {_equalRounds}");
+                _logger.Log(LogLevel.Debug, $"Possible loop detected, msg count :{_lastStoredMessageCount} last changed {_equalRounds}");
 
             // count this was happening
             _equalRounds++;
@@ -70,6 +70,11 @@ namespace Akka.Hive.Instructions
         public void WaitForDiastole(bool token)
         {
             _wait = token ? 1 : 0;
+        }
+
+        public IHiveMessage GetNext()
+        {
+            return _store.First().Value;
         }
     }
 }

@@ -10,11 +10,11 @@ namespace Akka.Hive.Examples.Domain
             {
                 Id = 1
                 , Name = "Table"
-                , AssemblyDuration = 10
+                , AssemblyDuration = 1200
                 , Quantity = 1
                 , Materials = new List<Material> { new Material { Id = 2
                                                                 , Name = "Leg"
-                                                                , AssemblyDuration = 5
+                                                                , AssemblyDuration = 300
                                                                 , ParrentMaterialID = 1
                                                                 , Quantity = 4
                                                                 , IsReady = true } }

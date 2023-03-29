@@ -12,7 +12,6 @@ namespace Akka.Hive.Examples.Resources.Machine
     partial class MachineMqttAgent : HiveActor, IWithExternalConnection
     {
         // Temp for test
-        Random r = new Random(1337);
         private MaterialRequest _workingOn;
         private readonly IActorRef _jobDistributor;
 
@@ -43,13 +42,14 @@ namespace Akka.Hive.Examples.Resources.Machine
         {
             _workingOn = m.Message as MaterialRequest;
             SendExtern(new [] { _workingOn.Material.Name, _workingOn.Material.AssemblyDuration.ToString() });
-            Logger.Log(LogLevel.Info, "{0} {1} started to work : {2} ",  new object[] {  this.Time.Value, Self.Path.Name, _workingOn.Material.Name });
+            Logger.Log(LogLevel.Info, "{0} {1} started to work : {2} ",  new object[] { this.Time.Value, Self.Path.Name, _workingOn.Material.Name });
             
         }
 
         private void WorkDone(MachineAgent.FinishWork f)
         {
             Logger.Log(LogLevel.Info, "{0} {1} finished to work : {2} ",  new object[] { this.Time.Value, Self.Path.Name, _workingOn.Material.Name });
+            _workingOn = _workingOn with { Done = Time.Value };
             Send(new JobDistributor.ProductionOrderFinished(_workingOn, Context.Parent));
             _workingOn = null;
         }

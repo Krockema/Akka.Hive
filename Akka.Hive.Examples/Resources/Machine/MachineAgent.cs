@@ -44,6 +44,7 @@ namespace Akka.Hive.Examples.Resources.Machine
         {
             Logger.Log(LogLevel.Info, "{0} {1} finished to work : {2} ",  new object[] { this.Time.Value, Self.Path.Name, ((MaterialRequest)(finishWork.Message)).Material.Name });
             var material = finishWork.Message as MaterialRequest;
+            material = material with { Done = this.Time.Value };
             Send(new JobDistributor.ProductionOrderFinished(material, Context.Parent));
         }
 

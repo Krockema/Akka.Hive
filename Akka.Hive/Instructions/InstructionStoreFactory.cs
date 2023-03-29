@@ -8,9 +8,15 @@
 
         public static ICurrentInstructions CreateCurrent(bool debug)
         {
-            return debug ? new InstructionStore() : new IntegerStore();
+            if (debug) return new InstructionStore();
+                       return new IntegerStore();
         }
-        
+
+        public static ICurrentInstructions CreateSequencialCurrent()
+        {
+            return new SequenceStore();
+        }
+
         public static IFeatureInstructions CreateFeatureStore(bool debug)
         {
             return new FeatureStore();

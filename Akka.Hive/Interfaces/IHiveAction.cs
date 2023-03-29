@@ -6,9 +6,9 @@ namespace Akka.Hive.Interfaces
     /// <summary>
     /// Basic actor functionality that every Hive resident has to implement.
     /// </summary>
-    public interface IHiveAction
+    public interface IHiveAction : IHiveSimulationAction
     {
-        void Send(IHiveMessage instruction, TimeSpan waitFor = new());
+        void Send(IHiveMessage instruction);
         void Schedule(TimeSpan delay, IHiveMessage message);
         void ScheduleMessages(Time atTime, HiveMessage Message);
         void Finish(IHiveMessage finish);
