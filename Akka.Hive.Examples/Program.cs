@@ -11,7 +11,6 @@ using Akka.Hive.Examples.Resources.Distributor;
 using Akka.Hive.Examples.Resources.Machine;
 using Akka.Hive.Examples.SimulationHelper;
 using Akka.Hive.Logging;
-using NLog;
 using NLog.Common;
 using static Akka.Hive.Definitions.HiveMessage;
 using static Akka.Hive.Examples.Resources.Distributor.JobDistributor;
