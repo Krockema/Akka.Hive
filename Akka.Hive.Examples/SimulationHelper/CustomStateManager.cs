@@ -1,27 +1,28 @@
 ﻿using Akka.Actor;
-using Akka.Hive.Interfaces;
+using Akka.Hive.Actors;
 
 namespace Akka.Hive.Examples.SimulationHelper
 {
-    public class CustomStateManager : StateManager, IWithDistributorRef
+    public class CustomStateManager : StateManager
     {
-        private CustomStateManager() : base() {
+        private IActorRef _distributorRef;
 
-        }
-        private IActorRef DistributorRef;
-
-        public static IWithDistributorRef Base => new CustomStateManager();
-        
-        public IStateManagerBase WithDistributor(IActorRef actorRef)
+        public static Props Props(Hive hive, IActorRef dist)
         {
-            DistributorRef = actorRef;
-            return this;
+            var props = Actor.Props.Create(() => new CustomStateManager(hive, dist));
+            return props;
+        }
+
+
+        public CustomStateManager(Hive hive, IActorRef distributorRef) : base(hive)
+        {
+            _distributorRef = distributorRef;
         }
         
         public override void AfterSimulationStopped()
         {
-            var statRequest = new RequestStatistics(DistributorRef);
-            DistributorRef.Ask(statRequest).Wait();
+            var statRequest = new RequestStatistics(_distributorRef);
+            _distributorRef.Ask(statRequest).Wait();
         }
     }
 }

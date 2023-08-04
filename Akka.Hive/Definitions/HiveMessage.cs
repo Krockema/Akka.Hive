@@ -34,28 +34,6 @@ namespace Akka.Hive.Definitions
         /// Log this Message to the event Stream.
         /// </summary>
         public bool LogThis { get; init; }        
-        /// <summary>
-        /// For simple and fast internal instructions
-        /// </summary>
-        public enum Command
-        {
-            Start,
-            Stop,
-            Finish,
-            IsReady,
-            HeartBeat
-        }
-
-        /// <summary>
-        /// Used to build a start / stop / mechanic with this 
-        /// </summary>
-        public enum SimulationState
-        {
-            Stopped,
-            Started,
-            Finished,
-            Bounced
-        }
 
         /// <summary>
         /// Message that is send in simulation context when an message has been processed

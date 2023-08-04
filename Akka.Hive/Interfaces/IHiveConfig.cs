@@ -14,7 +14,8 @@ namespace Akka.Hive.Definitions
         Time StartTime { get; }
         ActionFactory ActorActionFactory { get; }
         MessageTrace MessageTrace { get; }
-        Inbox Inbox { get; set; }
+        Func<Hive, object[], Props> StateManagerProbs { get; set; }
+        IActorRef StateManagerRef { get; set; }
     }
 
     public interface IHiveConfigBase
@@ -25,6 +26,7 @@ namespace Akka.Hive.Definitions
         IHiveConfigBase WithTickSpeed(TimeSpan timeSpan);
         IHiveConfigBase WithStartTime(Time timeSpan);
         IHiveConfigBase WithMessageTracer(MessageTrace tracer);
+        IHiveConfigBase WithStateManagerProbs(Func<Hive, object[], Props> stateManagerProbs);
     }
 
     public interface IHiveConfigSimulation

@@ -63,7 +63,7 @@ namespace Akka.Hive.Test
 
             Within(TimeSpan.FromSeconds(3), () =>
             {
-                engine.ContextManager.Tell(msg);
+                engine.ContextManagerRef.Tell(msg);
 
                 target.FishForMessage(o => o.GetType() == typeof(Ping));
 
@@ -78,14 +78,14 @@ namespace Akka.Hive.Test
         {
             var source = this.CreateTestProbe();
             var worker = hive.ActorSystem.ActorOf(Props.Create(() 
-                            => new ActingObject(hive.ContextManager, Time.Now, hive.Config)));
+                            => new ActingObject(hive.ContextManagerRef, Time.Now, hive.Config)));
 
             var msg = new Work(message: 10
                               , target: worker);
 
             Within(TimeSpan.FromSeconds(3), async () =>
             {
-                hive.ContextManager.Tell(msg, source);
+                hive.ContextManagerRef.Tell(msg, source);
                 await hive.RunAsync();
 
                 var work = source.FishForMessage(o => o.GetType() == typeof(Work)) as Work;

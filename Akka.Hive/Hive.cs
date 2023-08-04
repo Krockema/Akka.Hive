@@ -5,7 +5,8 @@ using Akka.Configuration;
 using Akka.Hive.Action;
 using Akka.Hive.Actors;
 using Akka.Hive.Definitions;
-using static Akka.Hive.Definitions.HiveMessage;
+using Akka.Hive.Logging;
+using NLog;
 
 namespace Akka.Hive
 {
@@ -14,6 +15,7 @@ namespace Akka.Hive
     /// </summary>
     public class Hive
     {
+        private readonly NLog.Logger _logger = LogManager.GetLogger(TargetNames.LOG_ACTORS);
         /// <summary>
         /// Public Contextname for identification
         /// </summary>
@@ -22,7 +24,6 @@ namespace Akka.Hive
         /// The actor system itself
         /// </summary>
         public ActorSystem ActorSystem { get; }
-
         /// <summary>
         /// The hive Configuration
         /// </summary>
@@ -30,11 +31,11 @@ namespace Akka.Hive
         /// <summary>
         /// Global Inbox that is used for comunication with the state manager
         /// </summary>
-        public Inbox Inbox => Config.Inbox;
+        public IActorRef StateManagerRef => Config.StateManagerRef;
         /// <summary>
         /// Actor managing the virtual time, is triggered by interupts and can be used for external comunication
         /// </summary>
-        public IActorRef ContextManager { get; }
+        public IActorRef ContextManagerRef { get; }
         /// <summary>
         /// Prepare Simulation Environment
         /// </summary>
@@ -45,7 +46,6 @@ namespace Akka.Hive
                                        /* else */ : ConfigurationFactory.ParseString(GetConfiguration(NLog.LogLevel.Info));
 
             ActorSystem  = ActorSystem.Create(ContextName, config);
-            
             // ********* Not Ready Yet ******************* /// 
             //
             // if(simConfig.AddApplicationInsights)
@@ -54,8 +54,7 @@ namespace Akka.Hive
             //    var monitorExtension = ActorMonitoringExtension.RegisterMonitor(ActorSystem, monitor);
             // }
             Config = engineConfig;
-            engineConfig.Inbox =  Inbox.Create(ActorSystem);
-            ContextManager = CreateContextRef(engineConfig);
+            ContextManagerRef = CreateContextRef(engineConfig);
 
         }
 
@@ -70,21 +69,29 @@ namespace Akka.Hive
             };
         }
         
+        public IActorRef InitStateManager(object[] args)
+        {
+            //var stateManagerProps = Config.StateManagerFactory.StateManagerPropsCreator(this, args);
+            Config.StateManagerRef = ActorSystem.ActorOf(Config.StateManagerProbs(this, args), "StateManager");
+               // , "StateManager");
+            return Config.StateManagerRef;
+        }
+
         /// <summary>
         /// Request a ready signal from system context
         /// </summary>
         /// <returns>true as soon as the initialization is finished</returns>
         public bool IsReady()
         {
-            var r = ContextManager.Ask(Command.IsReady).Result;
-            return r is Command.IsReady;
+            var r = ContextManagerRef.Ask(SimulationCommand.IsReady).Result;
+            return r is SimulationCommand.IsReady;
         }
         /// <summary>
         /// Confiniues the system after a stop.
         /// Only on simulation contexts
         /// </summary>
         public void Continue() {
-            ContextManager.Tell(Command.Start);
+            ContextManagerRef.Tell(SimulationCommand.Start);
         }
 
         /// <summary>
@@ -102,7 +109,11 @@ namespace Akka.Hive
         /// <returns>when the system is terminated</returns>
         public Task RunAsync()
         {
-            ContextManager.Tell(Command.Start);
+            if (StateManagerRef == null) {                 
+                _logger.Warn("No State Manager configured! Trying to use default. #see config.WithStateManagerProbs((hive, args) => CustomStateManager.Props(hive, (IActorRef)args[0]))");
+                Config.StateManagerRef = ActorSystem.ActorOf(StateManager.Props(this), "StateManager");
+            }
+            ContextManagerRef.Tell(SimulationCommand.Start);
             return ActorSystem.WhenTerminated;
         }
 

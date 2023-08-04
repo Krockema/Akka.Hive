@@ -19,7 +19,7 @@ Fixed: naming</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Akka" Version="1.5.1" />
+    <PackageReference Include="Akka" Version="1.5.12" />
     <PackageReference Include="Akka.Logger.NLog" Version="1.5.0" />
   </ItemGroup>
 

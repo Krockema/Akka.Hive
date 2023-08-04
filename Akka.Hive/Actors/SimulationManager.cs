@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 using Akka.Actor;
 using Akka.Hive.Definitions;
 using Akka.Hive.Instructions;
@@ -83,13 +84,13 @@ namespace Akka.Hive.Actors
         private void SimulationMode()
         {
 
-            Receive<Command>(s => s == Command.Start, s =>
+            Receive<SimulationCommand>(s => s == SimulationCommand.Start, s =>
             {
                 if (_currentInstructions.Count() == 0)
                 {
                     IsRunning = true;
                     NextInterrupt = NextInterrupt.Add(EngineConfig.InterruptInterval) ;
-                    EngineConfig.Inbox.Receiver.Tell(SimulationState.Started);
+                    EngineConfig.StateManagerRef.Tell(SimulationState.Started);
                     Systole();
                     Advance();
                 }
@@ -101,18 +102,18 @@ namespace Akka.Hive.Actors
 
             });
 
-            Receive<Command>(s => s == Command.HeartBeat, s =>
+            Receive<SimulationCommand>(s => s == SimulationCommand.HeartBeat, s =>
             {
                 Diastole();
             });
 
             // Determine when The Simulation is Done.
-            Receive<Command>(s => s == Command.IsReady, s =>
+            Receive<SimulationCommand>(s => s == SimulationCommand.IsReady, s =>
             {
                 //if (_InstructionStore.Count() == 0)
                 if (_currentInstructions.Count() == 0)
                 {
-                    Sender.Tell(Command.IsReady, ActorRefs.NoSender);
+                    Sender.Tell(SimulationCommand.IsReady, ActorRefs.NoSender);
                 }
                 else
                 {
@@ -127,8 +128,9 @@ namespace Akka.Hive.Actors
                 if (_currentInstructions.Count() == 0)
                 {
                     IsComplete = true;
-                    EngineConfig.Inbox.Receiver.Tell(SimulationState.Finished);
-                    _logger.Log(LogLevel.Trace ,"Simulation Finished...");
+                    var command = EngineConfig.StateManagerRef.Ask(SimulationState.Finished);
+                    command.PipeTo(Self);
+                    _logger.Log(LogLevel.Trace ,"Try to finish Simulation...");
                 }
                 else
                 {
@@ -147,7 +149,7 @@ namespace Akka.Hive.Actors
                 Advance();
             });
 
-            Receive<Command>(c => c == Command.Stop, _ =>
+            Receive<SimulationCommand>(c => c == SimulationCommand.Stop, _ =>
             {
                 // Console.WriteLine("-- Resume simulation -- !");
                 _logger.Info("Command Stop --Done {arg1} Stop", new object[] { _currentInstructions.Count() });
@@ -198,7 +200,7 @@ namespace Akka.Hive.Actors
         {
             if (EngineConfig.TickSpeed.Ticks == 0 || !IsRunning) 
                 return;
-            Heart.Tell(Command.HeartBeat, Self);
+            Heart.Tell(SimulationCommand.HeartBeat, Self);
             _currentInstructions.WaitForDiastole(true);
         }
 
@@ -220,7 +222,7 @@ namespace Akka.Hive.Actors
                 if (_featuredInstructions.Count() == 0 || _featuredInstructions.Next() >= EndTime.Value)
                 {
                     IsComplete = true;
-                    EngineConfig.Inbox.Receiver.Tell(SimulationState.Finished);
+                    EngineConfig.StateManagerRef.Tell(SimulationState.Finished);
                 }
                 else
                 {
@@ -238,7 +240,7 @@ namespace Akka.Hive.Actors
             if (Time.Value >= NextInterrupt.Value)
             {
                 IsRunning = false;
-                EngineConfig.Inbox.Receiver.Tell(SimulationState.Stopped);
+                EngineConfig.StateManagerRef.Tell(SimulationState.Stopped);
                 return;
             }
             Time = new Time(to);

@@ -95,6 +95,10 @@ namespace Akka.Hive.Definitions
             return this with { ActorActionFactory = actionFactory };
         }
 
+        public IHiveConfigBase WithStateManagerProbs(Func<Hive, object[], Props> creator)
+        {
+            return this with { StateManagerProbs = creator };
+        }
 
         /// <summary>
         /// Enables Message Tracing
@@ -102,7 +106,7 @@ namespace Akka.Hive.Definitions
         /// <returns></returns>
         public IHiveConfigBase WithMessageTracer(MessageTrace tracer)
         {
-            return this with { MessageTrace = tracer  };
+            return this with { MessageTrace = tracer };
         }
 
         /// <summary>
@@ -124,7 +128,8 @@ namespace Akka.Hive.Definitions
         public bool DebugHive { get; init; }
         public ActionFactory ActorActionFactory { get; init; }
         public MessageTrace MessageTrace { get; init; }
-        public Inbox Inbox { get; set; }
+        public IActorRef StateManagerRef { get; set; }
+        public Func<Hive, object[], Props> StateManagerProbs { get; set; }
     }
 }
 

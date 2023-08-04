@@ -30,7 +30,7 @@ namespace Akka.Hive.Actors
             _tickSpeed = timeToAdvance;
             #endregion
 
-            Receive<HiveMessage.Command>(dl =>
+            Receive<SimulationCommand>(dl =>
                 SendHeartBeat()
             );
 
@@ -43,7 +43,7 @@ namespace Akka.Hive.Actors
         {
             _logger.Log(LogLevel.Debug, "Beat");
             Task.Delay(_tickSpeed).Wait();
-            Sender.Tell(HiveMessage.Command.HeartBeat);
+            Sender.Tell(SimulationCommand.HeartBeat);
         }
 
     }

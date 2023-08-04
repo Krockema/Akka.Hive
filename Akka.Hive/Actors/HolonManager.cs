@@ -46,24 +46,24 @@ namespace Akka.Hive.Actors
             Time = config.StartTime;
             #endregion init
 
-            Receive<Command>(s => s == Command.Start, s =>
+            Receive<SimulationCommand>(s => s == SimulationCommand.Start, s =>
             {
-                Timers.StartPeriodicTimer("Bounce", Command.HeartBeat, EngineConfig.InterruptInterval, EngineConfig.InterruptInterval);
-                EngineConfig.Inbox.Receiver.Tell(SimulationState.Started);
+                Timers.StartPeriodicTimer("Bounce", SimulationCommand.HeartBeat, EngineConfig.InterruptInterval, EngineConfig.InterruptInterval);
+                EngineConfig.StateManagerRef.Tell(SimulationState.Started);
             });
 
-            Receive<Command>(s => s == Command.HeartBeat, s =>
+            Receive<SimulationCommand>(s => s == SimulationCommand.HeartBeat, s =>
             {
-                EngineConfig.Inbox.Receiver.Tell(SimulationState.Bounced);
+                EngineConfig.StateManagerRef.Tell(SimulationState.Bounced);
             });
 
             // Determine when The Simulation is Done.
-            Receive<Command>(s => s == Command.IsReady, s =>
+            Receive<SimulationCommand>(s => s == SimulationCommand.IsReady, s =>
             {
-                Sender.Tell(Command.IsReady, ActorRefs.NoSender);
+                Sender.Tell(SimulationCommand.IsReady, ActorRefs.NoSender);
             });
 
-            Receive<Command>(c => c == Command.Stop, c =>
+            Receive<SimulationCommand>(c => c == SimulationCommand.Stop, c =>
             {
                 // Console.WriteLine("-- Resume simulation -- !");
                 _logger.Info("Command Stop from {}", Sender.Path.Name);
