@@ -11,9 +11,8 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Company>-</Company>
     <Authors>Krockert, Martin; Marvin Matthes</Authors>
-    <Version>0.3.0</Version>
-    <Description>Initial Release</Description>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Version>0.3.1</Version>
+    <Description>>LICENSE</PackageLicenseFile>
     <PackageReleaseNotes>Added: Fullblown Example for all three execution scenarios.
 Fixed: naming</PackageReleaseNotes>
   </PropertyGroup>
