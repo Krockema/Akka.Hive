@@ -2,6 +2,9 @@
 using Akka.Hive.Definitions;
 using Akka.Hive.Logging;
 using NLog;
+using System;
+using System.Web;
+
 namespace Akka.Hive.Actors
 {
     /// <summary>
@@ -12,6 +15,7 @@ namespace Akka.Hive.Actors
         private readonly NLog.Logger _logger = LogManager.GetLogger(TargetNames.LOG_AKKA);
         private bool IsRunning = false;
         private Hive _hive;
+        internal protected IActorRef ContextManagerRef => _hive.ContextManagerRef;
         /// <summary>
         /// Creation method for HeartBeat Actor
         /// </summary>
@@ -34,6 +38,11 @@ namespace Akka.Hive.Actors
             Receive<SimulationState>((state) => state == SimulationState.Bounced, (_) => Bounce());
             // anything unhandled
             ReceiveAny((message) => _logger.Log(LogLevel.Warn, "StateManager: Unhandled message -> " + message.GetType() + "recived!"));
+        }
+
+        public IActorRef GetActorFromString(string name)
+        {
+            return _hive.ActorSystem.ActorSelection(name).ResolveOne(TimeSpan.FromSeconds(60)).Result;
         }
 
         private void Stopped()

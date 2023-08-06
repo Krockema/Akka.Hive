@@ -13,7 +13,7 @@ namespace Akka.Hive.Actors
     /// </summary>
     public abstract class MessageMonitor : UntypedActor, ILogReceive
     {
-        protected Time Time;
+        protected internal Time Time;
         private readonly List<Type> _channels;
         private readonly NLog.Logger _logger = LogManager.GetLogger(TargetNames.LOG_AKKA);
        

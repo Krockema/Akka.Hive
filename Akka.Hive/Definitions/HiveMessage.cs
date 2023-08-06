@@ -115,13 +115,13 @@ namespace Akka.Hive.Definitions
         /// <param name="target"></param>
         /// <param name="logThis">default: False</param>
         /// <param name="priority">default: Medium</param>
-        public HiveMessage(object message, IActorRef target)
+        public HiveMessage(object message, IActorRef target, bool logThis = false)
         {
             Key = Guid.NewGuid();
             Message = message;
             Target = target;
             Priority = Priority.Medium;
-            LogThis = false;
+            LogThis = logThis;
         }
 
         /// <summary>
@@ -162,7 +162,7 @@ namespace Akka.Hive.Definitions
         /// <param name="targetSelection"></param>
         /// <param name="logThis"></param>
         /// <param name="priority"></param>
-        protected HiveMessage(object message, ActorSelection targetSelection,bool logThis = false, Priority priority = Priority.Medium)
+        protected HiveMessage(object message, ActorSelection targetSelection, bool logThis = false, Priority priority = Priority.Medium)
         {
             Key = Guid.NewGuid();
             Message = message;

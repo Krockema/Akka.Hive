@@ -62,7 +62,7 @@ namespace Akka.Hive.Actors
             base.PreStart();
         }
 
-        protected IHiveConfig HiveConfig {get;} 
+        public IHiveConfig HiveConfig {get;} 
 
         protected HiveActor(IActorRef simulationContext, Time time, IHiveConfig hiveConfig)
         {
