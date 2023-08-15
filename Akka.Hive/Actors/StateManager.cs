@@ -26,7 +26,7 @@ namespace Akka.Hive.Actors
             return Actor.Props.Create(() => new StateManager(hive));
         }
         
-        public StateManager(Hive hive)
+        public StateManager(Hive hive) : base()
         {
             #region init
             _logger.Log(LogLevel.Info, "StateManager Created");

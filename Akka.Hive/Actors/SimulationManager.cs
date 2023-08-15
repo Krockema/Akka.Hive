@@ -144,8 +144,8 @@ namespace Akka.Hive.Actors
                 var msg = ((IHiveMessage) c.Message);
                 if (!_currentInstructions.Remove(msg: msg.Key))
                     throw new Exception("Failed to remove message from Instruction store");
-                _logger.Log(LogLevel.Trace, "Time[{arg1}] | {arg2} | DONE -- | Instructions: {arg2} | Type: {arg3} | Sender: {arg4} | Target: {arg5}"
-                    , new object[] { Time.Value, msg.Key, _currentInstructions.Count(), msg.GetType().ToString(), Sender.Path.Name, msg.Target.Path.Name });
+                //_logger.Log(LogLevel.Trace, "Time[{arg1}] | {arg2} | DONE -- | Instructions: {arg2} | Type: {arg3} | Sender: {arg4} | Target: {arg5}"
+                //    , new object[] { Time.Value, msg.Key, _currentInstructions.Count(), msg.GetType().ToString(), Sender.Path.Name, msg.Target.Path.Name });
                 Advance();
             });
 
@@ -188,8 +188,8 @@ namespace Akka.Hive.Actors
                 }
                 //Console.WriteLine("++");
                 _currentInstructions.Add(m.Key, m);
-                _logger.Log(LogLevel.Trace ,"Time[{arg1}] | {arg2} | DO ++ | Instructions: {arg2} | Type: {arg3} | Sender: {arg4} | Target: {arg5}"
-                    , new object[] { Time.Value, m.Key , _currentInstructions.Count(), m.GetType().ToString(), Sender.Path.Name, m.Target.Path.Name });
+                //_logger.Log(LogLevel.Trace ,"Time[{arg1}] | {arg2} | DO ++ | Instructions: {arg2} | Type: {arg3} | Sender: {arg4} | Target: {arg5}"
+                //    , new object[] { Time.Value, m.Key , _currentInstructions.Count(), m.GetType().ToString(), Sender.Path.Name, m.Target?.Path.Name });
             });
         }
 

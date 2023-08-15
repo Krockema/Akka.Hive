@@ -24,7 +24,7 @@ namespace Akka.Hive.Definitions
         IHiveConfigBase WithDebugging(bool akka, bool hive);
         IHiveConfigBase WithInterruptInterval(TimeSpan timeSpan);
         IHiveConfigBase WithTickSpeed(TimeSpan timeSpan);
-        IHiveConfigBase WithStartTime(Time timeSpan);
+        IHiveConfigBase WithStartTime(DateTime timeSpan);
         IHiveConfigBase WithMessageTracer(MessageTrace tracer);
         IHiveConfigBase WithStateManagerProbs(Func<Hive, object[], Props> stateManagerProbs);
     }

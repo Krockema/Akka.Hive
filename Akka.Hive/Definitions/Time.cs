@@ -12,13 +12,16 @@ namespace Akka.Hive.Definitions
         {
             Value = new DateTime(dt.Year, dt.Month, dt.Day, dt.Hour, dt.Minute, dt.Second, 0, dt.Kind);
         }
+
+        public static Time ZERO =>  new Time(new DateTime(637134336000000000)); // 01.01.2020
+
         public DateTime Value { get; }
         public DateTime? NullableValue => Value;
-        public long AsLongFromZero => Value.ToFileTimeUtc();
+        public long AsLongFromZero => Value.Ticks;
         public long AsLong(Time from)
         {
             TimeSpan t = Value - from.Value;
-            return (long)t.TotalMilliseconds / 1000;
+            return t.Ticks;
         }
 
         public Time(long x, Time from)

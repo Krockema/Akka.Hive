@@ -26,9 +26,9 @@ namespace Akka.Hive.Definitions
         /// </summary>
         /// <param name="startTime">Default is Time.Now</param>
         /// <returns></returns>
-        public IHiveConfigBase WithStartTime(Time startTime)
+        public IHiveConfigBase WithStartTime(DateTime startTime)
         {
-            return this with { StartTime = startTime };
+            return this with { StartTime = new Time(startTime) };
         }
 
         /// <summary>
